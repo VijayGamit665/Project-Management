@@ -20,7 +20,7 @@ public class UserController {
 	@GetMapping("/newUser")
 	public String newUser() {
 		
-		return "User";//JSP
+		return "NewUser";//JSP
 	}
 	
 	

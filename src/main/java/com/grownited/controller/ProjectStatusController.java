@@ -14,29 +14,29 @@ import com.grownited.repository.ProjectStatusRepository;
 @Controller
 public class ProjectStatusController {
 	
-	
 	@Autowired
-	ProjectStatusRepository projectStatusRepo;
+	ProjectStatusRepository projectStatusrepo;
 	
 	@GetMapping("/newProjectStatus")
-	public String newPorjectStatus() {
-		return "NewProjectStatus";
-	}
-	 
-	@PostMapping("/saveProjectStatus")
-	public String saveProjectStatus(ProjectStatusEntity statusEntity) {
+	public String newProjectStatus() {
 		
-		projectStatusRepo.save(statusEntity);
-		
-		return "redirect:/listProjectStatus";
+		return "NewProjectStatus";//JSP
 	}
 	
-	@GetMapping("/listProjectStatus")
-	public String listProjectStatus(Model model) {
-		List<ProjectStatusEntity> status = projectStatusRepo.findAll();
-		model.addAttribute("s",status);
-		return "ListProjectStatus";
+	@PostMapping("/saveStatus")
+	public String saveStatus(ProjectStatusEntity projectstatus) {
+		
+		projectStatusrepo.save(projectstatus);
+		
+		return "redirect:/lisProjectStatus";
 	}
 	
+	@GetMapping("/lisProjectStatus")
+	public String lisProjectStatus (Model model) {
+		List<ProjectStatusEntity> Statuss = projectStatusrepo.findAll();
+		model.addAttribute("s",Statuss);
+		
+		return"ListProjectStatus";
+	}
 
 }

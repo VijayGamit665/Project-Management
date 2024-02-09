@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.grownited.entity.RoleEntity;
 import com.grownited.repository.RoleRepository;
 
-import ch.qos.logback.core.model.Model;
-
 @Controller
 public class RoleController {
 	

@@ -7,14 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>New Project Status</h2>
+<h2>List Module</h2>
 
-<form action="saveStatus" method = "post">
-ProjectStatus : <input type="text" name="projectStatus"/><br><br>
-
- <br><input type="submit" value="saveProjectStatus" />
-
-</form>
+${ m }
 
 </body>
 </html>
