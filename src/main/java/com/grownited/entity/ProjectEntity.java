@@ -12,16 +12,16 @@ public class ProjectEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer projectId;
-	public String title;
-	public String description;
-	public Integer projectStatusId;
-	public String docURL;
-	public Integer estimatedHours;
-	public Integer totalUtilizedHours;
-	public String projectStartDate;
-	public String projectCompletionDate;
-	public String actualCompletionDate;
+	private Integer projectId;
+	private String title;
+	private String description;
+	private Integer projectStatusId;
+	private String docURL;
+	private Integer estimatedHours;
+	private Integer totalUtilizedHours;
+	private String projectStartDate;
+	private String projectCompletionDate;
+	private String actualCompletionDate;
 	
 	public Integer getProjectId() {
 		return projectId;
@@ -84,6 +84,5 @@ public class ProjectEntity {
 		this.actualCompletionDate = actualCompletionDate;
 	}
 	
-	
-
+			
 }

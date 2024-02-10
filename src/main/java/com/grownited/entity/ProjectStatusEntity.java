@@ -13,8 +13,9 @@ public class ProjectStatusEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer projectStatusId;
-	public String projectStatus;
+	private Integer projectStatusId;
+	private String projectStatus;
+	
 	public Integer getProjectStatusId() {
 		return projectStatusId;
 	}
@@ -27,6 +28,7 @@ public class ProjectStatusEntity {
 	public void setProjectStatus(String projectStatus) {
 		this.projectStatus = projectStatus;
 	}
+	
 	
 	
 }

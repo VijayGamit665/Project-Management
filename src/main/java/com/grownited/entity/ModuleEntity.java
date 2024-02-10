@@ -12,14 +12,14 @@ public class ModuleEntity {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	public Integer moduleId;
-	public String moduleName;
-	public Integer projectId;
-	public String status;
-	public String description;
-	public String docURL;
-	public Integer estimatedHours;
-	public Integer totalUtilizedHours;
+	private Integer moduleId;
+	private String moduleName;
+	private Integer projectId;
+	private String status;
+	private String description;
+	private String docURL;
+	private Integer estimatedHours;
+	private Integer totalUtilizedHours;
 	
 	public Integer getModuleId() {
 		return moduleId;
