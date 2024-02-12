@@ -13,11 +13,11 @@ ProjectId             :<input type="text" name="projectId"/><br><br>
 Title                 : <input type="text" name="title"/><br><br>
 Description           : <input type="text" name="description"/><br><br>
 ProjectStatusId       :<input type="text" name="projectStatusId"/><br><br>
-DocURL                : <input type="text" name="docURL"/><br><br>
+DocURL                : <input type="url" name="docURL"/><br><br>
 EstimatedHours        : <input type="text" name="estimatedHours"/><br><br>
 TotalUtilizedHours    : <input type="text" name="totalUtilizedHours"/><br><br>
-ProjectStartDate      : <input type="text" name="projectStartDate"/><br><br>
-ProjectCompletionDate : <input type ="text" name="projectCompletionDate"/><br><br>
+ProjectStartDate      : <input type="date" name="projectStartDate"/><br><br>
+ProjectCompletionDate : <input type ="date" name="projectCompletionDate"/><br><br>
 actualCompletionDate  : <input type="text" name="actualCompletionDate"/><br><br>
                        <input type="submit" value="Add Project"/>
 </form>

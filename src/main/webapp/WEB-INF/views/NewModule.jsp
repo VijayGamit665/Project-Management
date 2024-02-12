@@ -15,7 +15,7 @@ ModuleName : <input type="text" name="moduleName"/><br><br>
 ProjectId : <input type="text" name="projectId"/><br><br>
 Status : <input type="text" name="status"/><br><br>
 Description : <input type="text" name="description"/><br><br>
-DocURL : <input type="text" name="docURL"/><br><br>
+DocURL : <input type="url" name="docURL"/><br><br>
 EstimatedHours :<input type="text" name="estimatedHours"/><br><br>
 TotalUtilizedHours : <input type="text" name="totalUtilizedHours"/><br><br>
 

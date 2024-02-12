@@ -9,12 +9,11 @@
 <body>
 <h2>New Task User</h2>
 <form action="saveTaskUser" method="post">
-UserID : <input Type="text" name="userID"/><br><br>
-TaskId : <input Type="text" name="taskId"/><br><br>
-AssignStatus : <input Type="text" name="assignStatus"/><br><br>
-StatusId : <input Type="text" name="statusId"/><br><br>
-UtitlizedHours : <input Type="text" name="utitlizedHours"/><br><br>
-
+UserID : <input type="text" name="userID"/><br><br>
+TaskId : <input type="text" name="taskId"/><br><br>
+AssignStatus : <input type="text" name="assignStatus"/><br><br>
+StatusId : <input type="text" name="statusId"/><br><br>
+UtitlizedHours : <input type="text" name="utitlizedHours"/><br><br>
 <input Type="Submit" Value="Add Task User">
 
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>List Project User</h2>
-
-${ pu }
+<table border="1" align="center">
+		<tr>
+			<th>ProjectUserId</th>
+			<th>UserId</th>
+			<th>ProjectId</th>
+			<th>AssignStatus</th>
+		</tr>
+		<c:forEach items="${pu}" var="projectuser">
+			<tr>
+				<td>${projectuser.projectUserId}</td>
+				<td>${projectuser.userId}</td>
+				<td>${projectuser.projectId}</td>
+				<td>${projectuser.assignStatus}</td>
+			</tr>
+		</c:forEach>
+	</table>
 
 </body>
 </html>
