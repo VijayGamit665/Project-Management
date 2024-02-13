@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,12 @@
 ProjectId             :<input type="text" name="projectId"/><br><br>
 Title                 : <input type="text" name="title"/><br><br>
 Description           : <input type="text" name="description"/><br><br>
-ProjectStatusId       :<input type="text" name="projectStatusId"/><br><br>
+ProjectStatusId       :<select name="projectStatusId">
+						<option value="-1">------Select Project StatusID-------</option>
+						<c:forEach items="${projectstatus}" var="status">
+						<option value="${status.projectStatusId }">${status.projectStatusId}</option>	
+						</c:forEach>
+					  </select><br><br>
 DocURL                : <input type="url" name="docURL"/><br><br>
 EstimatedHours        : <input type="text" name="estimatedHours"/><br><br>
 TotalUtilizedHours    : <input type="text" name="totalUtilizedHours"/><br><br>

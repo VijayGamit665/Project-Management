@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.grownited.entity.RoleEntity;
 import com.grownited.entity.UserEntity;
+import com.grownited.repository.RoleRepository;
 import com.grownited.repository.UserRepository;
 
 @Controller
@@ -17,8 +19,15 @@ public class UserController {
 	@Autowired
 	UserRepository userRepo;
 	
+	@Autowired
+	RoleRepository roleRepo;
+	
 	@GetMapping("/newUser")
-	public String newUser() {
+	public String newUser(Model model) {
+		
+	List<RoleEntity> roleList = roleRepo.findAll();
+	
+	model.addAttribute("roleList",roleList);
 		
 		return "NewUser";//JSP
 	}

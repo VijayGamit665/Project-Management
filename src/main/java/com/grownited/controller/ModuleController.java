@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.entity.ModuleEntity;
+import com.grownited.entity.ProjectEntity;
+import com.grownited.entity.ProjectStatusEntity;
 import com.grownited.repository.ModuleRepository;
+import com.grownited.repository.ProjectRepository;
+import com.grownited.repository.ProjectStatusRepository;
 
 @Controller
 public class ModuleController {
@@ -17,8 +21,18 @@ public class ModuleController {
 	@Autowired
 	ModuleRepository moduleRepo;
 	
+	@Autowired
+	ProjectRepository projectRepo; 
+	
+	@Autowired
+	ProjectStatusRepository projectStatusRepo;
+	
 	@GetMapping("/newModule")
-	public String newModule() {
+	public String newModule(Model model) {
+		List<ProjectEntity> projectslist = projectRepo.findAll();
+		List<ProjectStatusEntity> projectStatsulist = projectStatusRepo.findAll();
+		model.addAttribute("projectslist", projectslist);
+		model.addAttribute("projectStatsulist", projectStatsulist);
 		return "NewModule";
 	}
 

@@ -8,8 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.grownited.entity.ProjectEntity;
 import com.grownited.entity.ProjectUserEntity;
+import com.grownited.entity.UserEntity;
+import com.grownited.repository.ProjectRepository;
 import com.grownited.repository.ProjectUserRepository;
+import com.grownited.repository.UserRepository;
 
 @Controller
 public class ProjectUserController {
@@ -17,8 +21,19 @@ public class ProjectUserController {
 	@Autowired
 	ProjectUserRepository projectUserRepo;
 	
+	@Autowired
+	UserRepository userRepo;
+	
+	@Autowired
+	ProjectRepository projectRepo;
+	
 	@GetMapping("/newProjectUser")
-	public String newProjectUser() {
+	public String newProjectUser(Model model) {
+		List<UserEntity> users = userRepo.findAll();
+		List<ProjectEntity> projectlist = projectRepo.findAll();
+		model.addAttribute("users", users);
+		model.addAttribute("projectlist", projectlist);
+	
 		return "NewProjectUser";
 	}
 	

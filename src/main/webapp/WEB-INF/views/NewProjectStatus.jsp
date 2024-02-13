@@ -10,8 +10,14 @@
 <h2>New Project Status</h2>
 
 <form action="saveStatus" method = "post">
-ProjectStatus : <input type="text" name="projectStatus"/><br><br>
-
+ProjectStatus :<select name="projectStatus">
+                  <option value="-1">-----Please Select Status-----</option>
+					    <option value="lead">lead</option>
+						<option value="notStarted">notStarted</option>
+						<option value="hold">hold</option>
+						<option value="inProgress">inProgress</option>
+						<option value="completed">completed</option>
+			 </select><br><br>
  <br><input type="submit" value="saveProjectStatus" />
 
 </form>
