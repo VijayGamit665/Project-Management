@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.entity.ProjectEntity;
 import com.grownited.entity.ProjectUserEntity;
@@ -38,7 +39,7 @@ public class ProjectUserController {
 	}
 	
 	@PostMapping("/saveProjectUser")
-	public String saveProjectUser(ProjectUserEntity projectUser ) {
+	public String saveProjectUser(ProjectUserEntity projectUser) {
 		projectUserRepo.save(projectUser);
 		return "redirect:/listProjectUser";
 	}
@@ -49,9 +50,12 @@ public class ProjectUserController {
 	
 	model.addAttribute("pu", projectUsers);
 	return "ListProjectUser";
+	}
 	
-	
-	
+	@GetMapping("/deleteprojectuser")
+	public String deleteProjectUser(@RequestParam("projectUserId") Integer projectUserId) {
+		projectUserRepo.deleteById(projectUserId);
+		return "redirect:/listProjectUser";
 	}
 	
 

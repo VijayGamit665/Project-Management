@@ -19,6 +19,7 @@
 			<th>DocURL</th>
 			<th>Description</th>
 			<th>Title</th>
+			<th>Action</th>
 		</tr>
 		<c:forEach items="${t}" var="task">
 			<tr>
@@ -31,6 +32,7 @@
 				<td>${task.docURL}</td>
 				<td>${task.description}</td>
 				<td>${task.title}</td>
+				<td><a href="deletetask?taskId=${task.taskId}">delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

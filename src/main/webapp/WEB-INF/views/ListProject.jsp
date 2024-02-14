@@ -19,7 +19,9 @@
 			<th>TotalUtilizedHours</th>
 			<th>ProjectStartDate</th>
 			<th>ProjectCompletionDate</th>
-			<td>ActualCompletionDate</td>
+			<th>ActualCompletionDate</th>
+			<th>Action</th>
+			
 		</tr>
 		<c:forEach items="${p}" var="project">
 			<tr>
@@ -33,6 +35,7 @@
 				<td>${project.projectStartDate}</td>
 				<td>${project.projectCompletionDate}</td>
 				<td>${project.actualCompletionDate}</td>
+				<td><a href="deleteproject?projectId=${project.projectId}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.entity.ModuleEntity;
 import com.grownited.entity.ProjectEntity;
@@ -55,6 +56,12 @@ public class TaskController {
 		List<TaskEntity> tasks = taskRepo.findAll();
 		model.addAttribute("t", tasks);
 		return "ListTask";
+	}
+	
+	@GetMapping("/deletetask")
+	public String deleteTask(@RequestParam("taskId") Integer taskId) {
+		taskRepo.deleteById(taskId);
+		return "redirect:/listTask";
 	}
 	
 

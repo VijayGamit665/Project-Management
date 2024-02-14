@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.entity.ProjectEntity;
 import com.grownited.entity.ProjectStatusEntity;
@@ -46,6 +47,12 @@ public class ProjectController {
 		List<ProjectEntity> projects = projectRepo.findAll();
 		model.addAttribute("p",projects);
 		return "ListProject";
+	}
+	
+	@GetMapping("/deleteproject")
+	public String deleteProject(@RequestParam("projectId") Integer projectId) {
+		projectRepo.deleteById(projectId);
+		return "redirect:/listProject";
 	}
 	
 

@@ -13,11 +13,13 @@
 		<tr>
 			<th>ProjectStatusId</th>
 			<th>ProjectStatus</th>
+			<th>Action</th>
 		</tr>
 		<c:forEach items="${s}" var="projectstatus">
 			<tr>
 				<td>${projectstatus.projectStatusId}</td>
 				<td>${projectstatus.projectStatus}</td>
+				<td><a href="deleteprojectstatus?projectStatusId=${projectstatus.projectStatusId}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

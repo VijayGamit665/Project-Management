@@ -16,7 +16,7 @@ Description           : <input type="text" name="description"/><br><br>
 ProjectStatusId       :<select name="projectStatusId">
 						<option value="-1">------Select Project StatusID-------</option>
 						<c:forEach items="${projectstatus}" var="status">
-						<option value="${status.projectStatusId }">${status.projectStatusId}</option>	
+						<option value="${status.projectStatusId}">${status.projectStatus}</option>	
 						</c:forEach>
 					  </select><br><br>
 DocURL                : <input type="url" name="docURL"/><br><br>

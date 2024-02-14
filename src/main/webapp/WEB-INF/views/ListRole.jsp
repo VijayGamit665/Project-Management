@@ -12,11 +12,13 @@
 		<tr>
 			<th>RoleID</th>
 			<th>RoleName</th>
+			<th>Action</th>
 		</tr>
 		<c:forEach items="${r}" var="role">
 			<tr>
 				<td>${role.roleId}</td>
 				<td>${role.roleName}</td>
+				<th><a href="deleterole?roleId=${role.roleId}">Delete</a></th>
 			</tr>
 		</c:forEach>
 	</table>

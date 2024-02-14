@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.entity.RoleEntity;
 import com.grownited.entity.UserEntity;
@@ -47,6 +48,12 @@ public class UserController {
 		model.addAttribute("u",users);
 		
 		return"ListUser";
+	}
+	
+	@GetMapping("/deleteuser")
+	public String deleteUser(@RequestParam("userId") Integer userId) {
+		userRepo.deleteById(userId);
+		return "redirect:/listUser";
 	}
 
 }

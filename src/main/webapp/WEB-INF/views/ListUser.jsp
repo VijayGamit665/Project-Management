@@ -19,10 +19,11 @@
 			<th>ContactNum</th>
 			<th>DateOfBirth</th>
 			<th>Address</th>
-			<td>City</td>
+			<th>City</th>
 			<th>State</th>
-			<td>OTP</td>
-			<td>RoleID</td>
+			<th>OTP</th>
+			<th>RoleID</th>
+			<th>Action</th>
 			
 		</tr>
 		<c:forEach items="${u}" var="user">
@@ -40,7 +41,7 @@
 				<td>${user.state}</td>
 				<td>${user.otp}</td>
 				<td>${user.roleId}</td>	
-			
+				<td><a href="deleteuser?userId=${user.userId}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

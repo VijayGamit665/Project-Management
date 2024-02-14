@@ -18,6 +18,7 @@
 			<th>DocURL</th>
 			<th>EstimatedHours</th>
 			<th>TotalUtilizedHours</th>
+			<th>Action</th>
 		</tr>
 		<c:forEach items="${m}" var="module">
 			<tr>
@@ -29,6 +30,7 @@
 				<td>${module.docURL}</td>
 				<td>${module.estimatedHours}</td>
 				<td>${module.totalUtilizedHours}</td>
+				<td><a href="deletemodule?moduleId=${module.moduleId}">delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

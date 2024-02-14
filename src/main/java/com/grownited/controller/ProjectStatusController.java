@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.entity.ProjectStatusEntity;
 import com.grownited.repository.ProjectStatusRepository;
@@ -28,15 +29,21 @@ public class ProjectStatusController {
 		
 		projectStatusrepo.save(projectstatus);
 		
-		return "redirect:/lisProjectStatus";
+		return "redirect:/listProjectStatus";
 	}
 	
-	@GetMapping("/lisProjectStatus")
-	public String lisProjectStatus (Model model) {
+	@GetMapping("/listProjectStatus")
+	public String listProjectStatus (Model model) {
 		List<ProjectStatusEntity> Statuss = projectStatusrepo.findAll();
 		model.addAttribute("s",Statuss);
 		
 		return"ListProjectStatus";
+	}
+	
+	@GetMapping("/deleteprojectstatus")
+	public String deleteProjectStatus(@RequestParam("projectStatusId") Integer projectStatusId) {
+		projectStatusrepo.deleteById(projectStatusId);
+		return "redirect:/listProjectStatus";
 	}
 
 }

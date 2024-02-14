@@ -16,6 +16,7 @@
 			<th>AssignStatus</th>
 			<th>StatusId</th>
 			<th>UtitlizedHours</th>
+			<th>Action</th>
 		</tr>
 		<c:forEach items="${tu}" var="taskuser">
 			<tr>
@@ -25,6 +26,7 @@
 				<td>${taskuser.assignStatus}</td>
 				<td>${taskuser.statusId}</td>
 				<td>${taskuser.utitlizedHours}</td>
+				<td><a href="deletetaskuser?taskUserId=${taskuser.taskUserId}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>
