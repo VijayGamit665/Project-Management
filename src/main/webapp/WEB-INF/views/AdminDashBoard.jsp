@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>AdminLTE 3 | Dashboard</title>
+<title>Admin Dash board</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -38,6 +38,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
+
 
 		<jsp:include page="AdminHeader.jsp"></jsp:include>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
@@ -77,38 +78,19 @@
 						<!-- Left col -->
 						<section class="col-lg-7 connectedSortable">
 							<!-- Custom tabs (Charts with tabs)-->
-							<div class="card">
-
-								<!-- /.card-header -->
-
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
-
-							<!-- DIRECT CHAT -->
-							<!--/.direct-chat -->
-
-							<!-- TO DO List -->
-
-							<!-- /.card -->
+							<div class="card"></div>
 						</section>
 						<!-- /.Left col -->
 						<!-- right col (We are only adding the ID to make the widgets sortable)-->
 						<section class="col-lg-5 connectedSortable">
-
 							<!-- Map card -->
 							<div class="card bg-gradient-primary">
-
 								<!-- /.card-body-->
-
 							</div>
 							<!-- /.card -->
-
 							<!-- solid sales graph -->
 							<div class="card bg-gradient-info">
-
 								<!-- /.card-body -->
-
 								<!-- /.card-footer -->
 							</div>
 							<!-- /.card -->

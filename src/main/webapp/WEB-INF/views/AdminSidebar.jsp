@@ -16,7 +16,7 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="#" class="d-block">Gamit Vijay</a>
+				<a href="welcome" class="d-block">Gamit Vijay</a>
 			</div>
 		</div>
 
@@ -27,7 +27,7 @@
 				<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-				<li class="nav-item"><a href="pages/widgets.html"
+				<li class="nav-item"><a href="adminDashboard"
 					class="nav-link"> <i class="nav-icon fas fa-th"></i>
 						<p>
 							Dashboard <span class="right badge badge-danger">New</span>
@@ -36,14 +36,50 @@
 				<li class="nav-header">EXAMPLES</li>
 				<li class="nav-item"><a href="listrole" class="nav-link"> <i
 						class="nav-icon far fa-calendar-alt"></i>
-						<p>
-							List Role <span class="badge badge-info right">2</span>
+						<p>Role List <span class="badge badge-info right">2</span>
 						</p>
 				</a></li>
-				<li class="nav-item"><a href="pages/gallery.html"
-					class="nav-link"> <i class="nav-icon far fa-image"></i>
-						<p>Gallery</p>
+				<li class="nav-item"><a href="listUser" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>User List</p>
 				</a></li>
+				
+				<li class="nav-item"><a href="listProject" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>Project List</p>
+				</a>
+				</li>
+				
+				<li class="nav-item"><a href="listProjectStatus" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>Project Status List</p>
+				</a>
+				</li>
+				
+				<li class="nav-item"><a href="listProjectUser" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>Project User List</p>
+				</a>
+				</li>	
+				
+				<li class="nav-item"><a href="listModule" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>Module List</p>
+				</a>
+				</li>
+				
+				<li class="nav-item"><a href="listTask" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>Task List</p>
+				</a>
+				</li>
+				
+				<li class="nav-item"><a href="listTaskUser" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>Task User List</p>
+				</a>
+				</li>
+				
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->
