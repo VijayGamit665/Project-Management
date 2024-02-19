@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +33,7 @@
 			<div class="card-body register-card-body">
 				<p class="login-box-msg">Register a new membership</p>
 
-				<form action="saveuser" method="post">
+				<form action="signup" method="post">
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="First Name"
 							name="firstName">
