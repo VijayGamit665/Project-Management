@@ -77,9 +77,10 @@
 							</div>
 						</div>
 					</div>
+					<span style="color:red"> ${passwordError} </span>
 					<div class="input-group mb-3">
 						<input type="password" class="form-control"
-							placeholder="Retype Password" name="retpypepassword">
+							placeholder="Retype Password" name="confirmpassword">
 						<div class="input-group-append">
 							<div class="input-group-text">
 								<span class="fas fa-lock"></span>

@@ -146,8 +146,6 @@
 												<label for="inputStatus">Date Of Birth</label> <input
 													type="date" id="inputClientCompany" class="form-control"
 													name="dateOfBirth">
-													
-													
 											</div>
 										</div>
 										<div class="form-group">
