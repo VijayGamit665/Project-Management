@@ -41,7 +41,8 @@
 	<div class="wrapper">
 
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+
+		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
@@ -90,8 +91,8 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputDescription">ProjectStatus</label> 
-												<select name="projectStatus">
+												<label for="inputDescription">ProjectStatus</label> <select
+													name="projectStatus" class="form-control">
 													<option value="-1">-----Please Select Status-----</option>
 													<option value="lead">lead</option>
 													<option value="notStarted">notStarted</option>

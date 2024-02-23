@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +67,7 @@
 							name="email">
 						<div class="input-group-append">
 							<div class="input-group-text">
-							<span class="fas fa-envelope"></span>
+								<span class="fas fa-envelope"></span>
 							</div>
 						</div>
 					</div>
@@ -77,7 +80,7 @@
 							</div>
 						</div>
 					</div>
-					<span style="color:red"> ${passwordError} </span>
+					<span style="color: red"> ${passwordError} </span>
 					<div class="input-group mb-3">
 						<input type="password" class="form-control"
 							placeholder="Retype Password" name="confirmpassword">
@@ -92,8 +95,8 @@
 							placeholder="Contect Number" name="contactNum">
 						<div class="input-group-append">
 							<div class="input-group-text">
-							
-							<span class="fas fa-lg fa-phone"></span>
+
+								<span class="fas fa-lg fa-phone"></span>
 							</div>
 						</div>
 					</div>
@@ -101,8 +104,7 @@
 						<input type="date" class="form-control"
 							placeholder="Date of Birth" name="dateOfBirth">
 						<div class="input-group-append">
-							<div class="input-group-text">
-							</div>
+							<div class="input-group-text"></div>
 						</div>
 					</div>
 					<div class="input-group mb-3">
@@ -138,6 +140,21 @@
 							<div class="input-group-text"></div>
 						</div>
 					</div>
+					<div class="input-group mb-3">
+						<select name="roleId" class="form-control">
+							<option value="-1">-----Select Role-----</option>
+							<c:forEach items="${roles}" var="role">
+								<option value="${role.roleId}">${role.roleName}</option>
+							</c:forEach>
+						</select>
+						<div class="input-group-append">
+							<div class="input-group-text"></div>
+						</div>
+					</div>
+
+
+
+
 					<div class="row">
 
 						<!-- /.col -->

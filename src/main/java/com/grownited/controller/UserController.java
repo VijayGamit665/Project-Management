@@ -27,7 +27,6 @@ public class UserController {
 	public String newUser(Model model) {
 		
 	List<RoleEntity> roleList = roleRepo.findAll();
-	
 	model.addAttribute("roleList",roleList);
 		
 		return "NewUser";//JSP

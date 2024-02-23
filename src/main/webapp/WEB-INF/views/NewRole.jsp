@@ -41,7 +41,8 @@
 	<div class="wrapper">
 
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+
+		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->

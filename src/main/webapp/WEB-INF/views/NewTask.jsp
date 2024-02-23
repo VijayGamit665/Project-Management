@@ -41,8 +41,9 @@
 	<div class="wrapper">
 
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		
+		<%@include file="AdminHeader.jsp"%>
+		<jsp:include page="ProfileSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -90,8 +91,8 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputDescription">ModuleId</label> <select
-													name="moduleId">
+												<label for="inputDescription">ModuleId</label> 
+												<select name="moduleId" class="form-control">
 													<option value="-1">------Select ModuleID-------</option>
 													<c:forEach items="${modulelist}" var="modules">
 														<option value="${modules.moduleId}">${modules.moduleId}</option>
@@ -102,7 +103,7 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">ProjectId</label> <select
-													name="projectId">
+													name="projectId" class="form-control">
 													<option value="-1">------Select ProjectId-------</option>
 													<c:forEach items="${projectlist}" var="project">
 														<option value="${project.projectId}">${project.projectId}</option>
@@ -115,7 +116,7 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">Status</label> <select
-													name="status">
+													name="status" class="form-control">
 													<option value="-1">------Select Status-------</option>
 													<c:forEach items="${statuss}" var="status">
 														<option value="${status.projectStatus}">${status.projectStatus}</option>

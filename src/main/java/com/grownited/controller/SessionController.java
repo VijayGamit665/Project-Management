@@ -1,5 +1,7 @@
 package com.grownited.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -8,8 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.Services.MailerService;
+import com.grownited.entity.RoleEntity;
 import com.grownited.entity.UserEntity;
+import com.grownited.repository.RoleRepository;
 import com.grownited.repository.UserRepository;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -23,7 +29,9 @@ public class SessionController {
 	
 	@Autowired
 	MailerService mailerService;
-
+	
+	@Autowired
+	RoleRepository roleRepo;
 	
 	@GetMapping("/")
 	public String welcome() {
@@ -31,7 +39,12 @@ public class SessionController {
 	}
 
 	@GetMapping("/signup")
-	public String signup() {
+	public String signup(RoleEntity role,Model model) {
+		
+		List<RoleEntity> Rolelists = roleRepo.findAll();
+		model.addAttribute("roles",Rolelists);
+		
+		
 		return "Signup";
 	}
 
@@ -42,13 +55,13 @@ public class SessionController {
 
 	@PostMapping("/signup")
 	public String saveUser(UserEntity user, Model model) {
-
+	
 		if (!user.getPassword().equals(user.getConfirmpassword())) {
 			model.addAttribute("passwordError", "Password and confirm passowerd must be same");
 			return "Signup";
 		}
 
-		user.setRoleId(3); // developer
+		// developer
 		// encrypted Password logic start
 		// read plain text password
 		String plainPassword = user.getPassword();
@@ -61,13 +74,15 @@ public class SessionController {
 		user.setPassword(encPassword);
 
 		userRepo.save(user);
+		
+		
 		mailerService.sendMailForWelCome(user.getEmail());
 
 		return "redirect:/login";
 	}
 
 	@PostMapping("/authenticate")
-	public String authenticate(UserEntity user, Model model) {
+	public String authenticate(UserEntity user, Model model,HttpSession session) {
 		UserEntity loggedInUser = userRepo.findByEmail(user.getEmail());
 		System.out.println(loggedInUser);
 
@@ -77,6 +92,9 @@ public class SessionController {
 			return "Login";
 		} else {
 
+			session.setAttribute("user", loggedInUser);
+			session.setMaxInactiveInterval(60);
+			
 			boolean answer = passwordEncoder.matches(user.getPassword(), loggedInUser.getPassword());
 			if (answer == false) {
 				model.addAttribute("error", "Invalid Credentials");
@@ -155,6 +173,12 @@ public class SessionController {
 		}
 
 		return "Login";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate(); // Destroy s
+		return "redirect:/login";
 	}
 
 }

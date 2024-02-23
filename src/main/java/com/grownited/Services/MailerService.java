@@ -68,8 +68,6 @@ public class MailerService {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
 			message.setSubject("Welcome to Our Platform!");
 			message.setText("Welcome to our Project Management System");
-		
-		
 			// send message
 			Transport.send(message);
 			System.out.println("message sent successfully");

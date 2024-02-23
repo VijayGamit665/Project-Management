@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Admin Dash board</title>
+<title>PMS Dashboard</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -40,8 +41,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
@@ -65,7 +65,6 @@
 					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
-
 			</div>
 			<!-- /.content-header -->
 
@@ -91,9 +90,9 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputDescription">UserId</label> <select
-													name="userId">
+													name="userId" class="form-control">
 													<option value="-1">------Select UserID-------</option>
-													<c:forEach items="${users}" var="user">
+													<c:forEach items="${user}" var="user">
 														<option value="${user.userId}">${user.userId}</option>
 													</c:forEach>
 												</select>
@@ -102,7 +101,7 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputDescription">ProjectId</label> <select
-													name="projectId">
+													name="projectId" class="form-control">
 													<option value="-1">------ProjectId-------</option>
 													<c:forEach items="${projectlist}" var="project">
 														<option value="${project.projectId}">${project.projectId}</option>
@@ -133,7 +132,9 @@
 					</div>
 				</section>
 			</form>
-			<!-- /Main content -->
+
+
+			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
 

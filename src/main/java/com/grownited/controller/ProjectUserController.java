@@ -29,12 +29,13 @@ public class ProjectUserController {
 	ProjectRepository projectRepo;
 	
 	@GetMapping("/newProjectUser")
-	public String newProjectUser(Model model) {
-		List<UserEntity> users = userRepo.findAll();
-		List<ProjectEntity> projectlist = projectRepo.findAll();
-		model.addAttribute("users", users);
-		model.addAttribute("projectlist", projectlist);
-	
+	public String newProjectUser(ProjectEntity project,UserEntity user, Model model) {
+		
+	List<UserEntity> users = userRepo.findAll();
+	List<ProjectEntity> projectlists = projectRepo.findAll();
+	model.addAttribute("user",users);
+	model.addAttribute("projectlist",projectlists);	
+		
 		return "NewProjectUser";
 	}
 	

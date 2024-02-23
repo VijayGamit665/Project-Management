@@ -16,7 +16,7 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="profile" class="d-block">${user.firstName} ${user.lastName }</a>
+				<a href="welcome" class="d-block">${user.firstName} ${user.lastName }</a>
 			</div>
 		</div>
 
@@ -34,21 +34,20 @@
 						</p>
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
-				<li class="nav-item"><a href="newProject" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>Create Project <span class="badge badge-info right"></span>
-						</p>
-				</a></li>
 				<li class="nav-item"><a href="newTask" class="nav-link"> <i
 						class="nav-icon far fa-calendar-alt"></i>
-						<p>New Task <span class="badge badge-info right"></span>
+						<p>New Task <span class="badge badge-info right">2</span>
 						</p>
-				</a></li>		
-				<li class="nav-item"><a href="logout" class="nav-link"> <i
-						class="nav-icon fas fa-power-off"></i>
-						<p>Logout <span class="badge badge-info right"></span>
+						
+				</a>
+				</li>
+				<li class="nav-item"><a href="myTask" class="nav-link"> <i
+						class="nav-icon far fa-calendar-alt"></i>
+						<p>My Task <span class="badge badge-info right">2</span>
 						</p>
-				</a></li>		
+						
+				</a>
+				</li>		
 								
 			</ul>
 		</nav>

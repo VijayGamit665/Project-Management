@@ -41,7 +41,8 @@
 	<div class="wrapper">
 
 
-		<jsp:include page="AdminHeader.jsp"></jsp:include>
+		
+		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
@@ -122,10 +123,11 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
+												<label for="inputStatus">Gender</label>
 												<div class="input-group mb-3">
-													Gender : Male &nbsp; <input type="radio" Value="Male"
-														name="Gender" /> &nbsp; &nbsp; Female &nbsp; <input
-														type="radio" Value="Female" name="Gender" />
+													Male &nbsp; <input type="radio" Value="Male" name="Gender" />
+													&nbsp; &nbsp; Female &nbsp; <input type="radio"
+														Value="Female" name="Gender" />
 													<div class="input-group-append"></div>
 												</div>
 
@@ -136,7 +138,6 @@
 												<label for="inputStatus">ContactNum</label> <input
 													type="text" id="inputClientCompany" class="form-control"
 													name="contactNum">
-
 											</div>
 										</div>
 									</div>
@@ -148,9 +149,10 @@
 													name="dateOfBirth">
 											</div>
 										</div>
-										<div class="form-group">
-											<div class="col-lg-6">
-												<label for="inputStatus">City</label> <select name="city">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputStatus">City</label> <select name="city"
+													class="form-control">
 													<option value="-1">-----Please Select City-----</option>
 													<option value="Ahmedabad">Ahmedabad</option>
 													<option value="Surat">Surat</option>
@@ -164,7 +166,8 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputStatus">State</label> <select name="state">
+												<label for="inputStatus">State</label> <select name="state"
+													class="form-control">
 													<option value="-1">---Please Select State----</option>
 													<option value="Gujarat">Gujarat</option>
 													<option value="Maharashtra">Maharashtra</option>
@@ -172,6 +175,7 @@
 												</select>
 											</div>
 										</div>
+
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">OTP</label> <input type="text"
@@ -183,7 +187,7 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">RoleId</label> <select
-													name="roleId">
+													name="roleId" class="form-control">
 													<option value="-1">-----Select Role-----</option>
 													<c:forEach items="${roleList}" var="role">
 														<option value="${role.roleId}">${role.roleName}</option>
