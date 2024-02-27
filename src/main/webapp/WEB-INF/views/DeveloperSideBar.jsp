@@ -16,7 +16,7 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="welcome" class="d-block">Gamit Vijay</a>
+				<a href="profile" class="d-block">Gamit Vijay</a>
 			</div>
 		</div>
 
@@ -34,15 +34,7 @@
 						</p>
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
-				<li class="nav-item"><a href="listrole" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>Role List <span class="badge badge-info right">2</span>
-						</p>
-				</a></li>
-				<li class="nav-item"><a href="listUser" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>User List</p>
-				</a></li>
+				
 				
 				<li class="nav-item"><a href="listProject" class="nav-link"> <i
 						class="nav-icon far fa-image"></i>
@@ -74,18 +66,7 @@
 				</a>
 				</li>
 				
-				<li class="nav-item"><a href="listTaskUser" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>Task User List</p>
-				</a>
-				</li>
-				
-				<li class="nav-item"><a href="logout" class="nav-link"> <i
-						class="nav-icon fas fa-power-off"></i>
-						<p>Logout <span class="badge badge-info right"></span>
-						</p>
-				</a></li>
-				
+								
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

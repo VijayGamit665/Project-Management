@@ -31,9 +31,9 @@ public class ProjectUserController {
 	@GetMapping("/newProjectUser")
 	public String newProjectUser(ProjectEntity project,UserEntity user, Model model) {
 		
-	List<UserEntity> users = userRepo.findAll();
+	List<UserEntity> projectusers = userRepo.findAll();
 	List<ProjectEntity> projectlists = projectRepo.findAll();
-	model.addAttribute("user",users);
+	model.addAttribute("puser",projectusers);
 	model.addAttribute("projectlist",projectlists);	
 		
 		return "NewProjectUser";

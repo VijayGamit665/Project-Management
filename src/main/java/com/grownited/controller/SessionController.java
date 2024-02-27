@@ -93,7 +93,7 @@ public class SessionController {
 		} else {
 
 			session.setAttribute("user", loggedInUser);
-			session.setMaxInactiveInterval(60);
+			session.setMaxInactiveInterval(180);
 			
 			boolean answer = passwordEncoder.matches(user.getPassword(), loggedInUser.getPassword());
 			if (answer == false) {
@@ -107,7 +107,7 @@ public class SessionController {
 				return "ProjectManagerDashBoard";
 			} else if (loggedInUser.getRoleId() == 3) {
 				// Developer
-				return "DeveloperDashboard";
+				return "DeveloperDashBoard";
 			} else {
 				return "Login";
 			}

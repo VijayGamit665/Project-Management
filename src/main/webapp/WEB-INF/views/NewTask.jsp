@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Admin Dash board</title>
+<title>New Task</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -43,7 +43,7 @@
 
 		
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="ProfileSideBar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -58,7 +58,7 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Dashboard</li>
+								<li class="breadcrumb-item active"><a href="projectManagerDashBoard">Dashboard</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -95,7 +95,7 @@
 												<select name="moduleId" class="form-control">
 													<option value="-1">------Select ModuleID-------</option>
 													<c:forEach items="${modulelist}" var="modules">
-														<option value="${modules.moduleId}">${modules.moduleId}</option>
+														<option value="${modules.moduleId}">${modules.moduleName}</option>
 													</c:forEach>
 												</select>
 											</div>
@@ -106,7 +106,7 @@
 													name="projectId" class="form-control">
 													<option value="-1">------Select ProjectId-------</option>
 													<c:forEach items="${projectlist}" var="project">
-														<option value="${project.projectId}">${project.projectId}</option>
+														<option value="${project.projectId}">${project.title}</option>
 													</c:forEach>
 												</select>
 											</div>

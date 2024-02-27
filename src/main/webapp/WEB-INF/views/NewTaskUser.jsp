@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Admin Dash board</title>
+<title>New Task User</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -43,7 +43,7 @@
 
 		
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -58,7 +58,7 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Dashboard</li>
+								<li class="breadcrumb-item active"><a href="projectManagerDashBoard">Dashboard</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -92,10 +92,10 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputDescription">UserID</label> <select
-													name="userId">
+													name="userId" class="form-control">
 													<option value="-1">------Select UserID-------</option>
 													<c:forEach items="${Users}" var="user">
-														<option value="${user.userId}">${user.userId}</option>
+														<option value="${user.userId}">${user.firstName} ${user.lastName}</option>
 													</c:forEach>
 												</select>
 
@@ -104,10 +104,10 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">TaskId</label> <select
-													name="userId">
+													name="userId" class="form-control">
 													<option value="-1">------Select TaskId-------</option>
 													<c:forEach items="${tasklist}" var="task">
-														<option value="${task.taskId}">${task.taskId}</option>
+														<option value="${task.taskId}">${task.title}</option>
 													</c:forEach>
 												</select><br>
 											</div>
@@ -117,17 +117,17 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">AssignStatus</label> <input
-													type="text" id="inputClientCompany" class="form-control"
+													type="number" id="inputClientCompany" class="form-control"
 													name="assignStatus">
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputClientCompany">StatusId</label> <select
-													name="userId">
+													name="userId" class="form-control">
 													<option value="-1">------Select StatusId-------</option>
 													<c:forEach items="${statuslist}" var="status">
-														<option value="${status.projectStatusId}">${status.projectStatusId}</option>
+														<option value="${status.projectStatusId}">${status.projectStatus}</option>
 													</c:forEach>
 												</select>
 											</div>

@@ -42,5 +42,4 @@ public class ProjectUserEntity {
 		this.assignStatus = assignStatus;
 	}
 	
-
 }

@@ -69,42 +69,6 @@
 			<!-- /.content-header -->
 
 			<!-- Main content -->
-			<section class="content">
-				<div class="container-fluid">
-					<!-- Small boxes (Stat box) -->
-
-					<!-- /.row -->
-					<!-- Main row -->
-					<div class="row">
-						<!-- Left col -->
-						<section class="col-lg-7 connectedSortable">
-							<!-- Custom tabs (Charts with tabs)-->
-							<div class="card"></div>
-						</section>
-						<!-- /.Left col -->
-						<!-- right col (We are only adding the ID to make the widgets sortable)-->
-						<section class="col-lg-5 connectedSortable">
-							<!-- Map card -->
-							<div class="card bg-gradient-primary">
-								<!-- /.card-body-->
-							</div>
-							<!-- /.card -->
-							<!-- solid sales graph -->
-							<div class="card bg-gradient-info">
-								<!-- /.card-body -->
-								<!-- /.card-footer -->
-							</div>
-							<!-- /.card -->
-
-							<!-- Calendar -->
-							<!-- /.card -->
-						</section>
-						<!-- right col -->
-					</div>
-					<!-- /.row (main row) -->
-				</div>
-				<!-- /.container-fluid -->
-			</section>
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->

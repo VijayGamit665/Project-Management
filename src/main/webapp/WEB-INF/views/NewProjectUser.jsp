@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>PMS Dashboard</title>
+<title>New Project User</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -42,7 +41,7 @@
 	<div class="wrapper">
 
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -57,7 +56,7 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Dashboard</li>
+								<li class="breadcrumb-item active"><a href="projectManagerDashBoard">Dashboard</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -76,7 +75,7 @@
 						<div class="col-12 col-sm-12">
 							<div class="card card-primary">
 								<div class="card-header">
-									<h3 class="card-title">New Project Details</h3>
+									<h3 class="card-title">New Project User Details</h3>
 									<div class="card-tools">
 										<button type="button" class="btn btn-tool"
 											data-card-widget="collapse" data-toggle="tooltip"
@@ -92,8 +91,8 @@
 												<label for="inputDescription">UserId</label> <select
 													name="userId" class="form-control">
 													<option value="-1">------Select UserID-------</option>
-													<c:forEach items="${user}" var="user">
-														<option value="${user.userId}">${user.userId}</option>
+													<c:forEach items="${puser}" var="user">
+														<option value="${user.userId}">${user.firstName} ${user.lastName}</option>
 													</c:forEach>
 												</select>
 											</div>
@@ -104,7 +103,7 @@
 													name="projectId" class="form-control">
 													<option value="-1">------ProjectId-------</option>
 													<c:forEach items="${projectlist}" var="project">
-														<option value="${project.projectId}">${project.projectId}</option>
+														<option value="${project.projectId}">${project.title}</option>
 													</c:forEach>
 												</select>
 											</div>
@@ -114,7 +113,7 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputDescription">AssignStatus</label> <input
-													type="text" name="assignStatus" class="form-control">
+													type="number" name="assignStatus" class="form-control">
 											</div>
 										</div>
 										<div class="col-lg-6"></div>

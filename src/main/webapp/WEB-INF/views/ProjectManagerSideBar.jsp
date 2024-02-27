@@ -16,7 +16,7 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="profile" class="d-block">${user.firstName} ${user.lastName }</a>
+				<a href="profile" class="d-block">${user.firstName} ${user.lastName} </a>
 			</div>
 		</div>
 
@@ -43,7 +43,29 @@
 						class="nav-icon far fa-calendar-alt"></i>
 						<p>New Task <span class="badge badge-info right"></span>
 						</p>
-				</a></li>		
+				</a></li>
+				<li class="nav-item"><a href="newModule" class="nav-link"> <i
+						class="nav-icon far fa-calendar-alt"></i>
+						<p>New Module <span class="badge badge-info right"></span>
+						</p>
+				</a></li>
+				<li class="nav-item"><a href="newProjectStatus" class="nav-link"> <i
+						class="nav-icon far fa-calendar-alt"></i>
+						<p>New Project Status <span class="badge badge-info right"></span>
+						</p>
+				</a></li>
+				<li class="nav-item"><a href="newProjectUser" class="nav-link"> <i
+						class="nav-icon far fa-calendar-alt"></i>
+						<p>New Project User <span class="badge badge-info right"></span>
+						</p>
+				</a></li>
+				<li class="nav-item"><a href="newTaskUser" class="nav-link"> <i
+						class="nav-icon far fa-calendar-alt"></i>
+						<p>New Task User <span class="badge badge-info right"></span>
+						</p>
+				</a></li>
+				
+						
 				<li class="nav-item"><a href="logout" class="nav-link"> <i
 						class="nav-icon fas fa-power-off"></i>
 						<p>Logout <span class="badge badge-info right"></span>
