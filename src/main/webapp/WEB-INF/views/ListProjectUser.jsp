@@ -94,22 +94,23 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>ProjectUserId</th>
-										<th>UserId</th>
-										<th>ProjectId</th>
-										<th>AssignStatus</th>
+										<th>FirstName</th>
+										<th>LastName</th>
+										<th>Email</th>
+										<th>Role</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${pu}" var="projectuser">
 										<tr>
-											<td>${projectuser.projectUserId}</td>
-											<td>${projectuser.userId}</td>
-											<td>${projectuser.projectId}</td>
-											<td>${projectuser.assignStatus}</td>
-											<td><a
-												href="deleteprojectuser?projectUserId=${projectuser.projectUserId}">Delete</a></td>
+											<td>${projectuser.firstName}</td>
+											<td>${projectuser.lastName}</td>
+											<td>${projectuser.email}</td>
+											<td>${projectuser.roleId}</td>											
+											<td>
+											
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>

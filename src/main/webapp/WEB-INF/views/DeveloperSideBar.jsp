@@ -35,6 +35,11 @@
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
 				
+				<li class="nav-item"><a href="myProject" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>My Project</p>
+				</a>
+				</li>
 				
 				<li class="nav-item"><a href="listProject" class="nav-link"> <i
 						class="nav-icon far fa-image"></i>

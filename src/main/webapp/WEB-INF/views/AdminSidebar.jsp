@@ -56,12 +56,7 @@
 				</a>
 				</li>
 				
-				<li class="nav-item"><a href="listProjectUser" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>Project User List</p>
-				</a>
-				</li>	
-				
+								
 				<li class="nav-item"><a href="listModule" class="nav-link"> <i
 						class="nav-icon far fa-image"></i>
 						<p>Module List</p>
