@@ -2,6 +2,7 @@ package com.grownited.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import com.grownited.entity.ProjectUserEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.ProjectRepository;
 import com.grownited.repository.ProjectUserRepository;
+import com.grownited.repository.RoleRepository;
 import com.grownited.repository.UserRepository;
 
 @Controller
@@ -27,6 +29,9 @@ public class ProjectUserController {
 	
 	@Autowired
 	ProjectRepository projectRepo;
+	
+	@Autowired
+	RoleRepository roleRepo;
 	
 	@GetMapping("/newProjectUser")
 	public String newProjectUser(ProjectEntity project,UserEntity user, Model model) {
@@ -47,14 +52,17 @@ public class ProjectUserController {
 	}
 	
 	@GetMapping("/listProjectUser")
-	public String listProjectUser(@RequestParam("projectId") Integer projectId , Model model) {
-	
-		model.addAttribute("pu",userRepo.getUserByProjectId(projectId));
+	public String listProjectUser(@RequestParam("projectId") Integer projectId ,  Model model) {
+		
+		model.addAttribute("project", projectRepo.findById(projectId).get());
+		model.addAttribute("pu", userRepo.getUserByProjectId(projectId));
+		
+				
 	return "ListProjectUser";
 	}
 	
 	@GetMapping("/deleteprojectuser")
-	public String deleteProjectUser(@RequestParam("projectUserId") Integer projectUserId) {
+	public String deleteProjectUser(@RequestParam("projectUserId") Integer projectUserId, Model model) {
 		projectUserRepo.deleteById(projectUserId);
 		return "redirect:/listProjectUser";
 	}

@@ -34,8 +34,8 @@ public class SessionController {
 	RoleRepository roleRepo;
 	
 	@GetMapping("/")
-	public String welcome() {
-		return "Welcome"; // jsp name
+	public String Login() {
+		return "Login"; // jsp name
 	}
 
 	@GetMapping("/signup")

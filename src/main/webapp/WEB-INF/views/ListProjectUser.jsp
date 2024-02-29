@@ -40,7 +40,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-		
+
 		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
@@ -52,7 +52,7 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Project User List</h1>
+							<h1 class="m-0 text-dark">${project.title}Team</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
@@ -63,6 +63,9 @@
 						</div>
 						<!-- /.col -->
 					</div>
+					<label> <a href="newProjectUser">Add New User</a>
+					</label>
+
 					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
@@ -70,57 +73,63 @@
 			<!-- /.content-header -->
 
 			<!-- -Tables--- -->
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">Project User List</h3>
 
-							<div class="card-tools">
-								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search"
-										class="form-control float-right" placeholder="Search">
-
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
-										</button>
+			<div class="card card-solid">
+				<div class="card-body pb-0">
+					<div class="row d-flex align-items-stretch">
+						<c:forEach items="${pu}" var="projectuser">
+							<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+								<div class="card bg-light">
+									<div class="card-header text-muted border-bottom-0">
+										<div class="text-right">
+											<a href="#" class="btn btn-sm badge-danger"> <i
+												class="fas fa"></i> Revoke
+											</a>
+										</div>
+									</div>
+									<div class="card-body pt-0">
+										<div class="row">
+											<div class="col-7">
+												<h2 class="lead">
+													<b><td>${projectuser.firstName}
+															${projectuser.lastName}</td></b>
+												</h2>
+												<p class="text-muted text-sm">
+													<b>About: </b> ${projectuser.roleId} <br>
+													${projectuser.email}
+												</p>
+												<ul class="ml-4 mb-0 fa-ul text-muted">
+													<li class="small"><span class="fa-li"><i
+															class="fas fa-lg fa-building"></i></span>${projectuser.address}
+														${projectuser.city} ${projectuser.state}</li>
+													<li class="small"><span class="fa-li"><i
+															class="fas fa-lg fa-phone"></i></span>${projectuser.contactNum}
+													</li>
+												</ul>
+											</div>
+											<div class="col-5 text-center">
+												<img src="../../dist/img/user1-128x128.jpg" alt=""
+													class="img-circle img-fluid">
+											</div>
+										</div>
+									</div>
+									<div class="card-footer">
+										<div class="text-right">
+											<a href="#" class="btn btn-sm bg-teal"> <i
+												class="fas fa-comments"></i>
+											</a> <a href="#" class="btn btn-sm btn-primary"> <i
+												class="fas fa-user"></i> View Profile
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- /.card-header -->
-						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>FirstName</th>
-										<th>LastName</th>
-										<th>Email</th>
-										<th>Role</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${pu}" var="projectuser">
-										<tr>
-											<td>${projectuser.firstName}</td>
-											<td>${projectuser.lastName}</td>
-											<td>${projectuser.email}</td>
-											<td>${projectuser.roleId}</td>											
-											<td>
-											
-											</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<!-- /.card-body -->
+						</c:forEach>
 					</div>
-					<!-- /.card -->
 				</div>
 			</div>
+
+
 			<!-- -/Tables--- -->
 
 			<!-- Main content -->
