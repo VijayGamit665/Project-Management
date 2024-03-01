@@ -40,7 +40,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-		
+
 		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
@@ -94,26 +94,25 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>TaskUserId</th>
-										<th>UserID</th>
-										<th>TaskId</th>
-										<th>AssignStatus</th>
-										<th>StatusId</th>
-										<th>UtitlizedHours</th>
+										<th>UserId</th>
+										<th>FirstName</th>
+										<th>LastName</th>
+										<th>Email</th>
+										<th>ContectNumber</th>
 										<th>Action</th>
+
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${tu}" var="taskuser">
+									<c:forEach items="${pu}" var="taskuser">
 										<tr>
-											<td>${taskuser.taskUserId}</td>
-											<td>${taskuser.userID}</td>
-											<td>${taskuser.taskId}</td>
-											<td>${taskuser.assignStatus}</td>
-											<td>${taskuser.statusId}</td>
-											<td>${taskuser.utitlizedHours}</td>
+											<td>${taskuser.userId}</td>
+											<td>${taskuser.firstName}</td>
+											<td>${taskuser.lastName}</td>
+											<td>${taskuser.email}</td>
+											<td>${taskuser.contactNum}</td>
 											<td><a
-												href="deletetaskuser?taskUserId=${taskuser.taskUserId}">Delete</a></td>
+												href="deletetaskuser?taskUserId=${taskuser.userId}">Delete</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

@@ -94,8 +94,8 @@
 												<label for="inputDescription">UserID</label> <select
 													name="userId" class="form-control">
 													<option value="-1">------Select UserID-------</option>
-													<c:forEach items="${Users}" var="user">
-														<option value="${user.userId}">${user.firstName} ${user.lastName}</option>
+													<c:forEach items="${User}" var="users">
+														<option value="${users.userId}">${users.firstName} ${users.lastName}</option>
 													</c:forEach>
 												</select>
 
@@ -104,7 +104,7 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">TaskId</label> <select
-													name="userId" class="form-control">
+													name="taskId" class="form-control">
 													<option value="-1">------Select TaskId-------</option>
 													<c:forEach items="${tasklist}" var="task">
 														<option value="${task.taskId}">${task.title}</option>
@@ -124,7 +124,7 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputClientCompany">StatusId</label> <select
-													name="userId" class="form-control">
+													name="projectStatusId" class="form-control">
 													<option value="-1">------Select StatusId-------</option>
 													<c:forEach items="${statuslist}" var="status">
 														<option value="${status.projectStatusId}">${status.projectStatus}</option>

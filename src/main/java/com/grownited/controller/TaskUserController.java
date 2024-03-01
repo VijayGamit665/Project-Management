@@ -20,7 +20,7 @@ import com.grownited.repository.UserRepository;
 
 @Controller
 public class TaskUserController {
-	
+
 	@Autowired
 	TaskUserRepository taskUserRepo;
 	@Autowired
@@ -29,32 +29,34 @@ public class TaskUserController {
 	TaskRepository taskRepo;
 	@Autowired
 	ProjectStatusRepository projectStatusRepo;
-	
+
 	@GetMapping("/newTaskUser")
 	public String newTaskUser(Model model) {
 		List<UserEntity> Users = userRepo.findAll();
-	    List<TaskEntity> tasklist = taskRepo.findAll();
-	    List<ProjectStatusEntity> statuslist = projectStatusRepo.findAll();
-		model.addAttribute("Users", Users);
+		List<TaskEntity> tasklist = taskRepo.findAll();
+		List<ProjectStatusEntity> statuslist = projectStatusRepo.findAll();
+		model.addAttribute("User", Users);
 		model.addAttribute("tasklist", tasklist);
 		model.addAttribute("statuslist", statuslist);
 		return "NewTaskUser";
-		
+
 	}
-	
+
 	@PostMapping("/saveTaskUser")
 	public String saveTaskUser(TaskUserEntity taskUser) {
+		taskUser.setAssignStatus(1);
 		taskUserRepo.save(taskUser);
-		return "redirect:/listTaskUser";
+		return "redirect:/newTaskUser";
 	}
-	
+
 	@GetMapping("/listTaskUser")
-	public String listTaskUser(Model model) {
-		 List<TaskUserEntity> taskUsers = taskUserRepo.findAll();	
-		 model.addAttribute("tu",taskUsers);
+	public String listTaskUser(@RequestParam("taskId") Integer taskId, Model model) {
+
+		model.addAttribute("task", taskRepo.findById(taskId).get());
+		model.addAttribute("pu", userRepo.getUserBytaskId(taskId));
 		return "ListTaskUser";
 	}
-	
+
 	@GetMapping("/deletetaskuser")
 	public String deleteTaskUser(@RequestParam("taskUserId") Integer taskUserId) {
 		taskUserRepo.deleteById(taskUserId);

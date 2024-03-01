@@ -82,7 +82,7 @@
 								<div class="card bg-light">
 									<div class="card-header text-muted border-bottom-0">
 										<div class="text-right">
-											<a href="#" class="btn btn-sm badge-danger"> <i
+											<a href="deleteprojectuser?projectUserId=${puid.userId}" class="btn btn-sm badge-danger"> <i
 												class="fas fa"></i> Revoke
 											</a>
 										</div>

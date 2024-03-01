@@ -2,7 +2,6 @@ package com.grownited.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,52 +19,51 @@ import com.grownited.repository.UserRepository;
 
 @Controller
 public class ProjectUserController {
-	
+
 	@Autowired
 	ProjectUserRepository projectUserRepo;
-	
+
 	@Autowired
 	UserRepository userRepo;
-	
+
 	@Autowired
 	ProjectRepository projectRepo;
-	
+
 	@Autowired
 	RoleRepository roleRepo;
-	
+
 	@GetMapping("/newProjectUser")
-	public String newProjectUser(ProjectEntity project,UserEntity user, Model model) {
-		
-	List<UserEntity> projectusers = userRepo.findAll();
-	List<ProjectEntity> projectlists = projectRepo.findAll();
-	model.addAttribute("puser",projectusers);
-	model.addAttribute("projectlist",projectlists);	
-		
+	public String newProjectUser(ProjectEntity project, UserEntity user, Model model) {
+
+		List<UserEntity> projectusers = userRepo.findAll();
+		List<ProjectEntity> projectlists = projectRepo.findAll();
+		model.addAttribute("puser", projectusers);
+		model.addAttribute("projectlist", projectlists);
+
 		return "NewProjectUser";
 	}
-	
+
 	@PostMapping("/saveProjectUser")
 	public String saveProjectUser(ProjectUserEntity projectUser) {
 		projectUser.setAssignStatus(1);
 		projectUserRepo.save(projectUser);
 		return "redirect:/newProjectUser";
 	}
-	
+
 	@GetMapping("/listProjectUser")
-	public String listProjectUser(@RequestParam("projectId") Integer projectId ,  Model model) {
-		
+	public String listProjectUser(@RequestParam("projectId") Integer projectId, Model model) {
+
 		model.addAttribute("project", projectRepo.findById(projectId).get());
 		model.addAttribute("pu", userRepo.getUserByProjectId(projectId));
-		
-				
-	return "ListProjectUser";
+
+		return "ListProjectUser";
 	}
-	
+
 	@GetMapping("/deleteprojectuser")
-	public String deleteProjectUser(@RequestParam("projectUserId") Integer projectUserId, Model model) {
-		projectUserRepo.deleteById(projectUserId);
+	public String deleteProjectUser(@RequestParam("userId") Integer userId, Model model) {
+		projectUserRepo.getUserdeleteByuserId(userId);
+
 		return "redirect:/listProjectUser";
 	}
-	
 
 }

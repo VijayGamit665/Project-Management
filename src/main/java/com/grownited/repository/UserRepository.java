@@ -18,4 +18,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 	@Query(value="select u.* from user u, project_user pu where u.user_id = pu.user_id and pu.project_id = :projectId", nativeQuery=true)
 	List<UserEntity> getUserByProjectId(Integer projectId);
 	
+	@Query(value="select u.* from user u, task_user tu where u.user_id = tu.user_id and tu.task_id = :taskId", nativeQuery=true)
+	List<UserEntity> getUserBytaskId(Integer taskId);
+	
 }

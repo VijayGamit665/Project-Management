@@ -119,6 +119,7 @@
 											<td>${task.description}</td>
 											<td>${task.title}</td>
 											<td><a href="deletetask?taskId=${task.taskId}">delete</a></td>
+											<td><a href="listTaskUser?taskId=${task.taskId}">View User</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

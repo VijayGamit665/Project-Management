@@ -13,10 +13,10 @@ public class TaskUserEntity {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer taskUserId;
-	private Integer userID;
+	private Integer userId;
 	private Integer taskId;
 	private Integer assignStatus;
-	private Integer statusId;
+	private Integer projectStatusId;
 	private Integer utitlizedHours;
 	
 	public Integer getTaskUserId() {
@@ -25,11 +25,11 @@ public class TaskUserEntity {
 	public void setTaskUserId(Integer taskUserId) {
 		this.taskUserId = taskUserId;
 	}
-	public Integer getUserID() {
-		return userID;
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setUserID(Integer userID) {
-		this.userID = userID;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	public Integer getTaskId() {
 		return taskId;
@@ -43,11 +43,11 @@ public class TaskUserEntity {
 	public void setAssignStatus(Integer assignStatus) {
 		this.assignStatus = assignStatus;
 	}
-	public Integer getStatusId() {
-		return statusId;
+	public Integer getProjectStatusId() {
+		return projectStatusId;
 	}
-	public void setStatusId(Integer statusId) {
-		this.statusId = statusId;
+	public void setProjectStatusId(Integer projectStatusId) {
+		this.projectStatusId = projectStatusId;
 	}
 	public Integer getUtitlizedHours() {
 		return utitlizedHours;
