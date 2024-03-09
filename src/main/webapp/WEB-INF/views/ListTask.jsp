@@ -52,7 +52,7 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Task List</h1>
+							<h1 class="m-0 text-dark"> ${p.title} : ${m.moduleName} :- Task</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
@@ -74,8 +74,10 @@
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">Task List</h3>
-
+							<h3 class="card-title">
+							<a href="newTask?moduleId=${m.moduleId}">Add New Task</a>
+							
+							</h3>
 							<div class="card-tools">
 								<div class="input-group input-group-sm" style="width: 150px;">
 									<input type="text" name="table_search"
@@ -95,14 +97,11 @@
 								<thead>
 									<tr>
 										<th>TaskId</th>
-										<th>ModuleId</th>
-										<th>ProjectId</th>
+										<th>Task Title</th>
 										<th>Status</th>
 										<th>EstimatedHours</th>
 										<th>TotalUtilizedHours</th>
-										<th>DocURL</th>
 										<th>Description</th>
-										<th>Title</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -110,16 +109,13 @@
 									<c:forEach items="${t}" var="task">
 										<tr>
 											<td>${task.taskId}</td>
-											<td>${task.moduleId}</td>
-											<td>${task.projectId}</td>
+											<td>${task.title}</td>	
 											<td>${task.status}</td>
 											<td>${task.estimatedHours}</td>
 											<td>${task.totalUtilizedHours}</td>
-											<td>${task.docURL}</td>
 											<td>${task.description}</td>
-											<td>${task.title}</td>
-											<td><a href="deletetask?taskId=${task.taskId}">delete</a></td>
-											<td><a href="listTaskUser?taskId=${task.taskId}">View User</a></td>
+											<td><a href="deletetask?taskId=${task.taskId}">Delete</a>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>

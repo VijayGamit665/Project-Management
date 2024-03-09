@@ -97,7 +97,6 @@
 										<th>Title</th>
 										<th>Description</th>
 										<th>ProjectStatusId</th>
-										<th>DocURL</th>
 										<th>EstimatedHours</th>
 										<th>TotalUtilizedHours</th>
 										<th>ProjectStartDate</th>
@@ -114,7 +113,6 @@
 											<td>${project.title}</td>
 											<td>${project.description}</td>
 											<td>${project.projectStatusId}</td>
-											<td>${project.docURL}</td>
 											<td>${project.estimatedHours}</td>
 											<td>${project.totalUtilizedHours}</td>
 											<td>${project.projectStartDate}</td>
@@ -123,7 +121,9 @@
 											<td><a
 												href="deleteproject?projectId=${project.projectId}">Delete</a>
 												|
-												<a href="listProjectUser?projectId=${project.projectId}">View User</a>
+												<a href="listProjectUser?projectId=${project.projectId}">User</a>
+												|
+												<a href="listmodule?projectId=${project.projectId}">Module</a>
 												</td>
 										</tr>
 									</c:forEach>

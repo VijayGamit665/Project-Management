@@ -41,7 +41,7 @@
 	<div class="wrapper">
 
 
-		
+
 		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
@@ -58,7 +58,8 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active"><a href="projectManagerDashBoard">Dashboard</a></li>
+								<li class="breadcrumb-item active"><a
+									href="projectManagerDashBoard">Dashboard</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -91,37 +92,9 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputDescription">ModuleId</label> 
-												<select name="moduleId" class="form-control">
-													<option value="-1">------Select ModuleID-------</option>
-													<c:forEach items="${modulelist}" var="modules">
-														<option value="${modules.moduleId}">${modules.moduleName}</option>
-													</c:forEach>
-												</select>
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputStatus">ProjectId</label> <select
-													name="projectId" class="form-control">
-													<option value="-1">------Select ProjectId-------</option>
-													<c:forEach items="${projectlist}" var="project">
-														<option value="${project.projectId}">${project.title}</option>
-													</c:forEach>
-												</select>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputStatus">Status</label> <select
-													name="status" class="form-control">
-													<option value="-1">------Select Status-------</option>
-													<c:forEach items="${statuss}" var="status">
-														<option value="${status.projectStatus}">${status.projectStatus}</option>
-													</c:forEach>
-												</select>
+												<label for="inputProjectLeader">Title</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="title">
 											</div>
 										</div>
 										<div class="col-lg-6">
@@ -158,12 +131,17 @@
 										</div>
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputProjectLeader">Title</label> <input
-													type="text" id="inputProjectLeader" class="form-control"
-													name="title">
+												<label for="inputStatus">Status</label> <select
+													name="status" class="form-control">
+													<option value="-1">------Select Status-------</option>
+													<c:forEach items="${statuss}" var="status">
+														<option value="${status.projectStatus}">${status.projectStatus}</option>
+													</c:forEach>
+												</select>
 											</div>
 										</div>
 									</div>
+									<input type="hidden" name="moduleId" value="${param.moduleId}" />
 									<div class="row">
 										<div class="col-12">
 											<input type="submit" value="Add New Task"

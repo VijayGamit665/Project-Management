@@ -40,13 +40,15 @@ public class ModuleController {
 	@PostMapping("/saveModule")
 	public String saveModule(ModuleEntity module) {
 		 moduleRepo.save(module);
-		return "redirect:/listModule";
+		return "redirect:/listmodule?projectId="+module.getProjectId();
 	}
 	
-	@GetMapping("/listModule")
-	public String listModule(Model model) {
-	 	 List<ModuleEntity> modules = moduleRepo.findAll();
+	@GetMapping("/listmodule")
+	public String listModule(@RequestParam("projectId") Integer projectId, Model model) {
+	 	 List<ModuleEntity> modules = moduleRepo.findByProjectId(projectId);
+	 	 ProjectEntity project = projectRepo.findById(projectId).get();
 	 	 model.addAttribute("m", modules);
+	 	 model.addAttribute("project", project);
 	 	 return "ListModule";
     }
 	

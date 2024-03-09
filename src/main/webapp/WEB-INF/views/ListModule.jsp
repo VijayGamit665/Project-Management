@@ -52,7 +52,7 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Module List</h1>
+							<h1 class="m-0 text-dark">${project.title}</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
@@ -74,7 +74,7 @@
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">Module List</h3>
+							<h3 class="card-title"><a href="newModule?projectId=${project.projectId}">Add New Module</a></h3>
 
 							<div class="card-tools">
 								<div class="input-group input-group-sm" style="width: 150px;">
@@ -116,7 +116,10 @@
 											<td>${module.docURL}</td>
 											<td>${module.estimatedHours}</td>
 											<td>${module.totalUtilizedHours}</td>
-											<td><a href="deletemodule?moduleId=${module.moduleId}">delete</a></td>
+											<td><a href="deletemodule?moduleId=${module.moduleId}">delete</a>
+											|
+											<a href="listTask?moduleId=${module.moduleId}">Task List</a>
+											</td>
 										</tr>
 									</c:forEach>
 								</tbody>

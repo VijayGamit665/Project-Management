@@ -21,6 +21,7 @@ public class ModuleEntity {
 	private Integer estimatedHours;
 	private Integer totalUtilizedHours;
 	
+	
 	public Integer getModuleId() {
 		return moduleId;
 	}
@@ -71,5 +72,5 @@ public class ModuleEntity {
 	}
 	
 	
-
+	
 }

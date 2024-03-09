@@ -27,8 +27,8 @@
 				<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-				<li class="nav-item"><a href="adminDashboard"
-					class="nav-link"> <i class="nav-icon fas fa-th"></i>
+				<li class="nav-item"><a href="adminDashboard" class="nav-link">
+						<i class="nav-icon fas fa-th"></i>
 						<p>
 							Dashboard <span class="right badge badge-danger">New</span>
 						</p>
@@ -36,51 +36,32 @@
 				<li class="nav-header">EXAMPLES</li>
 				<li class="nav-item"><a href="listrole" class="nav-link"> <i
 						class="nav-icon far fa-calendar-alt"></i>
-						<p>Role List <span class="badge badge-info right">2</span>
+						<p>
+							Role List <span class="badge badge-info right">2</span>
 						</p>
 				</a></li>
 				<li class="nav-item"><a href="listUser" class="nav-link"> <i
 						class="nav-icon far fa-image"></i>
 						<p>User List</p>
 				</a></li>
-				
-				<li class="nav-item"><a href="listProject" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
+
+				<li class="nav-item"><a href="listProject" class="nav-link">
+						<i class="nav-icon far fa-image"></i>
 						<p>Project List</p>
-				</a>
-				</li>
-				
-				<li class="nav-item"><a href="listProjectStatus" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
+				</a></li>
+
+				<li class="nav-item"><a href="listProjectStatus"
+					class="nav-link"> <i class="nav-icon far fa-image"></i>
 						<p>Project Status List</p>
-				</a>
-				</li>
-				
-								
-				<li class="nav-item"><a href="listModule" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>Module List</p>
-				</a>
-				</li>
-				
-				<li class="nav-item"><a href="listTask" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>Task List</p>
-				</a>
-				</li>
-				
-				<li class="nav-item"><a href="listTaskUser" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>Task User List</p>
-				</a>
-				</li>
+				</a></li>
 				
 				<li class="nav-item"><a href="logout" class="nav-link"> <i
 						class="nav-icon fas fa-power-off"></i>
-						<p>Logout <span class="badge badge-info right"></span>
+						<p>
+							Logout <span class="badge badge-info right"></span>
 						</p>
 				</a></li>
-				
+
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

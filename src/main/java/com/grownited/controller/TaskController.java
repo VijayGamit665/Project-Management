@@ -20,49 +20,52 @@ import com.grownited.repository.TaskRepository;
 
 @Controller
 public class TaskController {
-	
+
 	@Autowired
 	TaskRepository taskRepo;
-	
+
 	@Autowired
 	ModuleRepository moduleRepo;
 	@Autowired
 	ProjectRepository projectRepo;
 	@Autowired
 	ProjectStatusRepository projectStatusRepo;
-	
+
 	@GetMapping("/newTask")
-	public String newTask(Model model) {
-	List<ModuleEntity> modulelist = moduleRepo.findAll();
-	List<ProjectEntity> projectlist = projectRepo.findAll();
-	List<ProjectStatusEntity> statuss = projectStatusRepo.findAll();
-	model.addAttribute("modulelist", modulelist);
-	model.addAttribute("projectlist", projectlist);
-	model.addAttribute("statuss", statuss);
-		
+	public String newTask(@RequestParam("moduleId") Integer moduleId, Model model) {
+		ModuleEntity modules = moduleRepo.findById(moduleId).get();
+		ProjectEntity projects = projectRepo.findById(modules.getProjectId()).get();
+
+		List<ProjectStatusEntity> statuss = projectStatusRepo.findAll();
+		model.addAttribute("module", modules);
+		model.addAttribute("projects", projects);
+		model.addAttribute("statuss", statuss);
+
 		return "NewTask";
 	}
-	
-	
+
 	@PostMapping("/saveTask")
 	public String saveTask(TaskEntity task) {
 		taskRepo.save(task);
-		return "redirect:/listTask";
+		return "redirect:/listTask?moduleId=" + task.getModuleId();
 	}
-	
+
 	@GetMapping("/listTask")
-	public String listTask(Model model) {
-		
-		List<TaskEntity> tasks = taskRepo.findAll();
+	public String listTask(@RequestParam("moduleId") Integer moduleId, Model model) {
+
+		List<TaskEntity> tasks = taskRepo.findByModuleId(moduleId);
+		ModuleEntity modules = moduleRepo.findById(moduleId).get();
+		ProjectEntity projects = projectRepo.findById(modules.getProjectId()).get();
 		model.addAttribute("t", tasks);
+		model.addAttribute("m", modules);
+		model.addAttribute("p", projects);
 		return "ListTask";
 	}
-	
+
 	@GetMapping("/deletetask")
 	public String deleteTask(@RequestParam("taskId") Integer taskId) {
 		taskRepo.deleteById(taskId);
 		return "redirect:/listTask";
 	}
-	
 
 }

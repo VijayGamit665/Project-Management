@@ -12,8 +12,8 @@ public class ProjectManagementApplication {
 		SpringApplication.run(ProjectManagementApplication.class, args);
 	}
 
-	@Bean
-	public BCryptPasswordEncoder createPasswordEncoder() {
+    @Bean
+    BCryptPasswordEncoder createPasswordEncoder() {
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		return passwordEncoder;
 	}

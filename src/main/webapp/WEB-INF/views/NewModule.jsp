@@ -91,31 +91,11 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputName">ModuleId</label> <input type="text"
-													class="form-control" name="moduleId">
-											</div>
-										</div>
-
-										<div class="col-lg-6">
-											<div class="form-group">
 												<label for="inputDescription">ModuleName</label> <input
 													type="text" class="form-control" name="moduleName">
 											</div>
 										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputStatus">ProjectId</label> <select
-													class="form-control custom-select" name="projectId">
-													<option value="-1">-----Please Select
-														ProjectId------</option>
-													<c:forEach items="${projectslist}" var="project">
-														<option value="${project.projectId}">${project.title}</option>
-													</c:forEach>
-												</select>
-											</div>
-										</div>
+
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">Status</label> <select
@@ -159,7 +139,10 @@
 													name="totalUtilizedHours">
 											</div>
 										</div>
+										<input type="hidden" name="projectId" value="${param.projectId}"/>										
 									</div>
+							      	
+									
 									<div class="row">
 										<div class="col-12">
 											<input type="submit" value="Add Module"
@@ -167,7 +150,6 @@
 												href="newModule" class="btn btn-secondary">Cancel</a>
 										</div>
 									</div>
-
 								</div>
 								<!-- /.card-body -->
 							</div>

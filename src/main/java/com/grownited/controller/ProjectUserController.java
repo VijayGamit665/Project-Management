@@ -60,9 +60,9 @@ public class ProjectUserController {
 	}
 
 	@GetMapping("/deleteprojectuser")
-	public String deleteProjectUser(@RequestParam("userId") Integer userId, Model model) {
-		projectUserRepo.getUserdeleteByuserId(userId);
-
+	public String deleteProjectUser(@RequestParam("projectId") Integer projectId, Model model) {
+		projectUserRepo.deleteById(projectId);
+		
 		return "redirect:/listProjectUser";
 	}
 
