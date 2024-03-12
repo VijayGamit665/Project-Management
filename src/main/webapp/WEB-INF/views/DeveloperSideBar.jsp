@@ -27,49 +27,38 @@
 				<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-				<li class="nav-item"><a href="adminDashboard"
+				<li class="nav-item"><a href="developerDashBoard"
 					class="nav-link"> <i class="nav-icon fas fa-th"></i>
 						<p>
-							Dashboard <span class="right badge badge-danger">New</span>
+							Developer Dashboard <span class="right badge badge-danger"></span>
 						</p>
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
 				
-				<li class="nav-item"><a href="myProject" class="nav-link"> <i
+				<li class="nav-item"><a href="myProject?userId=${user.userId}" class="nav-link"> <i
 						class="nav-icon far fa-image"></i>
 						<p>My Project</p>
 				</a>
 				</li>
 				
-				<li class="nav-item"><a href="listProject" class="nav-link"> <i
+				<li class="nav-item"><a href="myModule?userId=${user.userId}" class="nav-link"> <i
 						class="nav-icon far fa-image"></i>
-						<p>Project List</p>
+						<p>My Module</p>
 				</a>
 				</li>
 				
-				<li class="nav-item"><a href="listProjectStatus" class="nav-link"> <i
+				<li class="nav-item"><a href="myTask?userId=${user.userId}" class="nav-link"> <i
 						class="nav-icon far fa-image"></i>
-						<p>Project Status List</p>
+						<p>My Task</p>
 				</a>
 				</li>
-				
-				<li class="nav-item"><a href="listProjectUser" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>Project User List</p>
-				</a>
-				</li>	
-				
-				<li class="nav-item"><a href="listModule" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>Module List</p>
-				</a>
-				</li>
-				
-				<li class="nav-item"><a href="listTask" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>Task List</p>
-				</a>
-				</li>
+								
+				<li class="nav-item"><a href="logout" class="nav-link"> <i
+						class="nav-icon fas fa-power-off"></i>
+						<p>
+							Logout <span class="badge badge-info right"></span>
+						</p>
+				</a></li>
 				
 								
 			</ul>

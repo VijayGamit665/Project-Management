@@ -33,21 +33,7 @@
 							Dashboard <span class="right badge badge-danger">New</span>
 						</p>
 				</a></li>
-				<li class="nav-header">EXAMPLES</li>
-				<li class="nav-item"><a href="newTask" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>New Task <span class="badge badge-info right">2</span>
-						</p>
-						
-				</a>
-				</li>
-				<li class="nav-item"><a href="myTask" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>My Task <span class="badge badge-info right">2</span>
-						</p>
-						
-				</a>
-				</li>		
+				<li class="nav-header">EXAMPLES</li>		
 								
 			</ul>
 		</nav>

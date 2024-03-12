@@ -53,9 +53,16 @@ public class ModuleController {
     }
 	
 	@GetMapping("/deletemodule")
-	public String deleteModule(@RequestParam("moduleId") Integer moduleId) {
+	public String deleteModule(@RequestParam("moduleId") Integer moduleId ) {
 		moduleRepo.deleteById(moduleId);
 		return "redirect:/listModule";
+	}
+	
+	@GetMapping("/myModule")
+	public String myModule() {
+		
+		
+		return"MyModule";
 	}
 
 }

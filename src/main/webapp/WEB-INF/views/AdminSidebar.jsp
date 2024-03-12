@@ -54,7 +54,8 @@
 					class="nav-link"> <i class="nav-icon far fa-image"></i>
 						<p>Project Status List</p>
 				</a></li>
-				
+
+
 				<li class="nav-item"><a href="logout" class="nav-link"> <i
 						class="nav-icon fas fa-power-off"></i>
 						<p>

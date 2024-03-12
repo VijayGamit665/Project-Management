@@ -55,5 +55,11 @@ public class ProjectController {
 		return "redirect:/listProject";
 	}
 	
+	@GetMapping("/myProject")
+	public String myProject(@RequestParam("userId") Integer userId,Model model) {
+		model.addAttribute("pu", projectRepo.getUserByUserId(userId));
+		
+		return "MyProject";
+	}
 
 }

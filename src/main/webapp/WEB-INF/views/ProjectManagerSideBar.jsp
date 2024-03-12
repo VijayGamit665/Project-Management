@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
-	<a href="index3.html" class="brand-link"> <img
+	<a href="projectManagerDashBoard" class="brand-link"> <img
 		src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
 		class="brand-image img-circle elevation-3" style="opacity: .8">
 		<span class="brand-text font-weight-light">Project Management</span>
@@ -30,7 +30,7 @@
 				<li class="nav-item"><a href="projectManagerDashBoard"
 					class="nav-link"> <i class="nav-icon fas fa-th"></i>
 						<p>
-							Dashboard <span class="right badge badge-danger">New</span>
+							P-Manager Dashboard <span class="right badge badge-danger"></span>
 						</p>
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
@@ -39,16 +39,7 @@
 						<p>Create Project <span class="badge badge-info right"></span>
 						</p>
 				</a></li>
-				<li class="nav-item"><a href="newTask" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>New Task <span class="badge badge-info right"></span>
-						</p>
-				</a></li>
-				<li class="nav-item"><a href="newModule" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>New Module <span class="badge badge-info right"></span>
-						</p>
-				</a></li>
+				
 				<li class="nav-item"><a href="newProjectStatus" class="nav-link"> <i
 						class="nav-icon far fa-calendar-alt"></i>
 						<p>New Project Status <span class="badge badge-info right"></span>

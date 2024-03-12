@@ -12,4 +12,5 @@ public interface ModuleRepository extends JpaRepository<ModuleEntity, Integer> {
 
 	List<ModuleEntity> findByProjectId(Integer projectId);
 
+	
 }
