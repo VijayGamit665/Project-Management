@@ -54,8 +54,9 @@ public class ModuleController {
 	
 	@GetMapping("/deletemodule")
 	public String deleteModule(@RequestParam("moduleId") Integer moduleId ) {
+		int projectId = moduleRepo.findById(moduleId).get().getProjectId();
 		moduleRepo.deleteById(moduleId);
-		return "redirect:/listModule";
+		return "redirect:/listmodule?projectId="+projectId;
 	}
 	
 	@GetMapping("/myModule")

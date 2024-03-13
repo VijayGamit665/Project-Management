@@ -94,10 +94,10 @@
 												<label for="inputDescription">ProjectStatus</label> <select
 													name="projectStatus" class="form-control">
 													<option value="-1">-----Please Select Status-----</option>
-													<option value="lead">lead</option>
 													<option value="notStarted">notStarted</option>
-													<option value="hold">hold</option>
 													<option value="inProgress">inProgress</option>
+													<option value="lead">lead</option>
+													<option value="hold">hold</option>
 													<option value="completed">completed</option>
 												</select>
 											</div>

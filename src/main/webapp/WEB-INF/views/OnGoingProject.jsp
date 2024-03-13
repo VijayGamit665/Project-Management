@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Task List</title>
+<title>Project List</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -52,32 +52,29 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark"> ${p.title} : ${m.moduleName} :- Task</h1>
+							<h1 class="m-0 text-dark">Project List</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Task List</li>
+								<li class="breadcrumb-item active">Project List</li>
 							</ol>
 						</div>
 						<!-- /.col -->
 					</div>
-					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
 			</div>
-			<!-- /.content-header -->
 
+			<!-- /.content-header -->
 			<!-- -Tables--- -->
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">
-							<a href="newTask?moduleId=${m.moduleId}">Add New Task</a>
-							
-							</h3>
+							<h3 class="card-title">Project List</h3>
+
 							<div class="card-tools">
 								<div class="input-group input-group-sm" style="width: 150px;">
 									<input type="text" name="table_search"
@@ -96,30 +93,33 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>TaskId</th>
-										<th>Task Title</th>
-										<th>Status</th>
+										<th>ProjectId</th>
+										<th>Title</th>
+										<th>Description</th>
+										<th>ProjectStatusId</th>
 										<th>EstimatedHours</th>
 										<th>TotalUtilizedHours</th>
-										<th>Description</th>
-										<th>Action</th>
+										<th>ProjectStartDate</th>
+										<th>ProjectCompletionDate</th>
+										<th>ActualCompletionDate</th>
+
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${t}" var="task">
+									<c:forEach items="${ongoingproject}" var="project">
 										<tr>
-											<td>${task.taskId}</td>
-											<td>${task.title}</td>	
-											<td>${task.status}</td>
-											<td>${task.estimatedHours}</td>
-											<td>${task.totalUtilizedHours}</td>
-											<td>${task.description}</td>
-											<td><a href="deletetask?taskId=${task.taskId}">Delete</a>
-											</td>
+											<td>${project.projectId}</td>
+											<td>${project.title}</td>
+											<td>${project.description}</td>
+											<td>${project.projectStatusId}</td>
+											<td>${project.estimatedHours}</td>
+											<td>${project.totalUtilizedHours}</td>
+											<td>${project.projectStartDate}</td>
+											<td>${project.projectCompletionDate}</td>
+											<td>${project.actualCompletionDate}</td>
 											
 										</tr>
 									</c:forEach>
-									
 								</tbody>
 							</table>
 						</div>
@@ -129,16 +129,9 @@
 				</div>
 			</div>
 			<!-- -/Tables--- -->
-
-
-
-
-			<!-- Main content -->
-			<section class="content">
-				<!-- /.container-fluid -->
-			</section>
 			<!-- /.content -->
 		</div>
+
 		<!-- /.content-wrapper -->
 
 		<jsp:include page="AdminFooter.jsp"></jsp:include>

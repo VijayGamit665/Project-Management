@@ -62,9 +62,10 @@ public class TaskController {
 	}
 
 	@GetMapping("/deletetask")
-	public String deleteTask(@RequestParam("taskId") Integer taskId , TaskEntity task) {
+	public String deleteTask(@RequestParam("taskId") Integer taskId) {
+		int moduleId = taskRepo.findById(taskId).get().getModuleId();
 		taskRepo.deleteById(taskId);
-		return "redirect:/listTask?moduleId="+ task.getModuleId();
+		return "redirect:/listTask?moduleId="+moduleId;
 	}
 	
 	@GetMapping("/myTask")
