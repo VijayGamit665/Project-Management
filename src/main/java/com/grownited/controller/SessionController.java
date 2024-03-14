@@ -107,7 +107,7 @@ public class SessionController {
 				return "ProjectManagerDashBoard";
 			} else if (loggedInUser.getRoleId() == 3) {
 				// Developer
-				return "DeveloperDashBoard";
+				return "redirect:/developerdashboard";
 			} else {
 				return "Login";
 			}

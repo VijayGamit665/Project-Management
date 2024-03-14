@@ -34,7 +34,7 @@ public class AdminDashBoardController {
 		Integer getpipelineproject = projectRepo.getpipelineprojectByprojectstatusId();
 		model.addAttribute("getpipelineproject", getpipelineproject);
 
-		Integer getCompletedprojects = projectRepo.getCompletedprojectByproject(month);
+		Integer getCompletedprojects = projectRepo.getCompletedprojectBymonth(month);
 		model.addAttribute("getCompletedprojects", getCompletedprojects);
 
 		return "AdminDashBoard";
@@ -45,7 +45,7 @@ public class AdminDashBoardController {
 	public String dueProject(ProjectEntity project, Model model) {
 
 
-		List<ProjectEntity> dueProject = projectRepo.getdueCompletedprojectByproject(month);
+		List<ProjectEntity> dueProject = projectRepo.getdueCompletedprojectBymonth(month);
 		model.addAttribute("dueProject", dueProject);
 		return "DueProject";
 	}
