@@ -72,4 +72,5 @@ public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer>
 	@Query(value = "select p. * from project p where month(p.project_completion_date) < :month", nativeQuery = true)
 	List<ProjectEntity> getdueCompletedprojectBymonth(Integer month);
 
+	
 }

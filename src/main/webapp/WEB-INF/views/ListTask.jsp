@@ -115,6 +115,8 @@
 											<td>${task.totalUtilizedHours}</td>
 											<td>${task.description}</td>
 											<td><a href="deletetask?taskId=${task.taskId}">Delete</a>
+											|
+											<a href="listTaskUser?taskId=${task.taskId}">User</a>
 											</td>
 											
 										</tr>

@@ -54,6 +54,11 @@ public class TaskUserController {
 
 		model.addAttribute("task", taskRepo.findById(taskId).get());
 		model.addAttribute("pu", userRepo.getUserBytaskId(taskId));
+		
+		model.addAttribute("usersHold",userRepo.getUserBytaskIdHold(taskId));
+		model.addAttribute("usersRevoke",userRepo.getUserBytaskIdRevoke(taskId));
+		
+		
 		return "ListTaskUser";
 	}
 
@@ -61,6 +66,16 @@ public class TaskUserController {
 	public String deleteTaskUser(@RequestParam("taskUserId") Integer taskUserId) {
 		taskUserRepo.deleteById(taskUserId);
 		return "redirect:/listTaskUser";
+	}
+	
+	@GetMapping("/taskrevoke")
+	public String taskRevoke(@RequestParam("userId") Integer userId,@RequestParam("taskId") Integer taskId,@RequestParam("status") Integer status) {
+		
+		TaskUserEntity taskUser = taskUserRepo.findBytaskIdAndUserId(taskId,userId);
+		taskUser.setAssignStatus(status);
+		taskUserRepo.save(taskUser);
+		
+		return"redirect:/listTaskUser?taskId="+taskId;
 	}
 
 }

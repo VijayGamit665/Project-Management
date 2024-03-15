@@ -71,67 +71,147 @@
 				<!-- /.container-fluid -->
 			</div>
 			<!-- /.content-header -->
-
-			<!-- -Tables--- -->
-
-			<div class="card card-solid">
-				<div class="card-body pb-0">
-					<div class="row d-flex align-items-stretch">
+			<!-- -----New User list -->
+			<div class="row">
+				<div class="col-md-4">
+					<!-- USERS LIST -->
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Project User Members</h3>
+							<div class="card-tools">
+								<span class="badge badge-danger">Members</span>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="collapse">
+									<i class="fas fa-minus"></i>
+								</button>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="remove">
+									<i class="fas fa-times"></i>
+								</button>
+							</div>
+						</div>
+						<!-- /.card-header -->
 						<c:forEach items="${pu}" var="projectuser">
-							<div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-								<div class="card bg-light">
-									<div class="card-header text-muted border-bottom-0">
-										<div class="text-right">
-											<a href="deleteprojectuser?userId=${puid.userId}"
-												class="btn btn-sm badge-danger"> <i class="fas fa"></i>
-												Revoke
-											</a>
-										</div>
-									</div>
-									<div class="card-body pt-0">
-										<div class="row">
-											<div class="col-7">
-												<h2 class="lead">
-													<b><td>${projectuser.firstName}
-															${projectuser.lastName}</td></b>
-												</h2>
-												<p class="text-muted text-sm">
-													<b>About: </b> ${projectuser.roleId} <br>
-													${projectuser.email}
-												</p>
-												<ul class="ml-4 mb-0 fa-ul text-muted">
-													<li class="small"><span class="fa-li"><i
-															class="fas fa-lg fa-building"></i></span>${projectuser.address}
-														${projectuser.city} ${projectuser.state}</li>
-													<li class="small"><span class="fa-li"><i
-															class="fas fa-lg fa-phone"></i></span>${projectuser.contactNum}
-													</li>
-												</ul>
-											</div>
-											<div class="col-5 text-center">
-												<img src="../../dist/img/user1-128x128.jpg" alt=""
-													class="img-circle img-fluid">
-											</div>
-										</div>
-									</div>
-									<div class="card-footer">
-										<div class="text-right">
-											<a href="#" class="btn btn-sm bg-teal"> <i
-												class="fas fa-comments"></i>
-											</a> <a href="#" class="btn btn-sm btn-primary"> <i
-												class="fas fa-user"></i> View Profile
-											</a>
-										</div>
-									</div>
-								</div>
+							<div class="card-body p-0">
+								<ul class="users-list clearfix">
+									<li><img src="dist/img/user1-128x128.jpg" alt="User Image"><a
+										class="users-list-name" href="#">${projectuser.firstName}
+											${projectuser.lastName}</a> <span class="users-list-date">${projectuser.contactNum}</span>
+										<a
+										href="projectrevoke?userId=${projectuser.userId}&projectId=${project.projectId}&status=2">Revoke</a>
+										<a
+										href="projectrevoke?userId=${projectuser.userId}&projectId=${project.projectId}&status=3">Hold</a>
+									</li>
+								</ul>
+								<!-- /.users-list -->
 							</div>
 						</c:forEach>
+						<!-- /.card-body -->
+						<div class="card-footer text-center">
+							<a href="javascript::">View All Users</a>
+						</div>
+						<!-- /.card-footer -->
 					</div>
+					<!--/.card -->
 				</div>
+				<!-- /.col -->
+
+				<div class="col-md-4">
+					<!-- USERS LIST -->
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Project Hold Members</h3>
+
+							<div class="card-tools">
+								<span class="badge badge-danger">Members</span>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="collapse">
+									<i class="fas fa-minus"></i>
+								</button>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="remove">
+									<i class="fas fa-times"></i>
+								</button>
+							</div>
+						</div>
+						<!-- /.card-header -->
+						<c:forEach items="${usersHold}" var="projectuser">
+							<div class="card-body p-0">
+								<ul class="users-list clearfix">
+									<li><img src="dist/img/user1-128x128.jpg" alt="User Image"><a
+										class="users-list-name" href="#">${projectuser.firstName}
+											${projectuser.lastName}</a> <span class="users-list-date">${projectuser.contactNum}</span>
+										<a
+										href="projectrevoke?userId=${projectuser.userId}&projectId=${project.projectId}&status=1">Re-Assign</a>
+										<a
+										href="projectrevoke?userId=${projectuser.userId}&projectId=${project.projectId}&status=2">Revoke</a>
+
+									</li>
+								</ul>
+								<!-- /.users-list -->
+							</div>
+						</c:forEach>
+						<!-- /.card-body -->
+						<div class="card-footer text-center">
+							<a href="javascript::">View All Users</a>
+						</div>
+						<!-- /.card-footer -->
+					</div>
+					<!--/.card -->
+				</div>
+				<!-- /.col -->
+				<div class="col-md-4">
+					<!-- USERS LIST -->
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Task Revoke Members</h3>
+
+							<div class="card-tools">
+								<span class="badge badge-danger">Member</span>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="collapse">
+									<i class="fas fa-minus"></i>
+								</button>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="remove">
+									<i class="fas fa-times"></i>
+								</button>
+							</div>
+						</div>
+						<!-- /.card-header -->
+						<c:forEach items="${usersRevoke}" var="projectuser">
+							<div class="card-body p-0">
+								<ul class="users-list clearfix">
+									<li><img src="dist/img/user1-128x128.jpg" alt="User Image"><a
+										class="users-list-name" href="#">${projectuser.firstName}
+											${projectuser.lastName}</a> <span class="users-list-date">${projectuser.contactNum}</span>
+										<a
+										href="projectrevoke?userId=${projectuser.userId}&projectId=${project.projectId}&status=1">Re-Assign</a>
+										<a
+										href="projectrevoke?userId=${projectuser.userId}&projectId=${project.projectId}&status=3">Hold</a>
+									</li>
+								</ul>
+								<!-- /.users-list -->
+							</div>
+						</c:forEach>
+						<!-- /.card-body -->
+						<div class="card-footer text-center">
+							<a href="javascript::">View All Users</a>
+						</div>
+						<!-- /.card-footer -->
+					</div>
+					<!--/.card -->
+				</div>
+				<!-- /.col -->
+
+
 			</div>
+			<!-- /.row -->
+
+			<!-- -----/New User list -->
 
 
-			<!-- -/Tables--- -->
+
 
 			<!-- Main content -->
 			<section class="content">

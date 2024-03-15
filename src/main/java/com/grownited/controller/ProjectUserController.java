@@ -55,6 +55,9 @@ public class ProjectUserController {
 
 		model.addAttribute("project", projectRepo.findById(projectId).get());
 		model.addAttribute("pu", userRepo.getUserByProjectId(projectId));
+		
+		model.addAttribute("usersHold",userRepo.getUserByprojectIdHold(projectId));
+		model.addAttribute("usersRevoke",userRepo.getUserByprojectIdRevoke(projectId));
 
 		return "ListProjectUser";
 	}
@@ -64,6 +67,16 @@ public class ProjectUserController {
 		projectUserRepo.deleteById(projectId);
 		
 		return "redirect:/listProjectUser";
+	}
+	
+	@GetMapping("/projectrevoke")
+	public String projectRevoke(@RequestParam("userId") Integer userId,@RequestParam("projectId") Integer projectId,@RequestParam("status") Integer status) {
+		
+		ProjectUserEntity projectUser = projectUserRepo.findByprojectIdAndUserId(projectId,userId);
+		projectUser.setAssignStatus(status);
+		projectUserRepo.save(projectUser);
+		
+		return"redirect:/listProjectUser?projectId="+projectId;
 	}
 
 }

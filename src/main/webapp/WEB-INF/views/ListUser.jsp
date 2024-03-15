@@ -40,7 +40,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-	
+
 		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
@@ -138,9 +138,6 @@
 				</div>
 			</div>
 			<!-- -/Tables--- -->
-
-
-
 
 
 			<!-- Main content -->

@@ -58,7 +58,7 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Task User List</li>
+								<li class="breadcrumb-item active"><a href="listTask?moduleId=${task.moduleId}">Back List Task</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -70,67 +70,148 @@
 			<!-- /.content-header -->
 
 			<!-- -Tables--- -->
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">Task User List</h3>
-
-							<div class="card-tools">
-								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search"
-										class="form-control float-right" placeholder="Search">
-
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
-										</button>
-									</div>
+			<!-- -----New User list -->
+				<div class="row">
+					<div class="col-md-4">
+						<!-- USERS LIST -->
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Task User Members</h3>
+								<div class="card-tools">
+									<span class="badge badge-danger">Members</span>
+									<button type="button" class="btn btn-tool"
+										data-card-widget="collapse">
+										<i class="fas fa-minus"></i>
+									</button>
+									<button type="button" class="btn btn-tool"
+										data-card-widget="remove">
+										<i class="fas fa-times"></i>
+									</button>
 								</div>
 							</div>
+							<!-- /.card-header -->
+								<c:forEach items="${pu}" var="taskuser">
+								<div class="card-body p-0">
+									<ul class="users-list clearfix">
+										<li><img src="dist/img/user1-128x128.jpg"
+											alt="User Image"><a class="users-list-name" href="#">${taskuser.firstName} ${taskuser.lastName}</a> 
+											<span class="users-list-date">${taskuser.contactNum}</span>
+											<a href="taskrevoke?userId=${taskuser.userId}&taskId=${task.taskId}&status=2">Revoke</a>
+											<a href="taskrevoke?userId=${taskuser.userId}&taskId=${task.taskId}&status=3">Hold</a>
+											</li>
+									</ul>
+									<!-- /.users-list -->
+								</div>
+							</c:forEach>
+							<!-- /.card-body -->
+							<div class="card-footer text-center">
+								<a href="javascript::">View All Users</a>
+							</div>
+							<!-- /.card-footer -->
 						</div>
-						<!-- /.card-header -->
-						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>UserId</th>
-										<th>FirstName</th>
-										<th>LastName</th>
-										<th>Email</th>
-										<th>ContectNumber</th>
-										<th>Action</th>
-
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${pu}" var="taskuser">
-										<tr>
-											<td>${taskuser.userId}</td>
-											<td>${taskuser.firstName}</td>
-											<td>${taskuser.lastName}</td>
-											<td>${taskuser.email}</td>
-											<td>${taskuser.contactNum}</td>
-											<td><a
-												href="deletetaskuser?taskUserId=${taskuser.userId}">Delete</a></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<!-- /.card-body -->
+						<!--/.card -->
 					</div>
-					<!-- /.card -->
-				</div>
-			</div>
-			<!-- -/Tables--- -->
+					<!-- /.col -->
 
+					<div class="col-md-4">
+						<!-- USERS LIST -->
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Task Hold Members</h3>
+
+								<div class="card-tools">
+									<span class="badge badge-danger">Members</span>
+									<button type="button" class="btn btn-tool"
+										data-card-widget="collapse">
+										<i class="fas fa-minus"></i>
+									</button>
+									<button type="button" class="btn btn-tool"
+										data-card-widget="remove">
+										<i class="fas fa-times"></i>
+									</button>
+								</div>
+							</div>
+							<!-- /.card-header -->
+							<c:forEach items="${usersHold}" var="taskuser">
+								<div class="card-body p-0">
+									<ul class="users-list clearfix">
+										<li><img src="dist/img/user1-128x128.jpg"
+											alt="User Image"><a class="users-list-name" href="#">${taskuser.firstName} ${taskuser.lastName}</a> 
+											<span class="users-list-date">${taskuser.contactNum}</span>
+											<a href="taskrevoke?userId=${taskuser.userId}&taskId=${task.taskId}&status=1">Re-Assign</a>
+											<a href="taskrevoke?userId=${taskuser.userId}&taskId=${task.taskId}&status=2">Revoke</a>
+											
+											</li>
+									</ul>
+									<!-- /.users-list -->
+								</div>
+							</c:forEach>
+							<!-- /.card-body -->
+							<div class="card-footer text-center">
+								<a href="javascript::">View All Users</a>
+							</div>
+							<!-- /.card-footer -->
+						</div>
+						<!--/.card -->
+					</div>
+					<!-- /.col -->
+					<div class="col-md-4">
+						<!-- USERS LIST -->
+						<div class="card">
+							<div class="card-header">
+								<h3 class="card-title">Task Revoke Members</h3>
+
+								<div class="card-tools">
+									<span class="badge badge-danger">Member</span>
+									<button type="button" class="btn btn-tool"
+										data-card-widget="collapse">
+										<i class="fas fa-minus"></i>
+									</button>
+									<button type="button" class="btn btn-tool"
+										data-card-widget="remove">
+										<i class="fas fa-times"></i>
+									</button>
+								</div>
+							</div>
+							<!-- /.card-header -->
+							<c:forEach items="${usersRevoke}" var="taskuser">
+								<div class="card-body p-0">
+									<ul class="users-list clearfix">
+										<li><img src="dist/img/user1-128x128.jpg"
+											alt="User Image"><a class="users-list-name" href="#">${taskuser.firstName} ${taskuser.lastName}</a> 
+											<span class="users-list-date">${taskuser.contactNum}</span>
+											<a href="taskrevoke?userId=${taskuser.userId}&taskId=${task.taskId}&status=1">Re-Assign</a>
+											<a href="taskrevoke?userId=${taskuser.userId}&taskId=${task.taskId}&status=3">Hold</a>											
+											</li>
+									</ul>
+									<!-- /.users-list -->
+								</div>
+							</c:forEach>
+							<!-- /.card-body -->
+							<div class="card-footer text-center">
+								<a href="javascript::">View All Users</a>
+							</div>
+							<!-- /.card-footer -->
+						</div>
+						<!--/.card -->
+					</div>
+					<!-- /.col -->
+
+
+				</div>
+				<!-- /.row -->
+
+				<!-- -----/New User list -->
+
+			</div>
 			<!-- Main content -->
-			<section class="content">
-				<!-- /.container-fluid -->
-			</section>
+
+
+
 			<!-- /.content -->
 		</div>
+
+
 		<!-- /.content-wrapper -->
 
 		<jsp:include page="AdminFooter.jsp"></jsp:include>

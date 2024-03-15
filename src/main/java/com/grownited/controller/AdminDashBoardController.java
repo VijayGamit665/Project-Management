@@ -47,7 +47,7 @@ public class AdminDashBoardController {
 
 		List<ProjectEntity> dueProject = projectRepo.getdueCompletedprojectBymonth(month);
 		model.addAttribute("dueProject", dueProject);
-		return "DueProject";
+		return "AdminDueProject";
 	}
 	
 	@GetMapping("/ongoingproject")
@@ -55,7 +55,7 @@ public class AdminDashBoardController {
 		
 		 List<ProjectEntity> ongoingproject = projectRepo.getongoingprojectsByprojectstatusId(month);
 		 model.addAttribute("ongoingproject",ongoingproject);
-		return "OnGoingProject";
+		return "AdminOnGoingProject";
 	}
 	
 	@GetMapping("/pipelineprojects")
@@ -63,7 +63,7 @@ public class AdminDashBoardController {
 		
 	List<ProjectEntity>	pipelineproject = projectRepo.getpipelineprojectsByprojectstatusId(month);
 	model.addAttribute("pipelineproject",pipelineproject);
-	return"PipelineProject";
+	return"AdminPipelineProject";
 	
 	}
 	

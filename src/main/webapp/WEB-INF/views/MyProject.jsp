@@ -93,7 +93,6 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>ProjectId</th>
 										<th>Title</th>
 										<th>Description</th>
 										<th>ProjectStatusId</th>
@@ -102,14 +101,12 @@
 										<th>ProjectStartDate</th>
 										<th>ProjectCompletionDate</th>
 										<th>ActualCompletionDate</th>
-										<th>Action</th>
 
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${pu}" var="project">
 										<tr>
-											<td>${project.projectId}</td>
 											<td>${project.title}</td>
 											<td>${project.description}</td>
 											<td>${project.projectStatusId}</td>
@@ -118,10 +115,7 @@
 											<td>${project.projectStartDate}</td>
 											<td>${project.projectCompletionDate}</td>
 											<td>${project.actualCompletionDate}</td>
-											<td><a
-												href="listProjectUser?projectId=${project.projectId}">User</a>
-												| <a href="listmodule?projectId=${project.projectId}">Module</a>
-											</td>
+											
 										</tr>
 									</c:forEach>
 								</tbody>

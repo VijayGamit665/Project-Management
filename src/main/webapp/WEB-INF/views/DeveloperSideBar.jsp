@@ -27,7 +27,7 @@
 				<!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-				<li class="nav-item"><a href="developerDashBoard"
+				<li class="nav-item"><a href="developerdashboard"
 					class="nav-link"> <i class="nav-icon fas fa-th"></i>
 						<p>
 							Developer Dashboard <span class="right badge badge-danger"></span>
