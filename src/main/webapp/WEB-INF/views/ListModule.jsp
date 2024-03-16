@@ -40,7 +40,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-		
+
 		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
@@ -74,7 +74,10 @@
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title"><a href="newModule?projectId=${project.projectId}">Add New Module</a></h3>
+							<h3 class="card-title">
+								<a href="newModule?projectId=${project.projectId}">Add New
+									Module</a>
+							</h3>
 
 							<div class="card-tools">
 								<div class="input-group input-group-sm" style="width: 150px;">
@@ -94,9 +97,7 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>ModuleId</th>
-										<th>ModuleName</th>
-										<th>projectId</th>
+										<th>ModuleName</th>										
 										<th>status</th>
 										<th>Description</th>
 										<th>DocURL</th>
@@ -108,18 +109,26 @@
 								<tbody>
 									<c:forEach items="${m}" var="module">
 										<tr>
-											<td>${module.moduleId}</td>
 											<td>${module.moduleName}</td>
-											<td>${module.projectId}</td>
-											<td>${module.status}</td>
+											<td><c:if test="${module.statusId==1}">
+													notStarted
+											</c:if> <c:if test="${module.statusId==2}">
+													inProgress
+											</c:if> <c:if test="${module.statusId==3}">
+													lead
+											</c:if> <c:if test="${module.statusId==4}">
+													Hold
+											</c:if> <c:if test="${module.statusId==5}">
+													Completed
+											</c:if></td>
+
 											<td>${module.description}</td>
 											<td>${module.docURL}</td>
 											<td>${module.estimatedHours}</td>
 											<td>${module.totalUtilizedHours}</td>
 											<td><a href="deletemodule?moduleId=${module.moduleId}">delete</a>
-											|
-											<a href="listTask?moduleId=${module.moduleId}">Task List</a>
-											</td>
+												| <a href="listTask?moduleId=${module.moduleId}">Task
+													List</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -131,7 +140,7 @@
 				</div>
 			</div>
 			<!-- -/Tables--- -->
-			
+
 			<!-- Main content -->
 			<section class="content">
 				<!-- /.container-fluid -->

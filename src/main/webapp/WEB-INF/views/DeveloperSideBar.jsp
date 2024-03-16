@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
-	<a href="index3.html" class="brand-link"> <img
+	<a href="developerdashboard" class="brand-link"> <img
 		src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
 		class="brand-image img-circle elevation-3" style="opacity: .8">
 		<span class="brand-text font-weight-light">Project Management</span>
@@ -40,6 +40,20 @@
 						<p>My Project</p>
 				</a>
 				</li>
+				
+				<li class="nav-item"><a href="myholdproject?userId=${user.userId}" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>My Hold Project</p>
+				</a>
+				</li>
+				
+				<li class="nav-item"><a href="myrevokeproject?userId=${user.userId}" class="nav-link"> <i
+						class="nav-icon far fa-image"></i>
+						<p>My Revoke Project</p>
+				</a>
+				</li>
+				
+				
 				
 				<li class="nav-item"><a href="myModule?userId=${user.userId}" class="nav-link"> <i
 						class="nav-icon far fa-image"></i>

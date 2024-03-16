@@ -99,10 +99,10 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">Status</label> <select
-													class="form-control custom-select" name="status">
+													class="form-control custom-select" name="statusId">
 													<option value="-1">-----Please Select Status------</option>
 													<c:forEach items="${projectStatsulist}" var="statuslist">
-														<option value="${statuslist.projectStatus}">${statuslist.projectStatus}</option>
+														<option value="${statuslist.projectStatusId}">${statuslist.projectStatus}</option>
 													</c:forEach>
 												</select>
 											</div>
@@ -146,8 +146,8 @@
 									<div class="row">
 										<div class="col-12">
 											<input type="submit" value="Add Module"
-												class="btn btn-success float-right"> <a
-												href="newModule" class="btn btn-secondary">Cancel</a>
+												class="btn btn-success float-left"> <a
+												href="newModule" class="btn btn-secondary float-right">Cancel</a>
 										</div>
 									</div>
 								</div>

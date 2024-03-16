@@ -76,6 +76,7 @@ public class ProjectUserController {
 		projectUser.setAssignStatus(status);
 		projectUserRepo.save(projectUser);
 		
+		
 		return"redirect:/listProjectUser?projectId="+projectId;
 	}
 

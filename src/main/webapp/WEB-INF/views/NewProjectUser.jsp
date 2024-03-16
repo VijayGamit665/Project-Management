@@ -121,8 +121,8 @@
 									<div class="row">
 										<div class="col-12">
 											<input type="submit" value="Add Project User"
-												class="btn btn-success float-right"> <a
-												href="newProjectUser" class="btn btn-secondary">Cancel</a>
+												class="btn btn-success float-left"> <a
+												href="newProjectUser" class="btn btn-secondary float-right">Cancel</a>
 										</div>
 									</div>
 								</div>

@@ -93,14 +93,13 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>ProjectId</th>
 										<th>Title</th>
 										<th>Description</th>
-										<th>ProjectStatusId</th>
+										<th>P-StatusId</th>
 										<th>EstimatedHours</th>
 										<th>TotalUtilizedHours</th>
-										<th>ProjectStartDate</th>
-										<th>ProjectCompletionDate</th>
+										<th>P-StartDate</th>
+										<th>P-CompletionDate</th>
 										<th>ActualCompletionDate</th>
 										<th>Action</th>
 
@@ -109,10 +108,27 @@
 								<tbody>
 									<c:forEach items="${p}" var="project">
 										<tr>
-											<td>${project.projectId}</td>
 											<td>${project.title}</td>
 											<td>${project.description}</td>
-											<td>${project.projectStatusId}</td>
+											<td>
+											<c:if test="${project.projectStatusId==1}">
+													notStarted
+											</c:if>
+											<c:if test="${project.projectStatusId==2}">
+													inProgress
+											</c:if>
+											<c:if test="${project.projectStatusId==3}">
+													lead
+											</c:if>
+											<c:if test="${project.projectStatusId==4}">
+													Hold
+											</c:if>
+											<c:if test="${project.projectStatusId==5}">
+													Completed
+											</c:if>
+											
+											</td>
+											
 											<td>${project.estimatedHours}</td>
 											<td>${project.totalUtilizedHours}</td>
 											<td>${project.projectStartDate}</td>

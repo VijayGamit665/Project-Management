@@ -57,7 +57,7 @@
 		</nav>
 		<!-- /.navbar -->
 
-		<jsp:include page="ProfileSideBar.jsp"></jsp:include>
+		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->

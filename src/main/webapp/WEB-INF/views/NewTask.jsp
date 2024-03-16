@@ -132,10 +132,10 @@
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label for="inputStatus">Status</label> <select
-													name="status" class="form-control">
+													name="statusId" class="form-control">
 													<option value="-1">------Select Status-------</option>
 													<c:forEach items="${statuss}" var="status">
-														<option value="${status.projectStatus}">${status.projectStatus}</option>
+														<option value="${status.projectStatusId}">${status.projectStatus}</option>
 													</c:forEach>
 												</select>
 											</div>
@@ -145,8 +145,8 @@
 									<div class="row">
 										<div class="col-12">
 											<input type="submit" value="Add New Task"
-												class="btn btn-success float-right"> <a
-												href="newTask" class="btn btn-secondary">Cancel</a>
+												class="btn btn-success float-left"> <a
+												href="newTask" class="btn btn-secondary float-right">Cancel</a>
 										</div>
 									</div>
 

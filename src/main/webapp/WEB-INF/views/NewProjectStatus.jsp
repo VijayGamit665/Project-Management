@@ -78,7 +78,7 @@
 						<div class="col-12 col-sm-12">
 							<div class="card card-primary">
 								<div class="card-header">
-									<h3 class="card-title">New Project Details</h3>
+									<h3 class="card-title">New Project Status Details</h3>
 									<div class="card-tools">
 										<button type="button" class="btn btn-tool"
 											data-card-widget="collapse" data-toggle="tooltip"
@@ -106,8 +106,8 @@
 									<div class="row">
 										<div class="col-12">
 											<input type="submit" value="Add ProjectStatus"
-												class="btn btn-success float-right"> <a
-												href="newProjectStatus" class="btn btn-secondary">Cancel</a>
+												class="btn btn-success float-left"> <a
+												href="newProjectStatus" class="btn btn-secondary float-right">Cancel</a>
 										</div>
 									</div>
 								</div>

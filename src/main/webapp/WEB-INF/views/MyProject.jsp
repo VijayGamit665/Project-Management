@@ -72,21 +72,15 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">Project List</h3>
-
-							<div class="card-tools">
-								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search"
-										class="form-control float-right" placeholder="Search">
-
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
-										</button>
-									</div>
-								</div>
-							</div>
+						<div class="card-header p-2">
+							<ul class="nav nav-pills">
+								<li class="nav-item"><a class="nav-link active"
+									href="myProject" data-toggle="tab">My Project List</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="myholdproject" data-toggle="tab">Hold Project List</a></li>
+								<li class="nav-item"><a class="nav-link" href="#settings"
+									data-toggle="tab">Revoke Project</a></li>
+							</ul>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body table-responsive p-0">
@@ -109,13 +103,23 @@
 										<tr>
 											<td>${project.title}</td>
 											<td>${project.description}</td>
-											<td>${project.projectStatusId}</td>
+											<td><c:if test="${project.projectStatusId==1}">
+													notStarted
+											</c:if> <c:if test="${project.projectStatusId==2}">
+													inProgress
+											</c:if> <c:if test="${project.projectStatusId==3}">
+													lead
+											</c:if> <c:if test="${project.projectStatusId==4}">
+													Hold
+											</c:if> <c:if test="${project.projectStatusId==5}">
+													Completed
+											</c:if></td>
 											<td>${project.estimatedHours}</td>
 											<td>${project.totalUtilizedHours}</td>
 											<td>${project.projectStartDate}</td>
 											<td>${project.projectCompletionDate}</td>
 											<td>${project.actualCompletionDate}</td>
-											
+
 										</tr>
 									</c:forEach>
 								</tbody>

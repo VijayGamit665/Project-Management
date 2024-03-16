@@ -13,6 +13,8 @@ public interface TaskRepository extends JpaRepository<TaskEntity, Integer> {
 
 	@Query(value="select t.* from task t, task_user tu where t.task_id = tu.task_id and tu.user_id = :userId", nativeQuery=true)
 	List<TaskEntity> getUserByUserId(Integer userId);
+	
+	
 
 
 }

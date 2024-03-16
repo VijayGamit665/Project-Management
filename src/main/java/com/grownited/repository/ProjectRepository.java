@@ -10,9 +10,16 @@ import com.grownited.entity.ProjectEntity;
 public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer> {
 
 	// Developer Query
-	@Query(value = "select p.* from project p, project_user pu where p.project_id = pu.project_id and pu.user_id = :userId", nativeQuery = true)
+	@Query(value = "select p.* from project p, project_user pu where p.project_id = pu.project_id and pu.user_id = :userId AND assign_status=1", nativeQuery = true)
 	List<ProjectEntity> getUserByUserId(Integer userId);
+	
+	@Query(value = "select p.* from project p, project_user pu where p.project_id = pu.project_id and pu.user_id = :userId AND assign_status=3", nativeQuery = true)
+	List<ProjectEntity> getholdUserByUserId(Integer userId);
 
+	@Query(value = "select p.* from project p, project_user pu where p.project_id = pu.project_id and pu.user_id = :userId AND assign_status=2", nativeQuery = true)
+	List<ProjectEntity> getRevokeUserByUserId(Integer userId);
+
+	
 	@Query(value = "select count(*) from project p, project_user pu where p.project_id = pu.project_id and pu.user_id = :userId", nativeQuery = true)
 	Integer getUserProjectByUserId(Integer userId);
 

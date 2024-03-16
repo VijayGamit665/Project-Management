@@ -125,7 +125,19 @@
 											<td>${user.city}</td>
 											<td>${user.state}</td>
 											<td>${user.otp}</td>
-											<td>${user.roleId}</td>
+											<td>
+											<c:if test="${user.roleId==1}">
+													Admin
+											</c:if>
+											<c:if test="${user.roleId==2}">
+													Project Manager
+											</c:if>
+											<c:if test="${user.roleId==3}">
+													Developer
+											</c:if>
+											
+											
+											</td>
 											<td><a href="deleteuser?userId=${user.userId}">Delete</a></td>
 										</tr>
 									</c:forEach>

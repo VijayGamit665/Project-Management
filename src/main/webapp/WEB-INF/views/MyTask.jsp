@@ -75,7 +75,7 @@
 					<div class="card">
 						<div class="card-header">
 							<h3 class="card-title">
-							<a href="newTask?moduleId=${m.moduleId}">Add New Task</a>
+							<a href="#">My New Task</a>
 							
 							</h3>
 							<div class="card-tools">
@@ -96,7 +96,6 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>TaskId</th>
 										<th>Task Title</th>
 										<th>Status</th>
 										<th>EstimatedHours</th>
@@ -108,14 +107,27 @@
 								<tbody>
 									<c:forEach items="${task}" var="task">
 										<tr>
-											<td>${task.taskId}</td>
 											<td>${task.title}</td>	
-											<td>${task.status}</td>
+											<td>
+											<c:if test="${task.statusId==1}">
+													notStarted
+											</c:if>
+											<c:if test="${task.statusId==2}">
+													inProgress
+											</c:if>
+											<c:if test="${task.statusId==3}">
+													lead
+											</c:if>
+											<c:if test="${task.statusId==4}">
+													Hold
+											</c:if>
+											<c:if test="${task.statusId==5}">
+													Completed
+											</c:if>
+											</td>
 											<td>${task.estimatedHours}</td>
 											<td>${task.totalUtilizedHours}</td>
 											<td>${task.description}</td>
-											<td><a href="deletetask?taskId=${task.taskId}">Delete</a>
-											</td>
 										</tr>
 									</c:forEach>
 								</tbody>

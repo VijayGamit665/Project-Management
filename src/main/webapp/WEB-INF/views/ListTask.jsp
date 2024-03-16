@@ -40,7 +40,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-		
+
 		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
@@ -52,7 +52,8 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark"> ${p.title} : ${m.moduleName} :- Task</h1>
+							<h1 class="m-0 text-dark">${p.title} : ${m.moduleName} :-
+								Task</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
@@ -75,8 +76,8 @@
 					<div class="card">
 						<div class="card-header">
 							<h3 class="card-title">
-							<a href="newTask?moduleId=${m.moduleId}">Add New Task</a>
-							
+								<a href="newTask?moduleId=${m.moduleId}">Add New Task</a>
+
 							</h3>
 							<div class="card-tools">
 								<div class="input-group input-group-sm" style="width: 150px;">
@@ -96,9 +97,8 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>TaskId</th>
 										<th>Task Title</th>
-										<th>Status</th>
+										<th>StatusId</th>
 										<th>EstimatedHours</th>
 										<th>TotalUtilizedHours</th>
 										<th>Description</th>
@@ -108,20 +108,27 @@
 								<tbody>
 									<c:forEach items="${t}" var="task">
 										<tr>
-											<td>${task.taskId}</td>
-											<td>${task.title}</td>	
-											<td>${task.status}</td>
+											<td>${task.title}</td>
+											<td><c:if test="${task.statusId==1}">
+													notStarted
+											</c:if> <c:if test="${task.statusId==2}">
+													inProgress
+											</c:if> <c:if test="${task.statusId==3}">
+													lead
+											</c:if> <c:if test="${task.statusId==4}">
+													Hold
+											</c:if> <c:if test="${task.statusId==5}">
+													Completed
+											</c:if></td>
 											<td>${task.estimatedHours}</td>
 											<td>${task.totalUtilizedHours}</td>
 											<td>${task.description}</td>
 											<td><a href="deletetask?taskId=${task.taskId}">Delete</a>
-											|
-											<a href="listTaskUser?taskId=${task.taskId}">User</a>
-											</td>
-											
+												| <a href="listTaskUser?taskId=${task.taskId}">User</a></td>
+
 										</tr>
 									</c:forEach>
-									
+
 								</tbody>
 							</table>
 						</div>
