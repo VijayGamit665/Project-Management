@@ -13,10 +13,13 @@ import com.grownited.entity.ModuleEntity;
 import com.grownited.entity.ProjectEntity;
 import com.grownited.entity.ProjectStatusEntity;
 import com.grownited.entity.TaskEntity;
+import com.grownited.entity.UserEntity;
 import com.grownited.repository.ModuleRepository;
 import com.grownited.repository.ProjectRepository;
 import com.grownited.repository.ProjectStatusRepository;
 import com.grownited.repository.TaskRepository;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class TaskController {
@@ -69,8 +72,15 @@ public class TaskController {
 	}
 	
 	@GetMapping("/myTask")
-	public String myTask(@RequestParam("userId") Integer userId, Model model) {
-		model.addAttribute("task", taskRepo.getUserByUserId(userId));
+	public String myTask(@RequestParam("moduleId") Integer moduleId,Model model , HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+		ModuleEntity modules = moduleRepo.findById(moduleId).get();
+		model.addAttribute("m", modules);
+		ProjectEntity projects = projectRepo.findById(modules.getProjectId()).get();
+		model.addAttribute("p", projects);
+		model.addAttribute("task", taskRepo.getUserByUserId(user.getUserId()));
+		model.addAttribute("revoketask",taskRepo.getRevokeUserByUserId(user.getUserId()));
+		model.addAttribute("holdtask",taskRepo.getHoldUserByUserId(user.getUserId()));
 		return"MyTask";
 	}
 

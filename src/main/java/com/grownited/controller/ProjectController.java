@@ -55,24 +55,5 @@ public class ProjectController {
 		return "redirect:/listProject";
 	}
 	
-	@GetMapping("/myProject")
-	public String myProject(@RequestParam("userId") Integer userId,Model model) {
-		model.addAttribute("pu", projectRepo.getUserByUserId(userId));
-		
-		return "MyProject";
-	}
 	
-	@GetMapping("/myholdproject")
-	public String myHoldProject(@RequestParam("userId") Integer userId,Model model) {
-		model.addAttribute("pu", projectRepo.getholdUserByUserId(userId));
-		return"MyProject";
-	}
-	
-	@GetMapping("/myrevokeproject")
-	public String myRevokeProject(@RequestParam("userId") Integer userId,Model model) {
-		model.addAttribute("pu", projectRepo.getRevokeUserByUserId(userId));
-		return"MyProject";
-	}
-	
-
 }

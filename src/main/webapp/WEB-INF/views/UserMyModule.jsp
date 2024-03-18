@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Project List</title>
+<title>Module List</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -40,7 +40,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-
+		
 		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
 
@@ -52,28 +52,29 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Project List</h1>
+							<h1 class="m-0 text-dark">${project.title}</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Project List</li>
+								<li class="breadcrumb-item active"><a href="usermyproject">Back My Project</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
 					</div>
+					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
 			</div>
-
 			<!-- /.content-header -->
+
 			<!-- -Tables--- -->
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">Project List</h3>
+							<h3 class="card-title"><a href="#">Module</a></h3>
 
 							<div class="card-tools">
 								<div class="input-group input-group-sm" style="width: 150px;">
@@ -93,34 +94,35 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>ProjectId</th>
-										<th>Title</th>
+										<th>ModuleName</th>
+										<th>statusId</th>
 										<th>Description</th>
-										<th>ProjectStatusId</th>
 										<th>EstimatedHours</th>
 										<th>TotalUtilizedHours</th>
-										<th>ProjectStartDate</th>
-										<th>ProjectCompletionDate</th>
-										<th>ActualCompletionDate</th>
 										<th>Action</th>
-
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${usermyprojects}" var="project">
+									<c:forEach items="${m}" var="module">
 										<tr>
-											<td>${project.projectId}</td>
-											<td>${project.title}</td>
-											<td>${project.description}</td>
-											<td>${project.projectStatusId}</td>
-											<td>${project.estimatedHours}</td>
-											<td>${project.totalUtilizedHours}</td>
-											<td>${project.projectStartDate}</td>
-											<td>${project.projectCompletionDate}</td>
-											<td>${project.actualCompletionDate}</td>
-											<td><a
-												href="listProjectUser?projectId=${project.projectId}">User</a>
-												| <a href="listmodule?projectId=${project.projectId}">Module</a>
+											<td>${module.moduleName}</td>
+											<td><c:if test="${module.statusId==1}">
+													notStarted
+											</c:if> <c:if test="${module.statusId==2}">
+													inProgress
+											</c:if> <c:if test="${module.statusId==3}">
+													lead
+											</c:if> <c:if test="${module.statusId==4}">
+													Hold
+											</c:if> <c:if test="${module.statusId==5}">
+													Completed
+											</c:if></td>
+											
+											<td>${module.description}</td>
+											<td>${module.estimatedHours}</td>
+											<td>${module.totalUtilizedHours}</td>
+											<td>
+											<a class="btn btn-primary btn-sm" href="myTask?moduleId=${module.moduleId}">Task List</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -133,9 +135,13 @@
 				</div>
 			</div>
 			<!-- -/Tables--- -->
+			
+			<!-- Main content -->
+			<section class="content">
+				<!-- /.container-fluid -->
+			</section>
 			<!-- /.content -->
 		</div>
-
 		<!-- /.content-wrapper -->
 
 		<jsp:include page="AdminFooter.jsp"></jsp:include>

@@ -34,47 +34,16 @@
 						</p>
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
-				
-				<li class="nav-item"><a href="myProject?userId=${user.userId}" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>My Project</p>
-				</a>
-				</li>
-				
-				<li class="nav-item"><a href="myholdproject?userId=${user.userId}" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>My Hold Project</p>
-				</a>
-				</li>
-				
-				<li class="nav-item"><a href="myrevokeproject?userId=${user.userId}" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>My Revoke Project</p>
-				</a>
-				</li>
-				
-				
-				
-				<li class="nav-item"><a href="myModule?userId=${user.userId}" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>My Module</p>
-				</a>
-				</li>
-				
-				<li class="nav-item"><a href="myTask?userId=${user.userId}" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>My Task</p>
-				</a>
-				</li>
-								
+
+
 				<li class="nav-item"><a href="logout" class="nav-link"> <i
 						class="nav-icon fas fa-power-off"></i>
 						<p>
 							Logout <span class="badge badge-info right"></span>
 						</p>
 				</a></li>
-				
-								
+
+
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

@@ -74,36 +74,37 @@
 					<div class="card">
 						<div class="card-header p-2">
 							<ul class="nav nav-pills">
-								<li class="nav-item"><a class="nav-link active"
-									href="myProject" data-toggle="tab">My Project List</a></li>
+								<li class="nav-item"><a class="nav-link" href="#myProject"
+									data-toggle="tab">My Project List</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="myholdproject" data-toggle="tab">Hold Project List</a></li>
-								<li class="nav-item"><a class="nav-link" href="#settings"
-									data-toggle="tab">Revoke Project</a></li>
+									href="#myholdproject" data-toggle="tab">Hold Project List</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="#myrevokeproject" data-toggle="tab">Revoke Project</a></li>
 							</ul>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>Title</th>
-										<th>Description</th>
-										<th>ProjectStatusId</th>
-										<th>EstimatedHours</th>
-										<th>TotalUtilizedHours</th>
-										<th>ProjectStartDate</th>
-										<th>ProjectCompletionDate</th>
-										<th>ActualCompletionDate</th>
-
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${pu}" var="project">
-										<tr>
-											<td>${project.title}</td>
-											<td>${project.description}</td>
-											<td><c:if test="${project.projectStatusId==1}">
+							<div class="tab-content">
+								<div class="tab-pane" id="myProject">
+									<table class="table table-hover text-nowrap">
+										<thead>
+											<tr>
+												<th>Title</th>
+												<th>Description</th>
+												<th>ProjectStatusId</th>
+												<th>EstimatedHours</th>
+												<th>TotalUtilizedHours</th>
+												<th>P-StartDate</th>
+												<th>P-CompletionDate</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${pu}" var="project">
+												<tr>
+													<td>${project.title}</td>
+													<td>${project.description}</td>
+													<td><c:if test="${project.projectStatusId==1}">
 													notStarted
 											</c:if> <c:if test="${project.projectStatusId==2}">
 													inProgress
@@ -114,24 +115,119 @@
 											</c:if> <c:if test="${project.projectStatusId==5}">
 													Completed
 											</c:if></td>
-											<td>${project.estimatedHours}</td>
-											<td>${project.totalUtilizedHours}</td>
-											<td>${project.projectStartDate}</td>
-											<td>${project.projectCompletionDate}</td>
-											<td>${project.actualCompletionDate}</td>
+													<td>${project.estimatedHours}</td>
+													<td>${project.totalUtilizedHours}</td>
+													<td>${project.projectStartDate}</td>
+													<td>${project.projectCompletionDate}</td>
+													<td>
+													<a class="btn btn-primary btn-sm" href="myModule?projectId=${project.projectId}">Module</a>
+													|
+													<a class="btn btn-info btn-sm" href="listProjectUser?projectId=${project.projectId}">Team</a>
+													</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
 
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+								<div class="tab-pane" id="myholdproject">
+									<table class="table table-hover text-nowrap">
+										<thead>
+											<tr>
+												<th>Title</th>
+												<th>Description</th>
+												<th>ProjectStatusId</th>
+												<th>EstimatedHours</th>
+												<th>TotalUtilizedHours</th>
+												<th>ProjectStartDate</th>
+												<th>ProjectCompletionDate</th>
+												<th>Action</th>
+
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${hu}" var="project">
+												<tr>
+													<td>${project.title}</td>
+													<td>${project.description}</td>
+													<td><c:if test="${project.projectStatusId==1}">
+													notStarted
+											</c:if> <c:if test="${project.projectStatusId==2}">
+													inProgress
+											</c:if> <c:if test="${project.projectStatusId==3}">
+													lead
+											</c:if> <c:if test="${project.projectStatusId==4}">
+													Hold
+											</c:if> <c:if test="${project.projectStatusId==5}">
+													Completed
+											</c:if></td>
+													<td>${project.estimatedHours}</td>
+													<td>${project.totalUtilizedHours}</td>
+													<td>${project.projectStartDate}</td>
+													<td>${project.projectCompletionDate}</td>
+													<td>
+													<a class="btn btn-primary btn-sm" href="myModule?projectId=${project.projectId}">Module</a>
+													|
+													<a class="btn btn-info btn-sm" href="listProjectUser?projectId=${project.projectId}">Team</a>
+													</td>
+
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+
+								<div class="tab-pane" id="myrevokeproject">
+									<table class="table table-hover text-nowrap">
+										<thead>
+											<tr>
+												<th>Title</th>
+												<th>Description</th>
+												<th>ProjectStatusId</th>
+												<th>EstimatedHours</th>
+												<th>TotalUtilizedHours</th>
+												<th>ProjectStartDate</th>
+												<th>ProjectCompletionDate</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${ru}" var="project">
+												<tr>
+													<td>${project.title}</td>
+													<td>${project.description}</td>
+													<td><c:if test="${project.projectStatusId==1}">
+													notStarted
+											</c:if> <c:if test="${project.projectStatusId==2}">
+													inProgress
+											</c:if> <c:if test="${project.projectStatusId==3}">
+													lead
+											</c:if> <c:if test="${project.projectStatusId==4}">
+													Hold
+											</c:if> <c:if test="${project.projectStatusId==5}">
+													Completed
+											</c:if></td>
+													<td>${project.estimatedHours}</td>
+													<td>${project.totalUtilizedHours}</td>
+													<td>${project.projectStartDate}</td>
+													<td>${project.projectCompletionDate}</td>
+													<td>
+													<a class="btn btn-primary btn-sm" href="myModule?projectId=${project.projectId}">Module</a>
+													|
+													<a class="btn btn-info btn-sm" href="listProjectUser?projectId=${project.projectId}">Team</a>
+													</td>
+
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+
+							</div>
 						</div>
-						<!-- /.card-body -->
 					</div>
-					<!-- /.card -->
 				</div>
 			</div>
-			<!-- -/Tables--- -->
-			<!-- /.content -->
 		</div>
 
 		<!-- /.content-wrapper -->

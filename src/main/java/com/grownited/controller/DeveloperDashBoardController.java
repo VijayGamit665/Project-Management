@@ -49,10 +49,11 @@ public class DeveloperDashBoardController {
 	@GetMapping("/usermyproject")
 	public String userMyProject(HttpSession session, Model model , ProjectEntity project) {
 		UserEntity user = (UserEntity) session.getAttribute("user");
-		
-		List<ProjectEntity> usermyprojects = projectRepo.getUserByUserId(user.getUserId());
-		model.addAttribute("usermyprojects",usermyprojects);
-		return"UserMyProject";
+			
+		model.addAttribute("pu", projectRepo.getUserByUserId(user.getUserId()));
+		model.addAttribute("hu", projectRepo.getholdUserByUserId(user.getUserId()));
+		model.addAttribute("ru", projectRepo.getRevokeUserByUserId(user.getUserId()));
+		return"MyProject";
 	}
 	
 	@GetMapping("/userongoingproject")

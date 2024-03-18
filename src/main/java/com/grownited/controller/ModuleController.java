@@ -60,10 +60,13 @@ public class ModuleController {
 	}
 	
 	@GetMapping("/myModule")
-	public String myModule() {
+	public String myModule(@RequestParam("projectId") Integer projectId, Model model) {
+		List<ModuleEntity> modules = moduleRepo.findByProjectId(projectId);
+	 	 ProjectEntity project = projectRepo.findById(projectId).get();
+	 	 model.addAttribute("m", modules);
+	 	 model.addAttribute("project", project);
 		
-		
-		return"MyModule";
+		return"UserMyModule";
 	}
 
 }

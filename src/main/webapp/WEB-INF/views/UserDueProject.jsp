@@ -42,7 +42,7 @@
 
 		
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 
