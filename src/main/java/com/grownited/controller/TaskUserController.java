@@ -29,7 +29,7 @@ public class TaskUserController {
 	TaskRepository taskRepo;
 	@Autowired
 	ProjectStatusRepository projectStatusRepo;
-
+	
 	@GetMapping("/newTaskUser")
 	public String newTaskUser(Model model) {
 		List<UserEntity> Users = userRepo.findAll();
@@ -54,7 +54,7 @@ public class TaskUserController {
 
 		model.addAttribute("task", taskRepo.findById(taskId).get());
 		model.addAttribute("pu", userRepo.getUserBytaskId(taskId));
-		
+
 		model.addAttribute("usersHold",userRepo.getUserBytaskIdHold(taskId));
 		model.addAttribute("usersRevoke",userRepo.getUserBytaskIdRevoke(taskId));
 		
@@ -77,5 +77,20 @@ public class TaskUserController {
 		
 		return"redirect:/listTaskUser?taskId="+taskId;
 	}
+	
+	@GetMapping("/mytaskuser")
+	public String myTaskUser(@RequestParam("taskId") Integer taskId, Model model) {
+
+		
+		model.addAttribute("task", taskRepo.findById(taskId).get());
+		model.addAttribute("pu", userRepo.getUserBytaskId(taskId));
+		
+		model.addAttribute("usersHold",userRepo.getUserBytaskIdHold(taskId));
+		model.addAttribute("usersRevoke",userRepo.getUserBytaskIdRevoke(taskId));
+		
+		
+		return "MyTaskUser";
+	}
+
 
 }

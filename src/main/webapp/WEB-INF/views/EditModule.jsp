@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Task List</title>
+<title>Edit Module</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -41,25 +41,24 @@
 	<div class="wrapper">
 
 
+		
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
-
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">${p.title} : ${m.moduleName} :-
-								Task</h1>
+							<h1 class="m-0 text-dark">Dashboard</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Task List</li>
+								<li class="breadcrumb-item active"><a href="projectManagerDashBoard">Dashboard</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -67,94 +66,98 @@
 					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
+
 			</div>
 			<!-- /.content-header -->
 
-			<!-- -Tables--- -->
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">
-								<a href="newTask?moduleId=${m.moduleId}">Add New Task</a>
-
-							</h3>
-							<div class="card-tools">
-								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search"
-										class="form-control float-right" placeholder="Search">
-
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
+			<!-- Main content -->
+			
+			<form action="saveModule?projectId=${module.projectId}" method="post"">
+				<section class="content">
+					<div class="row">
+						<div class="col-12 col-sm-12">
+							<div class="card card-primary">
+								<div class="card-header">
+									<h3 class="card-title">Edit Module Details</h3>
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse" data-toggle="tooltip"
+											title="Collapse">
+											<i class="fas fa-minus"></i>
 										</button>
 									</div>
 								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputDescription">ModuleName</label> <input
+													type="text" class="form-control" name="moduleName" value="${module.moduleName}">
+											</div>
+										</div>
+
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputStatus">Status</label> <select
+													class="form-control custom-select" name="statusId">
+													<option value="-1">-----Please Select Status------</option>
+													<c:forEach items="${projectStatuslist}" var="statuslist">
+														<option value="${statuslist.projectStatusId}" ${statuslist.projectStatusId == module.statusId?"selected":""}>${statuslist.projectStatus}</option>
+													</c:forEach>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputClientCompany">Description</label> <input
+													type="text" id="inputClientCompany" class="form-control"
+													name="description" value="${module.description}">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">DocURL</label> <input
+													type="url" id="inputProjectLeader" class="form-control"
+													name="docURL" value="${module.docURL}">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">EstimatedHours</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="estimatedHours" value="${module.estimatedHours}">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">TotalUtilizedHours</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="totalUtilizedHours" value="${module.totalUtilizedHours}">
+											</div>
+										</div>
+										<input type="hidden" name="moduleId" value="${param.moduleId}">	
+																			
+									</div>		      	
+									<div class="row">
+										<div class="col-12">
+											<input type="submit" value="Update Module"
+												class="btn btn-success float-left"> <a
+												href="#" class="btn btn-secondary float-right">Cancel</a>
+										</div>
+									</div>
+								</div>
+								<!-- /.card-body -->
 							</div>
+							<!-- /.card -->
 						</div>
-						<!-- /.card-header -->
-						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>Task Title</th>
-										<th>StatusId</th>
-										<th>EstimatedHours</th>
-										<th>TotalUtilizedHours</th>
-										<th>Description</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${t}" var="task">
-										<tr>
-											<td>${task.title}</td>
-											<td><c:if test="${task.statusId==1}">
-													notStarted
-											</c:if> <c:if test="${task.statusId==2}">
-													inProgress
-											</c:if> <c:if test="${task.statusId==3}">
-													lead
-											</c:if> <c:if test="${task.statusId==4}">
-													Hold
-											</c:if> <c:if test="${task.statusId==5}">
-													Completed
-											</c:if></td>
-											<td>${task.estimatedHours}</td>
-											<td>${task.totalUtilizedHours}</td>
-											<td>${task.description}</td>
-											<td>
-											<a href="edittask?taskId=${task.taskId}">Edit</a>
-											|
-											<a href="deletetask?taskId=${task.taskId}">Delete</a>
-											|
-											<a href="listTaskUser?taskId=${task.taskId}">User</a>
-											
-											 </td>
-											
-											
-
-										</tr>
-									</c:forEach>
-
-								</tbody>
-							</table>
-						</div>
-						<!-- /.card-body -->
 					</div>
-					<!-- /.card -->
-				</div>
-			</div>
-			<!-- -/Tables--- -->
-
-
-
-
-			<!-- Main content -->
-			<section class="content">
-				<!-- /.container-fluid -->
-			</section>
-			<!-- /.content -->
+				</section>
+			</form>
+			<!-- /Main content -->
 		</div>
 		<!-- /.content-wrapper -->
 

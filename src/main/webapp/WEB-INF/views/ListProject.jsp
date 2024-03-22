@@ -100,7 +100,6 @@
 										<th>TotalUtilizedHours</th>
 										<th>P-StartDate</th>
 										<th>P-CompletionDate</th>
-										<th>ActualCompletionDate</th>
 										<th>Action</th>
 
 									</tr>
@@ -133,9 +132,12 @@
 											<td>${project.totalUtilizedHours}</td>
 											<td>${project.projectStartDate}</td>
 											<td>${project.projectCompletionDate}</td>
-											<td>${project.actualCompletionDate}</td>
-											<td><a
-												href="deleteproject?projectId=${project.projectId}">Delete</a>
+											<td>
+												<a href="viewproject?projectId=${project.projectId}">View</a>
+												|
+												<a href="editproject?projectId=${project.projectId}">Edit</a>
+												|
+												<a href="deleteproject?projectId=${project.projectId}">Delete</a>
 												|
 												<a href="listProjectUser?projectId=${project.projectId}">User</a>
 												|

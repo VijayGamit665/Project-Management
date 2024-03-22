@@ -55,5 +55,20 @@ public class ProjectController {
 		return "redirect:/listProject";
 	}
 	
+	@GetMapping("/viewproject")
+	public String viewProject(@RequestParam("projectId") Integer projectId,Model model) {
+	ProjectEntity	projects = projectRepo.findById(projectId).get();
+		model.addAttribute("projects",projects);
+		return"ViewProject";
+	}
+	
+	@GetMapping("/editproject")
+	public String editproject(@RequestParam("projectId") Integer projectId, Model model) {
+		ProjectEntity	projects = projectRepo.findById(projectId).get();
+		model.addAttribute("projectstatuslist",projectStatusRepo.findAll());
+		model.addAttribute("project",projects);
+		
+		return"EditProject";
+	}
 	
 }

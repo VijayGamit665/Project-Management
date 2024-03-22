@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Task List</title>
+<title>Project List</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -52,110 +52,136 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">${p.title} : ${m.moduleName} :-
-								Task</h1>
+							<h1 class="m-0 text-dark">Project List</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Task List</li>
+								<li class="breadcrumb-item active">Project List</li>
 							</ol>
 						</div>
 						<!-- /.col -->
 					</div>
-					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
 			</div>
+
 			<!-- /.content-header -->
-
 			<!-- -Tables--- -->
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">
-								<a href="newTask?moduleId=${m.moduleId}">Add New Task</a>
+			<!-- -/Tables--- -->
+			<!-- -New format Tables--- -->
+			<section class="content">
 
-							</h3>
-							<div class="card-tools">
-								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search"
-										class="form-control float-right" placeholder="Search">
+				<!-- Default box -->
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title">${projects.title} Detail</h3>
 
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
-										</button>
+						<div class="card-tools">
+							<button type="button" class="btn btn-tool"
+								data-card-widget="collapse" data-toggle="tooltip"
+								title="Collapse">
+								<i class="fas fa-minus"></i>
+							</button>
+							<button type="button" class="btn btn-tool"
+								data-card-widget="remove" data-toggle="tooltip" title="Remove">
+								<i class="fas fa-times"></i>
+							</button>
+						</div>
+					</div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-12">
+								<div class="row">
+									<div class="col-12 col-sm-2">
+										<div class="info-box bg-light">
+											<div class="info-box-content">
+												<span class="info-box-text text-center text-muted">Estimated
+													Hours</span> <span
+													class="info-box-number text-center text-muted mb-0">${projects.estimatedHours}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-2">
+										<div class="info-box bg-light">
+											<div class="info-box-content">
+												<span class="info-box-text text-center text-muted">Total
+													Utilized Hours</span> <span
+													class="info-box-number text-center text-muted mb-0">${projects.totalUtilizedHours}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-2">
+										<div class="info-box bg-light">
+											<div class="info-box-content">
+												<span class="info-box-text text-center text-muted">Project
+													Start Date</span> <span
+													class="info-box-number text-center text-muted mb-0">${projects.projectStartDate}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-2">
+										<div class="info-box bg-light">
+											<div class="info-box-content">
+												<span class="info-box-text text-center text-muted">Project
+													Completion Date</span> <span
+													class="info-box-number text-center text-muted mb-0">${projects.projectCompletionDate}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-2">
+										<div class="info-box bg-light">
+											<div class="info-box-content">
+												<span class="info-box-text text-center text-muted">Actual
+													Completion Date</span> <span
+													class="info-box-number text-center text-muted mb-0">${projects.actualCompletionDate}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-2">
+										<div class="info-box bg-light">
+											<div class="info-box-content">
+												<span class="info-box-text text-center text-muted">Project
+													Status</span> <span
+													class="info-box-number text-center text-muted mb-0">${projects.projectStatusId}</span>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!-- /.card-header -->
-						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>Task Title</th>
-										<th>StatusId</th>
-										<th>EstimatedHours</th>
-										<th>TotalUtilizedHours</th>
-										<th>Description</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${t}" var="task">
-										<tr>
-											<td>${task.title}</td>
-											<td><c:if test="${task.statusId==1}">
-													notStarted
-											</c:if> <c:if test="${task.statusId==2}">
-													inProgress
-											</c:if> <c:if test="${task.statusId==3}">
-													lead
-											</c:if> <c:if test="${task.statusId==4}">
-													Hold
-											</c:if> <c:if test="${task.statusId==5}">
-													Completed
-											</c:if></td>
-											<td>${task.estimatedHours}</td>
-											<td>${task.totalUtilizedHours}</td>
-											<td>${task.description}</td>
-											<td>
-											<a href="edittask?taskId=${task.taskId}">Edit</a>
-											|
-											<a href="deletetask?taskId=${task.taskId}">Delete</a>
-											|
-											<a href="listTaskUser?taskId=${task.taskId}">User</a>
-											
-											 </td>
-											
-											
+						<div class="row">
+							<div class="col-12 col-sm-10">
+								<h3 class="text-primary">
+									<i class="fas fa-paint"></i>Description
+								</h3>
+								<span class="info-box-text text-center text-muted">
+									<p class="text-muted">${projects.description}</p>
+								</span>
+							</div>
+							<div class="col-12 col-sm-2">
+								<div class="text-left mt-5 mb-5">
+									<a href="listmodule?projectId=${projects.projectId}"
+										class="btn btn-sm btn-primary">Module List</a> <br></br> <a
+										href="${projects.docURL}" class="btn btn-sm btn-warning">Project
+										Documents</a>
+								</div>
+							</div>
 
-										</tr>
-									</c:forEach>
-
-								</tbody>
-							</table>
 						</div>
-						<!-- /.card-body -->
 					</div>
-					<!-- /.card -->
+					<!-- /.card-body -->
 				</div>
-			</div>
-			<!-- -/Tables--- -->
+				<!-- /.card -->
 
-
-
-
-			<!-- Main content -->
-			<section class="content">
-				<!-- /.container-fluid -->
 			</section>
+
+			<!-- -/New format Tables--- -->
+
 			<!-- /.content -->
 		</div>
+
 		<!-- /.content-wrapper -->
 
 		<jsp:include page="AdminFooter.jsp"></jsp:include>

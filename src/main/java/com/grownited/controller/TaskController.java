@@ -83,5 +83,14 @@ public class TaskController {
 		model.addAttribute("holdtask",taskRepo.getHoldUserByUserId(user.getUserId()));
 		return"MyTask";
 	}
+	
+	@GetMapping("/edittask")
+	public String editTask(@RequestParam("taskId") Integer taskId, Model model) {
+	 	TaskEntity task = taskRepo.findById(taskId).get();
+	 	model.addAttribute("task",task);
+	    model.addAttribute("projectStatuslist", projectStatusRepo.findAll());
+		
+		return"EditTask";
+	}
 
 }

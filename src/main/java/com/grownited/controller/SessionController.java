@@ -93,7 +93,7 @@ public class SessionController {
 		} else {
 
 			session.setAttribute("user", loggedInUser);
-			session.setMaxInactiveInterval(180);
+			session.setMaxInactiveInterval(60*5);
 			
 			boolean answer = passwordEncoder.matches(user.getPassword(), loggedInUser.getPassword());
 			if (answer == false) {

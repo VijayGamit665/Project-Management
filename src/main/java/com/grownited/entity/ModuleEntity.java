@@ -40,6 +40,7 @@ public class ModuleEntity {
 	public void setProjectId(Integer projectId) {
 		this.projectId = projectId;
 	}
+	
 	public Integer getStatusId() {
 		return statusId;
 	}

@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>New Task User</title>
+<title>Edit Project</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -72,13 +72,13 @@
 
 			<!-- Main content -->
 
-			<form action="saveTaskUser" method="post"">
+			<form action="saveProject" method="post"">
 				<section class="content">
 					<div class="row">
 						<div class="col-12 col-sm-12">
 							<div class="card card-primary">
 								<div class="card-header">
-									<h3 class="card-title">New Task User Details</h3>
+									<h3 class="card-title">Edit Project Details</h3>
 									<div class="card-tools">
 										<button type="button" class="btn btn-tool"
 											data-card-widget="collapse" data-toggle="tooltip"
@@ -91,54 +91,89 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputDescription">UserID</label> <select
-													name="userId" class="form-control">
-													<option value="-1">------Select UserID-------</option>
-													<c:forEach items="${User}" var="users">
-														<option value="${users.userId}">${users.firstName} ${users.lastName}</option>
-													</c:forEach>
-												</select>
-
+												<label for="inputDescription">Title</label> <input
+													type="text" class="form-control" name="title" value="${project.title}">
 											</div>
 										</div>
+
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputStatus">TaskId</label> <select
-													name="taskId" class="form-control">
-													<option value="-1">------Select TaskId-------</option>
-													<c:forEach items="${tasklist}" var="task">
-														<option value="${task.taskId}">${task.title}</option>
-													</c:forEach>
-												</select><br>
+												<label for="inputStatus">Description</label> <input
+													type="text" class="form-control" name="description" value="${project.description}">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputStatus">AssignStatus</label> <input
-													type="number" id="inputClientCompany" class="form-control"
-													name="assignStatus">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputClientCompany">StatusId</label> <select
-													name="projectStatusId" class="form-control">
-													<option value="-1">------Select StatusId-------</option>
-													<c:forEach items="${statuslist}" var="status">
-														<option value="${status.projectStatusId}">${status.projectStatus}</option>
+												<label for="inputStatus">ProjectStatusId</label> <select
+													class="form-control custom-select" name="projectStatusId">
+													<option value="-1">------Select Project
+														StatusID-------</option>
+													<c:forEach items="${projectstatuslist}" var="status">
+														<option value="${status.projectStatusId}" ${status.projectStatusId == project.projectStatusId?"selected":""}>${status.projectStatus}</option>
 													</c:forEach>
 												</select>
 											</div>
 										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputClientCompany">DocURL</label> <input
+													type="url" id="inputClientCompany" class="form-control"
+													name="docURL" value="${project.docURL}">
+											</div>
+										</div>
 									</div>
-									
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">EstimatedHours</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="estimatedHours" value="${project.estimatedHours}">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">TotalUtilizedHours</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="totalUtilizedHours" value="${project.totalUtilizedHours}">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">ProjectStartDate</label> <input
+													type="date" id="inputProjectLeader" class="form-control"
+													name="projectStartDate" value="${project.projectStartDate}">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">ProjectCompletionDate</label>
+												<input type="date" id="inputProjectLeader"
+													class="form-control" name="projectCompletionDate" value="${project.projectCompletionDate}">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">actualCompletionDate</label>
+												<input type="text" id="inputProjectLeader"
+													class="form-control" name="actualCompletionDate" value="${project.actualCompletionDate}">
+											</div>
+										</div>
+										<div class="col-lg-6"></div>
+									</div>
+
+									<input type="hidden" name="projectId" value="${project.projectId}"/>
 									<div class="row">
 										<div class="col-12">
-											<input type="submit" value="Add Task User"
+											<input type="submit" value="Update Project"
 												class="btn btn-success float-left"> <a
-												href="newTaskUser" class="btn btn-secondary float-right">Cancel</a>
+												href="listProject" class="btn btn-secondary float-right">Cancel</a>
 										</div>
 									</div>
 

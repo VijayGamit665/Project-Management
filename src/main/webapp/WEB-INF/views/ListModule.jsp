@@ -126,9 +126,10 @@
 											<td>${module.docURL}</td>
 											<td>${module.estimatedHours}</td>
 											<td>${module.totalUtilizedHours}</td>
-											<td><a href="deletemodule?moduleId=${module.moduleId}">delete</a>
-												| <a href="listTask?moduleId=${module.moduleId}">Task
-													List</a></td>
+											<td>
+												  <a href="editmodule?moduleId=${module.moduleId}">Edit</a>
+												| <a href="deletemodule?moduleId=${module.moduleId}">delete</a>
+												| <a href="listTask?moduleId=${module.moduleId}">Task List</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

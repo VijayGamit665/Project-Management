@@ -68,5 +68,12 @@ public class ModuleController {
 		
 		return"UserMyModule";
 	}
-
+	
+	@GetMapping("/editmodule")
+	public String editModule(@RequestParam("moduleId") Integer moduleId, Model model ) {
+		ModuleEntity modules = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module",modules);
+	    model.addAttribute("projectStatuslist",	projectStatusRepo.findAll());
+		return"EditModule";
+	}
 }
