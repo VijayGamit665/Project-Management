@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Project Status List</title>
+<title>Project User List</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -40,9 +40,9 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-		
+
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 
@@ -52,73 +52,151 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Project Status List</h1>
+							<h1 class="m-0 text-dark">${project.title}Team</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Project Status List</li>
+								<li class="breadcrumb-item active">Project User List</li>
 							</ol>
 						</div>
 						<!-- /.col -->
 					</div>
+					<label> <a href="#"></a>
+					</label>
+
 					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
 			</div>
 			<!-- /.content-header -->
-
-			<!-- -Tables--- -->
+			<!-- -----New User list -->
 			<div class="row">
-				<div class="col-12">
+				<div class="col-md-4">
+					<!-- USERS LIST -->
 					<div class="card">
 						<div class="card-header">
-							<h3 class="card-title">Project Status List</h3>
-
+							<h3 class="card-title">Project User Members</h3>
 							<div class="card-tools">
-								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search"
-										class="form-control float-right" placeholder="Search">
-
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
-										</button>
-									</div>
-								</div>
+								<span class="badge badge-danger">Members</span>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="collapse">
+									<i class="fas fa-minus"></i>
+								</button>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="remove">
+									<i class="fas fa-times"></i>
+								</button>
 							</div>
 						</div>
 						<!-- /.card-header -->
-						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>ProjectStatusId</th>
-										<th>ProjectStatus</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${s}" var="projectstatus">
-										<tr>
-											<td>${projectstatus.projectStatusId}</td>
-											<td>${projectstatus.projectStatus}</td>
-											<td><a
-												class="btn btn-info btn-sm" href="deleteprojectstatus?projectStatusId=${projectstatus.projectStatusId}">Delete</a></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
+						<c:forEach items="${pu}" var="projectuser">
+							<div class="card-body p-0">
+								<ul class="users-list clearfix">
+									<li><img src="dist/img/user1-128x128.jpg" alt="User Image"><a
+										class="users-list-name" href="#">${projectuser.firstName}
+											${projectuser.lastName}</a> <span class="users-list-date">${projectuser.contactNum}</span>
+									</li>
+								</ul>
+								<!-- /.users-list -->
+							</div>
+						</c:forEach>
 						<!-- /.card-body -->
+						<div class="card-footer text-center">
+							<a href="javascript::">View All Users</a>
+						</div>
+						<!-- /.card-footer -->
 					</div>
-					<!-- /.card -->
+					<!--/.card -->
 				</div>
+				<!-- /.col -->
+
+				<div class="col-md-4">
+					<!-- USERS LIST -->
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Project Hold Members</h3>
+
+							<div class="card-tools">
+								<span class="badge badge-danger">Members</span>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="collapse">
+									<i class="fas fa-minus"></i>
+								</button>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="remove">
+									<i class="fas fa-times"></i>
+								</button>
+							</div>
+						</div>
+						<!-- /.card-header -->
+						<c:forEach items="${usersHold}" var="projectuser">
+							<div class="card-body p-0">
+								<ul class="users-list clearfix">
+									<li><img src="dist/img/user1-128x128.jpg" alt="User Image"><a
+										class="users-list-name" href="#">${projectuser.firstName}
+											${projectuser.lastName}</a> <span class="users-list-date">${projectuser.contactNum}</span>
+
+									</li>
+								</ul>
+								<!-- /.users-list -->
+							</div>
+						</c:forEach>
+						<!-- /.card-body -->
+						<div class="card-footer text-center">
+							<a href="javascript::">View All Users</a>
+						</div>
+						<!-- /.card-footer -->
+					</div>
+					<!--/.card -->
+				</div>
+				<!-- /.col -->
+				<div class="col-md-4">
+					<!-- USERS LIST -->
+					<div class="card">
+						<div class="card-header">
+							<h3 class="card-title">Task Revoke Members</h3>
+
+							<div class="card-tools">
+								<span class="badge badge-danger">Member</span>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="collapse">
+									<i class="fas fa-minus"></i>
+								</button>
+								<button type="button" class="btn btn-tool"
+									data-card-widget="remove">
+									<i class="fas fa-times"></i>
+								</button>
+							</div>
+						</div>
+						<!-- /.card-header -->
+						<c:forEach items="${usersRevoke}" var="projectuser">
+							<div class="card-body p-0">
+								<ul class="users-list clearfix">
+									<li><img src="dist/img/user1-128x128.jpg" alt="User Image"><a
+										class="users-list-name" href="#">${projectuser.firstName}
+											${projectuser.lastName}</a> <span class="users-list-date">${projectuser.contactNum}</span>
+									</li>
+								</ul>
+								<!-- /.users-list -->
+							</div>
+						</c:forEach>
+						<!-- /.card-body -->
+						<div class="card-footer text-center">
+							<a href="javascript::">View All Users</a>
+						</div>
+						<!-- /.card-footer -->
+					</div>
+					<!--/.card -->
+				</div>
+				<!-- /.col -->
+
+
 			</div>
-			<!-- -/Tables--- -->
+			<!-- /.row -->
 
-
+			<!-- -----/New User list -->
 
 
 

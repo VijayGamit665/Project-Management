@@ -124,11 +124,11 @@
 											<td>${task.totalUtilizedHours}</td>
 											<td>${task.description}</td>
 											<td>
-											<a href="edittask?taskId=${task.taskId}">Edit</a>
+											<a class="btn btn-info btn-sm" href="edittask?taskId=${task.taskId}">Edit</a>
 											|
-											<a href="deletetask?taskId=${task.taskId}">Delete</a>
+											<a class="btn btn-info btn-sm" href="deletetask?taskId=${task.taskId}">Delete</a>
 											|
-											<a href="listTaskUser?taskId=${task.taskId}">User</a>
+											<a class="btn btn-info btn-sm" href="listTaskUser?taskId=${task.taskId}">User</a>
 											
 											 </td>
 											

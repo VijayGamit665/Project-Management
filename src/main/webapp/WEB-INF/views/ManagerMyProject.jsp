@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Task List</title>
+<title>Project List</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -42,7 +42,7 @@
 
 
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 
@@ -52,174 +52,184 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">${p.title}: ${m.moduleName}</h1>
+							<h1 class="m-0 text-dark">Project List</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active"><a href="myModule?projectId=${p.projectId}">Back TO Module</a></li>
+								<li class="breadcrumb-item active">Project List</li>
 							</ol>
 						</div>
 						<!-- /.col -->
 					</div>
-					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
 			</div>
-			<!-- /.content-header -->
 
+			<!-- /.content-header -->
 			<!-- -Tables--- -->
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header p-2">
 							<ul class="nav nav-pills">
-								<li class="nav-item"><a class="nav-link" href="#myTask"
-									data-toggle="tab">My Task List</a></li>
-								<li class="nav-item"><a class="nav-link" href="#myholdTask"
-									data-toggle="tab">Hold Task List</a></li>
+								<li class="nav-item"><a class="nav-link" href="#myProject"
+									data-toggle="tab">My Project List</a></li>
 								<li class="nav-item"><a class="nav-link"
-									href="#myrevokeTask" data-toggle="tab">Revoke Task</a></li>
+									href="#myholdproject" data-toggle="tab">Hold Project List</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="#myrevokeproject" data-toggle="tab">Revoke Project</a></li>
 							</ul>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body table-responsive p-0">
 							<div class="tab-content">
-								<div class="tab-pane" id="myTask">
+								<div class="tab-pane" id="myProject">
 									<table class="table table-hover text-nowrap">
 										<thead>
 											<tr>
-												<th>Task Title</th>
-												<th>Status</th>
+												<th>Title</th>
+												<th>Description</th>
+												<th>ProjectStatusId</th>
 												<th>EstimatedHours</th>
 												<th>TotalUtilizedHours</th>
-												<th>Description</th>
+												<th>P-StartDate</th>
+												<th>P-CompletionDate</th>
 												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${task}" var="task">
+											<c:forEach items="${pu}" var="project">
 												<tr>
-													<td>${task.title}</td>
-													<td><c:if test="${task.statusId==1}">
+													<td>${project.title}</td>
+													<td>${project.description}</td>
+													<td><c:if test="${project.projectStatusId==1}">
 													notStarted
-											</c:if> <c:if test="${task.statusId==2}">
+											</c:if> <c:if test="${project.projectStatusId==2}">
 													inProgress
-											</c:if> <c:if test="${task.statusId==3}">
+											</c:if> <c:if test="${project.projectStatusId==3}">
 													lead
-											</c:if> <c:if test="${task.statusId==4}">
+											</c:if> <c:if test="${project.projectStatusId==4}">
 													Hold
-											</c:if> <c:if test="${task.statusId==5}">
+											</c:if> <c:if test="${project.projectStatusId==5}">
 													Completed
 											</c:if></td>
-													<td>${task.estimatedHours}</td>
-													<td>${task.totalUtilizedHours}</td>
-													<td>${task.description}</td>
+													<td>${project.estimatedHours}</td>
+													<td>${project.totalUtilizedHours}</td>
+													<td>${project.projectStartDate}</td>
+													<td>${project.projectCompletionDate}</td>
 													<td>
-													<a class="btn btn-info btn-sm" href="mytaskuser?taskId=${task.taskId}">Team</a>
+													<a class="btn btn-primary btn-sm" href="managermymodule?projectId=${project.projectId}">Module</a>
+													|
+													<a class="btn btn-info btn-sm" href="managerlistprojectuser?projectId=${project.projectId}">Team</a>
 													</td>
 												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
 								</div>
-								<div class="tab-pane" id="myholdTask">
-									<table class="table table-hover text-nowrap">
-										<thead>
-											<tr>
-												<th>Task Title</th>
-												<th>Status</th>
-												<th>EstimatedHours</th>
-												<th>TotalUtilizedHours</th>
-												<th>Description</th>
-												<th>Action</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${holdtask}" var="task">
-												<tr>
-													<td>${task.title}</td>
-													<td><c:if test="${task.statusId==1}">
-													notStarted
-											</c:if> <c:if test="${task.statusId==2}">
-													inProgress
-											</c:if> <c:if test="${task.statusId==3}">
-													lead
-											</c:if> <c:if test="${task.statusId==4}">
-													Hold
-											</c:if> <c:if test="${task.statusId==5}">
-													Completed
-											</c:if></td>
-													<td>${task.estimatedHours}</td>
-													<td>${task.totalUtilizedHours}</td>
-													<td>${task.description}</td>
-													<td>
-													<a class="btn btn-info btn-sm" href="mytaskuser?taskId=${task.taskId}">Team</a>
-													</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
 
-								</div>
-								<div class="tab-pane" id="myrevokeTask">
+								<div class="tab-pane" id="myholdproject">
 									<table class="table table-hover text-nowrap">
 										<thead>
 											<tr>
-												<th>Task Title</th>
-												<th>Status</th>
+												<th>Title</th>
+												<th>Description</th>
+												<th>ProjectStatusId</th>
 												<th>EstimatedHours</th>
 												<th>TotalUtilizedHours</th>
-												<th>Description</th>
+												<th>ProjectStartDate</th>
+												<th>ProjectCompletionDate</th>
 												<th>Action</th>
+
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${revoketask}" var="task">
+											<c:forEach items="${hu}" var="project">
 												<tr>
-													<td>${task.title}</td>
-													<td><c:if test="${task.statusId==1}">
+													<td>${project.title}</td>
+													<td>${project.description}</td>
+													<td><c:if test="${project.projectStatusId==1}">
 													notStarted
-											</c:if> <c:if test="${task.statusId==2}">
+											</c:if> <c:if test="${project.projectStatusId==2}">
 													inProgress
-											</c:if> <c:if test="${task.statusId==3}">
+											</c:if> <c:if test="${project.projectStatusId==3}">
 													lead
-											</c:if> <c:if test="${task.statusId==4}">
+											</c:if> <c:if test="${project.projectStatusId==4}">
 													Hold
-											</c:if> <c:if test="${task.statusId==5}">
+											</c:if> <c:if test="${project.projectStatusId==5}">
 													Completed
 											</c:if></td>
-													<td>${task.estimatedHours}</td>
-													<td>${task.totalUtilizedHours}</td>
-													<td>${task.description}</td>
+													<td>${project.estimatedHours}</td>
+													<td>${project.totalUtilizedHours}</td>
+													<td>${project.projectStartDate}</td>
+													<td>${project.projectCompletionDate}</td>
 													<td>
-													<a class="btn btn-info btn-sm" href="mytaskuser">Team</a>
+													<a class="btn btn-primary btn-sm" href="managermymodule?projectId=${project.projectId}">Module</a>
+													|
+													<a class="btn btn-info btn-sm" href="listProjectUser?projectId=${project.projectId}">Team</a>
 													</td>
+
 												</tr>
 											</c:forEach>
 										</tbody>
 									</table>
-
 								</div>
+
+								<div class="tab-pane" id="myrevokeproject">
+									<table class="table table-hover text-nowrap">
+										<thead>
+											<tr>
+												<th>Title</th>
+												<th>Description</th>
+												<th>ProjectStatusId</th>
+												<th>EstimatedHours</th>
+												<th>TotalUtilizedHours</th>
+												<th>ProjectStartDate</th>
+												<th>ProjectCompletionDate</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${ru}" var="project">
+												<tr>
+													<td>${project.title}</td>
+													<td>${project.description}</td>
+													<td><c:if test="${project.projectStatusId==1}">
+													notStarted
+											</c:if> <c:if test="${project.projectStatusId==2}">
+													inProgress
+											</c:if> <c:if test="${project.projectStatusId==3}">
+													lead
+											</c:if> <c:if test="${project.projectStatusId==4}">
+													Hold
+											</c:if> <c:if test="${project.projectStatusId==5}">
+													Completed
+											</c:if></td>
+													<td>${project.estimatedHours}</td>
+													<td>${project.totalUtilizedHours}</td>
+													<td>${project.projectStartDate}</td>
+													<td>${project.projectCompletionDate}</td>
+													<td>
+													<a class="btn btn-primary btn-sm" href="managermymodule?projectId=${project.projectId}">Module</a>
+													|
+													<a class="btn btn-info btn-sm" href="listProjectUser?projectId=${project.projectId}">Team</a>
+													</td>
+
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+
 							</div>
 						</div>
-						<!-- /.card-body -->
 					</div>
-					<!-- /.card -->
 				</div>
 			</div>
-			<!-- -/Tables--- -->
-
-
-
-
-			<!-- Main content -->
-			<section class="content">
-				<!-- /.container-fluid -->
-			</section>
-			<!-- /.content -->
 		</div>
+
 		<!-- /.content-wrapper -->
 
 		<jsp:include page="AdminFooter.jsp"></jsp:include>

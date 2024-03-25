@@ -34,27 +34,78 @@
 						</p>
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
-				<li class="nav-item"><a href="listrole" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
+
+				<li class="nav-item has-treeview"><a href="#" class="nav-link">
+						<i class="fas fa-edit"></i>
 						<p>
-							Role List <span class="badge badge-info right">2</span>
+							Create <i class="right fas fa-angle-left"></i>
 						</p>
-				</a></li>
-				<li class="nav-item"><a href="listUser" class="nav-link"> <i
-						class="nav-icon far fa-image"></i>
-						<p>User List</p>
-				</a></li>
+				</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item"><a href="newProject" class="nav-link">
+								<i class="fas fa-edit"></i>
+								<p>Create Project</p>
+						</a></li>
+						<li class="nav-item"><a href="directnewmodule"
+							class="nav-link"> <i class="fas fa-edit"></i>
+								<p>Create Module</p>
+						</a></li>
+						<li class="nav-item"><a href="directnewtask" class="nav-link">
+								<i class="fas fa-edit"></i>
+								<p>Create Task</p>
+						</a></li>
 
-				<li class="nav-item"><a href="listProject" class="nav-link">
-						<i class="nav-icon far fa-image"></i>
-						<p>Project List</p>
-				</a></li>
 
-				<li class="nav-item"><a href="listProjectStatus"
-					class="nav-link"> <i class="nav-icon far fa-image"></i>
-						<p>Project Status List</p>
-				</a></li>
+						<li class="nav-item"><a href="newProjectStatus"
+							class="nav-link"> <i class="fas fa-edit"></i>
+								<p>New Project Status</p>
+						</a></li>
 
+					</ul></li>
+
+				<li class="nav-item has-treeview"><a href="#" class="nav-link">
+						<i class="fas fa-users"></i>
+						<p>
+							Assign To <i class="right fas fa-angle-left"></i>
+						</p>
+				</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item"><a href="newProjectUser"
+							class="nav-link"> <i class="fas fa-users"></i>
+								<p>Assign Project</p>
+						</a></li>
+						<li class="nav-item"><a href="newTaskUser" class="nav-link">
+								<i class="fas fa-users"></i>
+								<p>Assign Task</p>
+						</a></li>
+					</ul></li>
+
+
+				<li class="nav-item has-treeview"><a href="#" class="nav-link">
+						<i class="fas fa-list"></i>
+						<p>
+							List <i class="right fas fa-angle-left"></i>
+						</p>
+				</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item"><a href="listUser" class="nav-link">
+								<i class="fas fa-list"></i>
+								<p>User List</p>
+						</a></li>
+						<li class="nav-item"><a href="listrole" class="nav-link">
+								<i class="fas fa-list"></i>
+								<p>Role List</p>
+						</a></li>
+						<li class="nav-item"><a href="listProject" class="nav-link">
+								<i class="fas fa-list"></i>
+								<p>Project List</p>
+						</a></li>
+						<li class="nav-item"><a href="listProjectStatus"
+							class="nav-link"> <i class="fas fa-list"></i>
+								<p>Project Status List</p>
+						</a></li>
+
+					</ul></li>
 
 				<li class="nav-item"><a href="logout" class="nav-link"> <i
 						class="nav-icon fas fa-power-off"></i>
@@ -62,6 +113,8 @@
 							Logout <span class="badge badge-info right"></span>
 						</p>
 				</a></li>
+
+
 
 			</ul>
 		</nav>

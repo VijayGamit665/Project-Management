@@ -138,7 +138,7 @@
 											
 											
 											</td>
-											<td><a href="deleteuser?userId=${user.userId}">Delete</a></td>
+											<td><a class="btn btn-info btn-sm" href="deleteuser?userId=${user.userId}">Delete</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

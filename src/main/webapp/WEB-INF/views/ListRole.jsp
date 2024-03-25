@@ -104,7 +104,7 @@
 										<tr>
 											<td>${role.roleId}</td>
 											<td>${role.roleName}</td>
-											<th><a href="deleterole?roleId=${role.roleId}">Delete</a></th>
+											<th><a class="btn btn-info btn-sm" href="deleterole?roleId=${role.roleId}">Delete</a></th>
 										</tr>
 									</c:forEach>
 								</tbody>

@@ -66,14 +66,14 @@
 							<!-- small box -->
 							<div class="small-box bg-info">
 								<div class="inner">
-									<h3>${getTotalProject}</h3>
+									<h3>${getUserProject}</h3>
 
 									<p>Total Projects</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-bag"></i>
 								</div>
-								<a href="listProject" class="small-box-footer">More info <i
+								<a href="managermyproject" class="small-box-footer">More info <i
 									class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
@@ -82,14 +82,14 @@
 							<!-- small box -->
 							<div class="small-box bg-success">
 								<div class="inner">
-									<h3>${getongoinproject}</h3>
+									<h3>${getongoinUserproject}</h3>
 
 									<p>OnGoing</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-stats-bars"></i>
 								</div>
-								<a href="ongoingproject" class="small-box-footer">More info
+								<a href="managerongoingproject" class="small-box-footer">More info
 									<i class="fas fa-arrow-circle-right"></i>
 								</a>
 							</div>
@@ -99,14 +99,14 @@
 							<!-- small box -->
 							<div class="small-box bg-warning">
 								<div class="inner">
-									<h3>${getpipelineproject}</h3>
+									<h3>${getuserpipelineproject}</h3>
 
 									<p>Pipeline</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-person-add"></i>
 								</div>
-								<a href="pipelineprojects" class="small-box-footer">More
+								<a href="managerpipelineproject" class="small-box-footer">More
 									info <i class="fas fa-arrow-circle-right"></i>
 								</a>
 							</div>
@@ -116,14 +116,14 @@
 							<!-- small box -->
 							<div class="small-box bg-danger">
 								<div class="inner">
-									<h3>${getCompletedprojects}</h3>
+									<h3>${userdueproject}</h3>
 
 									<p>Due</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-pie-graph"></i>
 								</div>
-								<a href="dueproject" class="small-box-footer">More info <i
+								<a href="managerdueproject" class="small-box-footer">More info <i
 									class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>

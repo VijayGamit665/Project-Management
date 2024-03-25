@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Project Status List</title>
+<title>New Module</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -40,25 +40,26 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-		
+
+
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
-
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Project Status List</h1>
+							<h1 class="m-0 text-dark">Dashboard</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Project Status List</li>
+								<li class="breadcrumb-item active"><a
+									href="projectManagerDashBoard">Dashboard</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -66,68 +67,114 @@
 					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
+
 			</div>
 			<!-- /.content-header -->
 
-			<!-- -Tables--- -->
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">Project Status List</h3>
+			<!-- Main content -->
 
-							<div class="card-tools">
-								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search"
-										class="form-control float-right" placeholder="Search">
-
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
+			<form action="saveModule" method="post"">
+				<section class="content">
+					<div class="row">
+						<div class="col-12 col-sm-12">
+							<div class="card card-primary">
+								<div class="card-header">
+									<h3 class="card-title">New Module Details</h3>
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse" data-toggle="tooltip"
+											title="Collapse">
+											<i class="fas fa-minus"></i>
 										</button>
 									</div>
 								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputStatus">Project</label> <select
+													class="form-control custom-select" name="projectId">
+													<option value="-1">-----Please Select Project------</option>
+													<c:forEach items="${projectslist}" var="projectlist">
+														<option value="${projectlist.projectId}">${projectlist.title}</option>
+													</c:forEach>
+												</select>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputDescription">ModuleName</label> <input
+													type="text" class="form-control" name="moduleName">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputClientCompany">Description</label> <input
+													type="text" id="inputClientCompany" class="form-control"
+													name="description">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">DocURL</label> <input
+													type="url" id="inputProjectLeader" class="form-control"
+													name="docURL">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">EstimatedHours</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="estimatedHours">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">TotalUtilizedHours</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="totalUtilizedHours">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputStatus">Status</label> <select
+													class="form-control custom-select" name="statusId">
+													<option value="-1">-----Please Select Status------</option>
+													<c:forEach items="${projectStatsulist}" var="statuslist">
+														<option value="${statuslist.projectStatusId}">${statuslist.projectStatus}</option>
+													</c:forEach>
+												</select>
+											</div>
+
+										</div>
+										<div class="col-lg-6"></div>
+										<input type="hidden" name="projectId"value="${param.projectId}" />
+									</div>
+
+
+									<div class="row">
+										<div class="col-12">
+											<input type="submit" value="Add Module"
+												class="btn btn-success float-left"> <a
+												href="newModule" class="btn btn-secondary float-right">Cancel</a>
+										</div>
+									</div>
+								</div>
+								<!-- /.card-body -->
 							</div>
+							<!-- /.card -->
 						</div>
-						<!-- /.card-header -->
-						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>ProjectStatusId</th>
-										<th>ProjectStatus</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${s}" var="projectstatus">
-										<tr>
-											<td>${projectstatus.projectStatusId}</td>
-											<td>${projectstatus.projectStatus}</td>
-											<td><a
-												class="btn btn-info btn-sm" href="deleteprojectstatus?projectStatusId=${projectstatus.projectStatusId}">Delete</a></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<!-- /.card-body -->
 					</div>
-					<!-- /.card -->
-				</div>
-			</div>
-			<!-- -/Tables--- -->
-
-
-
-
-
-
-			<!-- Main content -->
-			<section class="content">
-				<!-- /.container-fluid -->
-			</section>
-			<!-- /.content -->
+				</section>
+			</form>
+			<!-- /Main content -->
 		</div>
 		<!-- /.content-wrapper -->
 

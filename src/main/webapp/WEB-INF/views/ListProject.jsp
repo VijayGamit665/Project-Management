@@ -94,7 +94,6 @@
 								<thead>
 									<tr>
 										<th>Title</th>
-										<th>Description</th>
 										<th>P-StatusId</th>
 										<th>EstimatedHours</th>
 										<th>TotalUtilizedHours</th>
@@ -108,7 +107,6 @@
 									<c:forEach items="${p}" var="project">
 										<tr>
 											<td>${project.title}</td>
-											<td>${project.description}</td>
 											<td>
 											<c:if test="${project.projectStatusId==1}">
 													notStarted
@@ -133,15 +131,15 @@
 											<td>${project.projectStartDate}</td>
 											<td>${project.projectCompletionDate}</td>
 											<td>
-												<a href="viewproject?projectId=${project.projectId}">View</a>
+												<a class="btn btn-info btn-sm" href="viewproject?projectId=${project.projectId}">View</a>
 												|
-												<a href="editproject?projectId=${project.projectId}">Edit</a>
+												<a class="btn btn-info btn-sm" href="editproject?projectId=${project.projectId}">Edit</a>
 												|
-												<a href="deleteproject?projectId=${project.projectId}">Delete</a>
+												<a class="btn btn-info btn-sm" href="deleteproject?projectId=${project.projectId}">Delete</a>
 												|
-												<a href="listProjectUser?projectId=${project.projectId}">User</a>
+												<a class="btn btn-info btn-sm" href="listProjectUser?projectId=${project.projectId}">User</a>
 												|
-												<a href="listmodule?projectId=${project.projectId}">Module</a>
+												<a class="btn btn-info btn-sm" href="listmodule?projectId=${project.projectId}">Module</a>
 												</td>
 										</tr>
 									</c:forEach>

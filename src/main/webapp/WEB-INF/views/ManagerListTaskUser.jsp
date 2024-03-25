@@ -42,7 +42,7 @@
 
 
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 
@@ -58,7 +58,7 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active"><a href="#">Back List Task</a></li>
+								<li class="breadcrumb-item active"><a href="listTask?moduleId=${task.moduleId}">Back List Task</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->

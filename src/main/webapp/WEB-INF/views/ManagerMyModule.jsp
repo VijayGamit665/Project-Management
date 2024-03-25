@@ -42,7 +42,7 @@
 
 		
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 
@@ -94,10 +94,8 @@
 							<table class="table table-hover text-nowrap">
 								<thead>
 									<tr>
-										<th>ModuleId</th>
-										<th>ModuleName</th>
-										<th>projectId</th>
-										<th>status</th>
+										<th>Module Name</th>
+										<th>Status</th>
 										<th>Description</th>
 										<th>DocURL</th>
 										<th>EstimatedHours</th>
@@ -106,19 +104,28 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${modules}" var="module">
+									<c:forEach items="${m}" var="module">
 										<tr>
-											<td>${module.moduleId}</td>
 											<td>${module.moduleName}</td>
-											<td>${module.projectId}</td>
-											<td>${module.status}</td>
+											<td><c:if test="${module.statusId==1}">
+													notStarted
+											</c:if> <c:if test="${module.statusId==2}">
+													inProgress
+											</c:if> <c:if test="${module.statusId==3}">
+													lead
+											</c:if> <c:if test="${module.statusId==4}">
+													Hold
+											</c:if> <c:if test="${module.statusId==5}">
+													Completed
+											</c:if></td>
+											
 											<td>${module.description}</td>
 											<td>${module.docURL}</td>
 											<td>${module.estimatedHours}</td>
 											<td>${module.totalUtilizedHours}</td>
-											<td><a href="deletemodule?moduleId=${module.moduleId}">delete</a>
+											<td><a href="deletemodule?moduleId=${module.moduleId}">Delete</a>
 											|
-											<a href="listTask?moduleId=${module.moduleId}">Task List</a>
+											<a href="managermytask?moduleId=${module.moduleId}">Task List</a>
 											</td>
 										</tr>
 									</c:forEach>

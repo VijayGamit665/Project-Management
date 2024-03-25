@@ -13,62 +13,72 @@ import com.grownited.entity.ProjectEntity;
 import com.grownited.entity.ProjectStatusEntity;
 import com.grownited.repository.ProjectRepository;
 import com.grownited.repository.ProjectStatusRepository;
+import com.grownited.repository.UserRepository;
 
 
 @Controller
 public class ProjectController {
-	
-	
+
+	@Autowired
+	UserRepository userRepo;
+
 	@Autowired
 	ProjectRepository projectRepo;
-	
+
 	@Autowired
 	ProjectStatusRepository projectStatusRepo;
-	
+
 	@GetMapping("/newProject")
 	public String newProject(Model model) {
-	List<ProjectStatusEntity> projectstatus = projectStatusRepo.findAll();
+		List<ProjectStatusEntity> projectstatus = projectStatusRepo.findAll();
 		model.addAttribute("projectstatus", projectstatus);
+
 		return "NewProject";
 	}
-	 
+
+	@GetMapping("/managernewproject")
+	public String managerNewProject(Model model) {
+		List<ProjectStatusEntity> projectstatus = projectStatusRepo.findAll();
+		model.addAttribute("projectstatus", projectstatus);
+		return "ManagerNewProject";
+	}
+
 	@PostMapping("/saveProject")
 	public String saveProject(ProjectEntity project) {
-		
+
 		projectRepo.save(project);
-		
+
 		return "redirect:/listProject";
 	}
-	
+
 	@GetMapping("/listProject")
-	
 	public String listProject(Model model) {
-		
+
 		List<ProjectEntity> projects = projectRepo.findAll();
-		model.addAttribute("p",projects);
+		model.addAttribute("p", projects);
 		return "ListProject";
 	}
-	
+
 	@GetMapping("/deleteproject")
 	public String deleteProject(@RequestParam("projectId") Integer projectId) {
 		projectRepo.deleteById(projectId);
 		return "redirect:/listProject";
 	}
-	
+
 	@GetMapping("/viewproject")
-	public String viewProject(@RequestParam("projectId") Integer projectId,Model model) {
-	ProjectEntity	projects = projectRepo.findById(projectId).get();
-		model.addAttribute("projects",projects);
-		return"ViewProject";
+	public String viewProject(@RequestParam("projectId") Integer projectId, Model model) {
+		ProjectEntity projects = projectRepo.findById(projectId).get();
+		model.addAttribute("projects", projects);
+		return "ViewProject";
 	}
-	
+
 	@GetMapping("/editproject")
 	public String editproject(@RequestParam("projectId") Integer projectId, Model model) {
-		ProjectEntity	projects = projectRepo.findById(projectId).get();
-		model.addAttribute("projectstatuslist",projectStatusRepo.findAll());
-		model.addAttribute("project",projects);
-		
-		return"EditProject";
+		ProjectEntity projects = projectRepo.findById(projectId).get();
+		model.addAttribute("projectstatuslist", projectStatusRepo.findAll());
+		model.addAttribute("project", projects);
+
+		return "EditProject";
 	}
-	
+
 }

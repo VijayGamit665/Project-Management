@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Module List</title>
+<title>Task List</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -40,7 +40,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
-		
+
 		<%@include file="AdminHeader.jsp"%>
 		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
 
@@ -52,13 +52,13 @@
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">${project.title}</h1>
+							<h1 class="m-0 text-dark">${p.title}: ${m.moduleName}</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active"><a href="usermyproject">Back My Project</a></li>
+								<li class="breadcrumb-item active"><a href="myModule?projectId=${p.projectId}">Back TO Module</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -73,61 +73,136 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title"><a href="#">Module</a></h3>
-
-							<div class="card-tools">
-								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search"
-										class="form-control float-right" placeholder="Search">
-
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
-										</button>
-									</div>
-								</div>
-							</div>
+						<div class="card-header p-2">
+							<ul class="nav nav-pills">
+								<li class="nav-item"><a class="nav-link" href="#myTask"
+									data-toggle="tab">My Task List</a></li>
+								<li class="nav-item"><a class="nav-link" href="#myholdTask"
+									data-toggle="tab">Hold Task List</a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="#myrevokeTask" data-toggle="tab">Revoke Task</a></li>
+							</ul>
 						</div>
 						<!-- /.card-header -->
 						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>ModuleName</th>
-										<th>statusId</th>
-										<th>Description</th>
-										<th>EstimatedHours</th>
-										<th>TotalUtilizedHours</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${m}" var="module">
-										<tr>
-											<td>${module.moduleName}</td>
-											<td><c:if test="${module.statusId==1}">
+							<div class="tab-content">
+								<div class="tab-pane" id="myTask">
+									<table class="table table-hover text-nowrap">
+										<thead>
+											<tr>
+												<th>Task Title</th>
+												<th>Status</th>
+												<th>EstimatedHours</th>
+												<th>TotalUtilizedHours</th>
+												<th>Description</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${task}" var="task">
+												<tr>
+													<td>${task.title}</td>
+													<td><c:if test="${task.statusId==1}">
 													notStarted
-											</c:if> <c:if test="${module.statusId==2}">
+											</c:if> <c:if test="${task.statusId==2}">
 													inProgress
-											</c:if> <c:if test="${module.statusId==3}">
+											</c:if> <c:if test="${task.statusId==3}">
 													lead
-											</c:if> <c:if test="${module.statusId==4}">
+											</c:if> <c:if test="${task.statusId==4}">
 													Hold
-											</c:if> <c:if test="${module.statusId==5}">
+											</c:if> <c:if test="${task.statusId==5}">
 													Completed
 											</c:if></td>
-											
-											<td>${module.description}</td>
-											<td>${module.estimatedHours}</td>
-											<td>${module.totalUtilizedHours}</td>
-											<td>
-											<a class="btn btn-primary btn-sm" href="usermytask?moduleId=${module.moduleId}">Task List</a>
-											</td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
+													<td>${task.estimatedHours}</td>
+													<td>${task.totalUtilizedHours}</td>
+													<td>${task.description}</td>
+													<td>
+													<a class="btn btn-info btn-sm" href="userlisttaskuser?taskId=${task.taskId}">Team</a>
+													</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+								<div class="tab-pane" id="myholdTask">
+									<table class="table table-hover text-nowrap">
+										<thead>
+											<tr>
+												<th>Task Title</th>
+												<th>Status</th>
+												<th>EstimatedHours</th>
+												<th>TotalUtilizedHours</th>
+												<th>Description</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${holdtask}" var="task">
+												<tr>
+													<td>${task.title}</td>
+													<td><c:if test="${task.statusId==1}">
+													notStarted
+											</c:if> <c:if test="${task.statusId==2}">
+													inProgress
+											</c:if> <c:if test="${task.statusId==3}">
+													lead
+											</c:if> <c:if test="${task.statusId==4}">
+													Hold
+											</c:if> <c:if test="${task.statusId==5}">
+													Completed
+											</c:if></td>
+													<td>${task.estimatedHours}</td>
+													<td>${task.totalUtilizedHours}</td>
+													<td>${task.description}</td>
+													<td>
+													<a class="btn btn-info btn-sm" href="userlisttaskuser?taskId=${task.taskId}">Team</a>
+													</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+
+								</div>
+								<div class="tab-pane" id="myrevokeTask">
+									<table class="table table-hover text-nowrap">
+										<thead>
+											<tr>
+												<th>Task Title</th>
+												<th>Status</th>
+												<th>EstimatedHours</th>
+												<th>TotalUtilizedHours</th>
+												<th>Description</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${revoketask}" var="task">
+												<tr>
+													<td>${task.title}</td>
+													<td><c:if test="${task.statusId==1}">
+													notStarted
+											</c:if> <c:if test="${task.statusId==2}">
+													inProgress
+											</c:if> <c:if test="${task.statusId==3}">
+													lead
+											</c:if> <c:if test="${task.statusId==4}">
+													Hold
+											</c:if> <c:if test="${task.statusId==5}">
+													Completed
+											</c:if></td>
+													<td>${task.estimatedHours}</td>
+													<td>${task.totalUtilizedHours}</td>
+													<td>${task.description}</td>
+													<td>
+													<a class="btn btn-info btn-sm" href="userlisttaskuser">Team</a>
+													</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+
+								</div>
+							</div>
 						</div>
 						<!-- /.card-body -->
 					</div>
@@ -135,7 +210,10 @@
 				</div>
 			</div>
 			<!-- -/Tables--- -->
-			
+
+
+
+
 			<!-- Main content -->
 			<section class="content">
 				<!-- /.container-fluid -->

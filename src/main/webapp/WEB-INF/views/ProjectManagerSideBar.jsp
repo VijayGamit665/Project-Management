@@ -16,7 +16,8 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="managerprofile" class="d-block">${user.firstName} ${user.lastName} </a>
+				<a href="managerprofile" class="d-block">${user.firstName}
+					${user.lastName} </a>
 			</div>
 		</div>
 
@@ -34,35 +35,64 @@
 						</p>
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
-				<li class="nav-item"><a href="newProject" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>Create Project <span class="badge badge-info right"></span>
+				<li class="nav-item has-treeview"><a href="#" class="nav-link">
+						<i class="fas fa-edit"></i>
+						<p>
+							Create <i class="right fas fa-angle-left"></i>
 						</p>
-				</a></li>
-				
-				<li class="nav-item"><a href="newProjectStatus" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>New Project Status <span class="badge badge-info right"></span>
+				</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item"><a href="managernewproject"
+							class="nav-link"> <i class="fas fa-edit"></i>
+								<p>Create Project</p>
+						</a></li>
+						<li class="nav-item"><a href="managerdirectnewmodule"
+							class="nav-link"> <i class="fas fa-edit"></i>
+								<p>Create Module</p>
+						</a></li>
+						<li class="nav-item"><a href="managerdirectnewtask" class="nav-link">
+								<i class="fas fa-edit"></i>
+								<p>Create Task</p>
+						</a></li>
+					</ul></li>
+
+				<li class="nav-item has-treeview"><a href="#" class="nav-link">
+						<i class="fas fa-users"></i>
+						<p>
+							Assign To <i class="right fas fa-angle-left"></i>
 						</p>
-				</a></li>
-				<li class="nav-item"><a href="newProjectUser" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>New Project User <span class="badge badge-info right"></span>
+				</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item"><a href="managernewprojectuser"
+							class="nav-link"> <i class="fas fa-users"></i>
+								<p>Assign Project</p>
+						</a></li>
+						<li class="nav-item"><a href="managernewtaskuser" class="nav-link">
+								<i class="fas fa-users"></i>
+								<p>Assign Task</p>
+						</a></li>
+					</ul></li>
+
+				<li class="nav-item has-treeview"><a href="#" class="nav-link">
+						<i class="fas fa-list"></i>
+						<p>
+							List <i class="right fas fa-angle-left"></i>
 						</p>
-				</a></li>
-				<li class="nav-item"><a href="newTaskUser" class="nav-link"> <i
-						class="nav-icon far fa-calendar-alt"></i>
-						<p>New Task User <span class="badge badge-info right"></span>
-						</p>
-				</a></li>
-				
+				</a>
+					<ul class="nav nav-treeview">
 						
+						<li class="nav-item"><a href="managermyproject" class="nav-link">
+								<i class="fas fa-list"></i>
+								<p>Project List</p>
+						</a></li>
+					</ul></li>
 				<li class="nav-item"><a href="logout" class="nav-link"> <i
 						class="nav-icon fas fa-power-off"></i>
-						<p>Logout <span class="badge badge-info right"></span>
+						<p>
+							Logout <span class="badge badge-info right"></span>
 						</p>
-				</a></li>		
-								
+				</a></li>
+
 			</ul>
 		</nav>
 		<!-- /.sidebar-menu -->

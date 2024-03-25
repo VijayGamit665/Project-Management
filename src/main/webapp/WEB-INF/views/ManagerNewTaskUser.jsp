@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Project Status List</title>
+<title>New Task User</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -40,25 +40,25 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
+
 		
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
-
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Project Status List</h1>
+							<h1 class="m-0 text-dark">Dashboard</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Project Status List</li>
+								<li class="breadcrumb-item active"><a href="projectManagerDashBoard">Dashboard</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -66,68 +66,91 @@
 					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
+
 			</div>
 			<!-- /.content-header -->
 
-			<!-- -Tables--- -->
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-header">
-							<h3 class="card-title">Project Status List</h3>
+			<!-- Main content -->
 
-							<div class="card-tools">
-								<div class="input-group input-group-sm" style="width: 150px;">
-									<input type="text" name="table_search"
-										class="form-control float-right" placeholder="Search">
-
-									<div class="input-group-append">
-										<button type="submit" class="btn btn-default">
-											<i class="fas fa-search"></i>
+			<form action="saveTaskUser" method="post"">
+				<section class="content">
+					<div class="row">
+						<div class="col-12 col-sm-12">
+							<div class="card card-primary">
+								<div class="card-header">
+									<h3 class="card-title">New Task User Details</h3>
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse" data-toggle="tooltip"
+											title="Collapse">
+											<i class="fas fa-minus"></i>
 										</button>
 									</div>
 								</div>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputDescription">UserID</label> <select
+													name="userId" class="form-control">
+													<option value="-1">------Select UserID-------</option>
+													<c:forEach items="${User}" var="users">
+														<option value="${users.userId}">${users.firstName} ${users.lastName}</option>
+													</c:forEach>
+												</select>
+
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputStatus">TaskId</label> <select
+													name="taskId" class="form-control">
+													<option value="-1">------Select TaskId-------</option>
+													<c:forEach items="${tasklist}" var="task">
+														<option value="${task.taskId}">${task.title}</option>
+													</c:forEach>
+												</select><br>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputStatus">AssignStatus</label> <input
+													type="number" id="inputClientCompany" class="form-control"
+													name="assignStatus">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputClientCompany">StatusId</label> <select
+													name="projectStatusId" class="form-control">
+													<option value="-1">------Select StatusId-------</option>
+													<c:forEach items="${statuslist}" var="status">
+														<option value="${status.projectStatusId}">${status.projectStatus}</option>
+													</c:forEach>
+												</select>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-12">
+											<input type="submit" value="Add Task User"
+												class="btn btn-success float-left"> <a
+												href="newTaskUser" class="btn btn-secondary float-right">Cancel</a>
+										</div>
+									</div>
+
+								</div>
+								<!-- /.card-body -->
 							</div>
+							<!-- /.card -->
 						</div>
-						<!-- /.card-header -->
-						<div class="card-body table-responsive p-0">
-							<table class="table table-hover text-nowrap">
-								<thead>
-									<tr>
-										<th>ProjectStatusId</th>
-										<th>ProjectStatus</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${s}" var="projectstatus">
-										<tr>
-											<td>${projectstatus.projectStatusId}</td>
-											<td>${projectstatus.projectStatus}</td>
-											<td><a
-												class="btn btn-info btn-sm" href="deleteprojectstatus?projectStatusId=${projectstatus.projectStatusId}">Delete</a></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<!-- /.card-body -->
 					</div>
-					<!-- /.card -->
-				</div>
-			</div>
-			<!-- -/Tables--- -->
-
-
-
-
-
-
-			<!-- Main content -->
-			<section class="content">
-				<!-- /.container-fluid -->
-			</section>
-			<!-- /.content -->
+				</section>
+			</form>
+			<!-- /Main content -->
 		</div>
 		<!-- /.content-wrapper -->
 

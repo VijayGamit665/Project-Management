@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>New Project User</title>
+<title>New Task</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -40,8 +40,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
+
+
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -56,7 +58,8 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active"><a href="projectManagerDashBoard">Dashboard</a></li>
+								<li class="breadcrumb-item active"><a
+									href="projectManagerDashBoard">Dashboard</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -64,18 +67,19 @@
 					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
+
 			</div>
 			<!-- /.content-header -->
 
 			<!-- Main content -->
 
-			<form action="saveProjectUser" method="post"">
+			<form action="saveTask" method="post"">
 				<section class="content">
 					<div class="row">
 						<div class="col-12 col-sm-12">
 							<div class="card card-primary">
 								<div class="card-header">
-									<h3 class="card-title">New Project User Details</h3>
+									<h3 class="card-title">New Task Details</h3>
 									<div class="card-tools">
 										<button type="button" class="btn btn-tool"
 											data-card-widget="collapse" data-toggle="tooltip"
@@ -87,53 +91,94 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputDescription">UserId</label> <select
-													name="userId" class="form-control">
-													<option value="-1">------Select UserID-------</option>
-													<c:forEach items="${puser}" var="user">
-														<option value="${user.userId}">${user.firstName} ${user.lastName} : ${user.email}</option>
-													</c:forEach>
-												</select>
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputDescription">ProjectId</label> <select
+											<label for="inputStatus">Project</label> <select
 													name="projectId" class="form-control">
-													<option value="-1">------ProjectId-------</option>
-													<c:forEach items="${projectlist}" var="project">
+													<option value="-1">------Select Status-------</option>
+													<c:forEach items="${projects}" var="project">
 														<option value="${project.projectId}">${project.title}</option>
 													</c:forEach>
 												</select>
+										</div>
+										<div class="col-lg-6">
+											<label for="inputStatus">Module</label> <select
+													name="moduleId" class="form-control">
+													<option value="-1">------Select Status-------</option>
+													<c:forEach items="${module}" var="modules">
+														<option value="${modules.moduleId}">${modules.moduleName}</option>
+													</c:forEach>
+												</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">Title</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="title">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputClientCompany">EstimatedHours</label> <input
+													type="text" id="inputClientCompany" class="form-control"
+													name="estimatedHours">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputDescription">AssignStatus</label> <input
-													type="number" name="assignStatus" class="form-control">
+												<label for="inputProjectLeader">TotalUtilizedHours</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="totalUtilizedHours">
 											</div>
 										</div>
-										<div class="col-lg-6"></div>
-									</div>
-									<div class="row">
-										<div class="col-12">
-											<input type="submit" value="Add Project User"
-												class="btn btn-success float-left"> <a
-												href="newProjectUser" class="btn btn-secondary float-right">Cancel</a>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">DocURL</label> <input
+													type="url" id="inputProjectLeader" class="form-control"
+													name="docURL">
+											</div>
 										</div>
 									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">Description</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="description">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputStatus">Status</label> <select
+													name="statusId" class="form-control">
+													<option value="-1">------Select Status-------</option>
+													<c:forEach items="${statuss}" var="status">
+														<option value="${status.projectStatusId}">${status.projectStatus}</option>
+													</c:forEach>
+												</select>
+											</div>
+										</div>
+									</div>
+									<input type="hidden" name="projectId" value="${param.projectId}" />
+									<div class="row">
+										<div class="col-12">
+											<input type="submit" value="Add New Task"
+												class="btn btn-success float-left"> <a
+												href="newTask" class="btn btn-secondary float-right">Cancel</a>
+										</div>
+									</div>
+
 								</div>
+								<!-- /.card-body -->
 							</div>
+							<!-- /.card -->
 						</div>
 					</div>
 				</section>
 			</form>
-
-
-			<!-- /.content -->
+			<!-- /Main content -->
 		</div>
 		<!-- /.content-wrapper -->
 

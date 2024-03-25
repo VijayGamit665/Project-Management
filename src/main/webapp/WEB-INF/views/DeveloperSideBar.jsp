@@ -35,6 +35,15 @@
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
 
+				<li class="nav-item"><a href="usermyproject" class="nav-link"> <i
+						class="fas fa-list"></i>
+						<p>Projects</p>
+				</a></li>
+
+				<li class="nav-item"><a href="usermytask" class="nav-link"> <i
+						class="fas fa-list"></i>
+						<p>Task</p>
+				</a></li>
 
 				<li class="nav-item"><a href="logout" class="nav-link"> <i
 						class="nav-icon fas fa-power-off"></i>

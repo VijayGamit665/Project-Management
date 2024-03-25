@@ -53,7 +53,7 @@ public class DeveloperDashBoardController {
 		model.addAttribute("pu", projectRepo.getUserByUserId(user.getUserId()));
 		model.addAttribute("hu", projectRepo.getholdUserByUserId(user.getUserId()));
 		model.addAttribute("ru", projectRepo.getRevokeUserByUserId(user.getUserId()));
-		return"MyProject";
+		return"UserMyProject";
 	}
 	
 	@GetMapping("/userongoingproject")

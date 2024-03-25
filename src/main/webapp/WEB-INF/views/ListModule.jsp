@@ -127,9 +127,9 @@
 											<td>${module.estimatedHours}</td>
 											<td>${module.totalUtilizedHours}</td>
 											<td>
-												  <a href="editmodule?moduleId=${module.moduleId}">Edit</a>
-												| <a href="deletemodule?moduleId=${module.moduleId}">delete</a>
-												| <a href="listTask?moduleId=${module.moduleId}">Task List</a></td>
+												  <a class="btn btn-info btn-sm" href="editmodule?moduleId=${module.moduleId}">Edit</a>
+												| <a class="btn btn-info btn-sm" href="deletemodule?moduleId=${module.moduleId}">delete</a>
+												| <a class="btn btn-info btn-sm" href="listTask?moduleId=${module.moduleId}">Task List</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

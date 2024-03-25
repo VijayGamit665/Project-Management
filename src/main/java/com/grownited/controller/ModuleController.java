@@ -36,6 +36,24 @@ public class ModuleController {
 		model.addAttribute("projectStatsulist", projectStatsulist);
 		return "NewModule";
 	}
+	
+	@GetMapping("/directnewmodule")
+	public String directNewModule(Model model) {
+		List<ProjectEntity> projectslist = projectRepo.findAll();
+		List<ProjectStatusEntity> projectStatsulist = projectStatusRepo.findAll();
+		model.addAttribute("projectslist", projectslist);
+		model.addAttribute("projectStatsulist", projectStatsulist);
+		return "DirectNewModule";
+	}
+	
+	@GetMapping("/managerdirectnewmodule")
+	public String managerDirectNewModule(Model model) {
+		List<ProjectEntity> projectslist = projectRepo.findAll();
+		List<ProjectStatusEntity> projectStatsulist = projectStatusRepo.findAll();
+		model.addAttribute("projectslist", projectslist);
+		model.addAttribute("projectStatsulist", projectStatsulist);
+		return "ManagerDirectNewModule";
+	}
 
 	@PostMapping("/saveModule")
 	public String saveModule(ModuleEntity module) {
@@ -59,7 +77,7 @@ public class ModuleController {
 		return "redirect:/listmodule?projectId="+projectId;
 	}
 	
-	@GetMapping("/myModule")
+	@GetMapping("/usermymodule")
 	public String myModule(@RequestParam("projectId") Integer projectId, Model model) {
 		List<ModuleEntity> modules = moduleRepo.findByProjectId(projectId);
 	 	 ProjectEntity project = projectRepo.findById(projectId).get();
@@ -67,6 +85,15 @@ public class ModuleController {
 	 	 model.addAttribute("project", project);
 		
 		return"UserMyModule";
+	}
+	
+	@GetMapping("/managermymodule")
+	public String managerMyModule(@RequestParam("projectId") Integer projectId, Model model) {
+		List<ModuleEntity> modules = moduleRepo.findByProjectId(projectId);
+	 	 ProjectEntity project = projectRepo.findById(projectId).get();
+	 	 model.addAttribute("m", modules);
+	 	 model.addAttribute("project", project);
+		return"ManagerMyModule";
 	}
 	
 	@GetMapping("/editmodule")
