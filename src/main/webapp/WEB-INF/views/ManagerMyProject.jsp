@@ -120,9 +120,9 @@
 													<td>${project.projectStartDate}</td>
 													<td>${project.projectCompletionDate}</td>
 													<td>
-													<a class="btn btn-primary btn-sm" href="managermymodule?projectId=${project.projectId}">Module</a>
+													<a class="btn btn-primary btn-sm" href="listmodule?projectId=${project.projectId}">Module</a>
 													|
-													<a class="btn btn-info btn-sm" href="managerlistprojectuser?projectId=${project.projectId}">Team</a>
+													<a class="btn btn-info btn-sm" href="listProjectUser?projectId=${project.projectId}">Team</a>
 													</td>
 												</tr>
 											</c:forEach>
@@ -166,7 +166,7 @@
 													<td>${project.projectStartDate}</td>
 													<td>${project.projectCompletionDate}</td>
 													<td>
-													<a class="btn btn-primary btn-sm" href="managermymodule?projectId=${project.projectId}">Module</a>
+													<a class="btn btn-primary btn-sm" href="listmodule?projectId=${project.projectId}">Module</a>
 													|
 													<a class="btn btn-info btn-sm" href="listProjectUser?projectId=${project.projectId}">Team</a>
 													</td>
@@ -212,7 +212,7 @@
 													<td>${project.projectStartDate}</td>
 													<td>${project.projectCompletionDate}</td>
 													<td>
-													<a class="btn btn-primary btn-sm" href="managermymodule?projectId=${project.projectId}">Module</a>
+													<a class="btn btn-primary btn-sm" href="listmodule?projectId=${project.projectId}">Module</a>
 													|
 													<a class="btn btn-info btn-sm" href="listProjectUser?projectId=${project.projectId}">Team</a>
 													</td>

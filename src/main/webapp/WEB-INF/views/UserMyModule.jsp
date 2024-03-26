@@ -122,7 +122,7 @@
 											<td>${module.estimatedHours}</td>
 											<td>${module.totalUtilizedHours}</td>
 											<td>
-											<a class="btn btn-primary btn-sm" href="usermytask?moduleId=${module.moduleId}">Task List</a>
+											<a class="btn btn-primary btn-sm" href="mytask?moduleId=${module.moduleId}">Task List</a>
 											</td>
 										</tr>
 									</c:forEach>

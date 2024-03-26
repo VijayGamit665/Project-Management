@@ -91,7 +91,7 @@
 												<label for="inputDescription">UserId</label> <select
 													name="userId" class="form-control">
 													<option value="-1">------Select UserID-------</option>
-													<c:forEach items="${puser}" var="user">
+													<c:forEach items="${managers}" var="user">
 														<option value="${user.userId}">${user.firstName} ${user.lastName} : ${user.email}</option>
 													</c:forEach>
 												</select>

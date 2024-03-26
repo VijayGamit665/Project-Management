@@ -17,6 +17,7 @@ import com.grownited.repository.ProjectUserRepository;
 import com.grownited.repository.RoleRepository;
 import com.grownited.repository.UserRepository;
 
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ProjectUserController {
@@ -34,39 +35,53 @@ public class ProjectUserController {
 	RoleRepository roleRepo;
 
 	@GetMapping("/newProjectUser")
-	public String newProjectUser(ProjectEntity project, UserEntity user, Model model) {
-				
-		List<UserEntity> projectusers = userRepo.findAll();
-		System.out.println(projectusers);
-		List<ProjectEntity> projectlists = projectRepo.findAll();
-		model.addAttribute("puser", projectusers);
-		model.addAttribute("projectlist", projectlists);
+	public String newProjectUser(ProjectEntity project, Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
 
-		return "NewProjectUser";
+		
+		if (user.getRoleId() == 1) {
+
+			List<UserEntity> manager = userRepo.findBymroleId();
+			model.addAttribute("managers", manager);
+			List<ProjectEntity> projectlists = projectRepo.findAll();
+			model.addAttribute("projectlist", projectlists);
+
+			return "NewProjectUser";
+
+		} else {
+
+			model.addAttribute("projectlist", projectRepo.getUserByUserId(user.getUserId()));
+			List<UserEntity> developer = userRepo.findByroleId();
+			model.addAttribute("developers", developer);
+			return "ManagerNewProjectUser";
+		}
+
 	}
 
-	@GetMapping("/managernewprojectuser")
-	public String managerNewProjectUser(ProjectEntity project, UserEntity user, Model model) {
-				
-		List<UserEntity> projectusers = userRepo.findAll();
-		System.out.println(projectusers);
-		List<ProjectEntity> projectlists = projectRepo.findAll();
-		model.addAttribute("puser", projectusers);
-		model.addAttribute("projectlist", projectlists);
-
-		return "ManagerNewProjectUser";
-	}
-
-	
 	@PostMapping("/saveProjectUser")
-	public String saveProjectUser(ProjectUserEntity projectUser) {
+	public String saveProjectUser(ProjectUserEntity projectUser, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+
 		projectUser.setAssignStatus(1);
 		projectUserRepo.save(projectUser);
-		return "redirect:/newProjectUser";
+
+		if (user != null) {
+			if (user.getRoleId() == 2) {
+				return "redirect:/managernewprojectuser";
+			} else {
+				return "redirect:/newProjectUser";
+			}
+
+		} else {
+
+			return "login";
+		}
+
 	}
 
 	@GetMapping("/listProjectUser")
-	public String listProjectUser(@RequestParam("projectId") Integer projectId, Model model) {
+	public String listProjectUser(@RequestParam("projectId") Integer projectId, Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
 
 		model.addAttribute("project", projectRepo.findById(projectId).get());
 		model.addAttribute("pu", userRepo.getUserByProjectId(projectId));
@@ -74,35 +89,22 @@ public class ProjectUserController {
 		model.addAttribute("usersHold", userRepo.getUserByprojectIdHold(projectId));
 		model.addAttribute("usersRevoke", userRepo.getUserByprojectIdRevoke(projectId));
 
-		return "ListProjectUser";
+		if (user.getRoleId() == 1) {
+
+			return "ListProjectUser";
+
+		} else if (user.getRoleId() == 2) {
+
+			return "ManagerListProjectUser";
+
+		} else {
+
+			return "UserListProjectUser";
+
+		}
+
 	}
 
-	@GetMapping("/managerlistprojectuser")
-	public String managerListProjectUser(@RequestParam("projectId") Integer projectId, Model model) {
-
-		model.addAttribute("project", projectRepo.findById(projectId).get());
-		model.addAttribute("pu", userRepo.getUserByProjectId(projectId));
-
-		model.addAttribute("usersHold", userRepo.getUserByprojectIdHold(projectId));
-		model.addAttribute("usersRevoke", userRepo.getUserByprojectIdRevoke(projectId));
-
-		return "ManagerListProjectUser";
-	}
-
-	@GetMapping("/userlistprojectuser")
-	public String userListProjectUser(@RequestParam("projectId") Integer projectId, Model model) {
-
-		model.addAttribute("project", projectRepo.findById(projectId).get());
-		model.addAttribute("pu", userRepo.getUserByProjectId(projectId));
-
-		model.addAttribute("usersHold", userRepo.getUserByprojectIdHold(projectId));
-		model.addAttribute("usersRevoke", userRepo.getUserByprojectIdRevoke(projectId));
-
-		return "UserListProjectUser";
-	}
-
-	
-	
 	@GetMapping("/deleteprojectuser")
 	public String deleteProjectUser(@RequestParam("projectId") Integer projectId, Model model) {
 		projectUserRepo.deleteById(projectId);

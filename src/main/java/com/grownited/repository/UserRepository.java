@@ -38,6 +38,13 @@ public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 	@Query(value="select u.* from user u, project_user pu where u.user_id = pu.user_id and pu.project_id = :projectId and pu.assign_status = 3", nativeQuery=true)
 	List<UserEntity> getUserByprojectIdHold(Integer projectId);
 	
+	@Query(value="select u.* from user u where role_id =3",nativeQuery=true)
+	List<UserEntity> findByroleId();
+	
+	@Query(value="select u.* from user u where role_id =2",nativeQuery=true)
+	List<UserEntity> findBymroleId();
+	
+	
 	
 	
 

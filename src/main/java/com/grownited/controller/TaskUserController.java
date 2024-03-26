@@ -18,6 +18,8 @@ import com.grownited.repository.TaskRepository;
 import com.grownited.repository.TaskUserRepository;
 import com.grownited.repository.UserRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class TaskUserController {
 
@@ -29,32 +31,28 @@ public class TaskUserController {
 	TaskRepository taskRepo;
 	@Autowired
 	ProjectStatusRepository projectStatusRepo;
-	
+
 	@GetMapping("/newTaskUser")
-	public String newTaskUser(Model model) {
-		List<UserEntity> Users = userRepo.findAll();
+	public String newTaskUser(Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
 		List<TaskEntity> tasklist = taskRepo.findAll();
 		List<ProjectStatusEntity> statuslist = projectStatusRepo.findAll();
-		model.addAttribute("User", Users);
 		model.addAttribute("tasklist", tasklist);
 		model.addAttribute("statuslist", statuslist);
-		return "NewTaskUser";
+		if (user.getRoleId() == 2) {
+			List<UserEntity> Users = userRepo.findByroleId();
+			model.addAttribute("User", Users);
+
+			return "ManagerNewTaskUser";
+
+		} else {
+			List<UserEntity> Users = userRepo.findAll();
+			model.addAttribute("User", Users);
+			return "NewTaskUser";
+		}
 
 	}
 
-	@GetMapping("/managernewtaskuser")
-	public String managerNewTaskUser(Model model) {
-		List<UserEntity> Users = userRepo.findAll();
-		List<TaskEntity> tasklist = taskRepo.findAll();
-		List<ProjectStatusEntity> statuslist = projectStatusRepo.findAll();
-		model.addAttribute("User", Users);
-		model.addAttribute("tasklist", tasklist);
-		model.addAttribute("statuslist", statuslist);
-		return "ManagerNewTaskUser";
-
-	}
-
-	
 	@PostMapping("/saveTaskUser")
 	public String saveTaskUser(TaskUserEntity taskUser) {
 		taskUser.setAssignStatus(1);
@@ -63,61 +61,43 @@ public class TaskUserController {
 	}
 
 	@GetMapping("/listTaskUser")
-	public String listTaskUser(@RequestParam("taskId") Integer taskId, Model model) {
-
+	public String listTaskUser(@RequestParam("taskId") Integer taskId, Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
 		model.addAttribute("task", taskRepo.findById(taskId).get());
 		model.addAttribute("pu", userRepo.getUserBytaskId(taskId));
+		model.addAttribute("usersHold", userRepo.getUserBytaskIdHold(taskId));
+		model.addAttribute("usersRevoke", userRepo.getUserBytaskIdRevoke(taskId));
 
-		model.addAttribute("usersHold",userRepo.getUserBytaskIdHold(taskId));
-		model.addAttribute("usersRevoke",userRepo.getUserBytaskIdRevoke(taskId));
-		
-		
-		return "ListTaskUser";
+		if (user.getRoleId() == 1) {
+
+			return "ListTaskUser";
+
+		} else if (user.getRoleId() == 2) {
+
+			return "ManagerListTaskUser";
+
+		} else {
+			return "UserListTaskUser";
+
+		}
+
 	}
 
-	@GetMapping("/managerlisttaskuser")
-	public String managerListTaskUser(@RequestParam("taskId") Integer taskId, Model model) {
-
-		model.addAttribute("task", taskRepo.findById(taskId).get());
-		model.addAttribute("pu", userRepo.getUserBytaskId(taskId));
-
-		model.addAttribute("usersHold",userRepo.getUserBytaskIdHold(taskId));
-		model.addAttribute("usersRevoke",userRepo.getUserBytaskIdRevoke(taskId));
-		
-		
-		return "ManagerListTaskUser";
-	}
-
-	@GetMapping("/userlisttaskuser")
-	public String userListTaskUser(@RequestParam("taskId") Integer taskId, Model model) {
-
-		model.addAttribute("task", taskRepo.findById(taskId).get());
-		model.addAttribute("pu", userRepo.getUserBytaskId(taskId));
-
-		model.addAttribute("usersHold",userRepo.getUserBytaskIdHold(taskId));
-		model.addAttribute("usersRevoke",userRepo.getUserBytaskIdRevoke(taskId));
-		
-		
-		return "UserListTaskUser";
-	}
-
-	
-	
 	@GetMapping("/deletetaskuser")
 	public String deleteTaskUser(@RequestParam("taskUserId") Integer taskUserId) {
 		taskUserRepo.deleteById(taskUserId);
 		return "redirect:/listTaskUser";
 	}
-	
+
 	@GetMapping("/taskrevoke")
-	public String taskRevoke(@RequestParam("userId") Integer userId,@RequestParam("taskId") Integer taskId,@RequestParam("status") Integer status) {
-		
-		TaskUserEntity taskUser = taskUserRepo.findBytaskIdAndUserId(taskId,userId);
+	public String taskRevoke(@RequestParam("userId") Integer userId, @RequestParam("taskId") Integer taskId,
+			@RequestParam("status") Integer status) {
+
+		TaskUserEntity taskUser = taskUserRepo.findBytaskIdAndUserId(taskId, userId);
 		taskUser.setAssignStatus(status);
 		taskUserRepo.save(taskUser);
-		
-		return"redirect:/listTaskUser?taskId="+taskId;
+
+		return "redirect:/listTaskUser?taskId=" + taskId;
 	}
-	
 
 }

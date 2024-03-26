@@ -80,4 +80,5 @@ public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer>
 	List<ProjectEntity> getdueCompletedprojectBymonth(Integer month);
 
 	
+	
 }

@@ -42,15 +42,15 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="managernewproject"
+						<li class="nav-item"><a href="newProject"
 							class="nav-link"> <i class="fas fa-edit"></i>
 								<p>Create Project</p>
 						</a></li>
-						<li class="nav-item"><a href="managerdirectnewmodule"
+						<li class="nav-item"><a href="directnewmodule"
 							class="nav-link"> <i class="fas fa-edit"></i>
 								<p>Create Module</p>
 						</a></li>
-						<li class="nav-item"><a href="managerdirectnewtask" class="nav-link">
+						<li class="nav-item"><a href="directnewtask" class="nav-link">
 								<i class="fas fa-edit"></i>
 								<p>Create Task</p>
 						</a></li>
@@ -63,11 +63,11 @@
 						</p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="managernewprojectuser"
+						<li class="nav-item"><a href="newProjectUser"
 							class="nav-link"> <i class="fas fa-users"></i>
 								<p>Assign Project</p>
 						</a></li>
-						<li class="nav-item"><a href="managernewtaskuser" class="nav-link">
+						<li class="nav-item"><a href="newTaskUser" class="nav-link">
 								<i class="fas fa-users"></i>
 								<p>Assign Task</p>
 						</a></li>

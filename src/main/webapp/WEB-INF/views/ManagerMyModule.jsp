@@ -125,7 +125,7 @@
 											<td>${module.totalUtilizedHours}</td>
 											<td><a href="deletemodule?moduleId=${module.moduleId}">Delete</a>
 											|
-											<a href="managermytask?moduleId=${module.moduleId}">Task List</a>
+											<a href="mytask?moduleId=${module.moduleId}">Task List</a>
 											</td>
 										</tr>
 									</c:forEach>

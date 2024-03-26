@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.entity.ProjectEntity;
 import com.grownited.entity.ProjectStatusEntity;
+import com.grownited.entity.UserEntity;
 import com.grownited.repository.ProjectRepository;
 import com.grownited.repository.ProjectStatusRepository;
 import com.grownited.repository.UserRepository;
 
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ProjectController {
@@ -29,25 +31,24 @@ public class ProjectController {
 	ProjectStatusRepository projectStatusRepo;
 
 	@GetMapping("/newProject")
-	public String newProject(Model model) {
+	public String newProject(Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+
 		List<ProjectStatusEntity> projectstatus = projectStatusRepo.findAll();
 		model.addAttribute("projectstatus", projectstatus);
 
-		return "NewProject";
-	}
+		if (user.getRoleId() == 1) {
+			return "NewProject";
+		} else {
+			return "ManagerNewProject";
+		}
 
-	@GetMapping("/managernewproject")
-	public String managerNewProject(Model model) {
-		List<ProjectStatusEntity> projectstatus = projectStatusRepo.findAll();
-		model.addAttribute("projectstatus", projectstatus);
-		return "ManagerNewProject";
 	}
 
 	@PostMapping("/saveProject")
 	public String saveProject(ProjectEntity project) {
 
-		projectRepo.save(project);
-
+		projectRepo.save(project);		
 		return "redirect:/listProject";
 	}
 

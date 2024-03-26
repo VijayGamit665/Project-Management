@@ -38,7 +38,6 @@ public class TaskController {
 	public String newTask(@RequestParam("moduleId") Integer moduleId, Model model) {
 		ModuleEntity modules = moduleRepo.findById(moduleId).get();
 		ProjectEntity projects = projectRepo.findById(modules.getProjectId()).get();
-
 		List<ProjectStatusEntity> statuss = projectStatusRepo.findAll();
 		model.addAttribute("module", modules);
 		model.addAttribute("projects", projects);
@@ -48,8 +47,8 @@ public class TaskController {
 	}
 
 	@GetMapping("/directnewtask")
-	public String directNewTask(Model model) {
-		
+	public String directNewTask(Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
 		List<ProjectEntity> projectss = projectRepo.findAll();
 		List<ModuleEntity> modules = moduleRepo.findAll();
 		List<ProjectStatusEntity> statuss = projectStatusRepo.findAll();
@@ -57,20 +56,14 @@ public class TaskController {
 		model.addAttribute("module", modules);
 		model.addAttribute("statuss", statuss);
 
-		return "DirectNewTask";
-	}
+		if (user.getRoleId() == 1) {
+			
+			return"DirectNewTask";
 
-	@GetMapping("/managerdirectnewtask")
-	public String managerDirectNewTask(Model model) {
-		
-		List<ProjectEntity> projectss = projectRepo.findAll();
-		List<ModuleEntity> modules = moduleRepo.findAll();
-		List<ProjectStatusEntity> statuss = projectStatusRepo.findAll();
-		model.addAttribute("projects", projectss);
-		model.addAttribute("module", modules);
-		model.addAttribute("statuss", statuss);
+		} else {
+			return "ManagerDirectNewTask";
 
-		return "ManagerDirectNewTask";
+		}
 	}
 
 	
@@ -95,42 +88,37 @@ public class TaskController {
 	public String deleteTask(@RequestParam("taskId") Integer taskId) {
 		int moduleId = taskRepo.findById(taskId).get().getModuleId();
 		taskRepo.deleteById(taskId);
-		return "redirect:/listTask?moduleId="+moduleId;
+		return "redirect:/listTask?moduleId=" + moduleId;
 	}
-	
-	@GetMapping("/usermytask")
-	public String myTask(@RequestParam("moduleId") Integer moduleId,Model model , HttpSession session) {
+
+	@GetMapping("/mytask")
+	public String myTask(@RequestParam("moduleId") Integer moduleId, Model model, HttpSession session) {
 		UserEntity user = (UserEntity) session.getAttribute("user");
 		ModuleEntity modules = moduleRepo.findById(moduleId).get();
 		model.addAttribute("m", modules);
 		ProjectEntity projects = projectRepo.findById(modules.getProjectId()).get();
 		model.addAttribute("p", projects);
 		model.addAttribute("task", taskRepo.getUserByUserId(user.getUserId()));
-		model.addAttribute("revoketask",taskRepo.getRevokeUserByUserId(user.getUserId()));
-		model.addAttribute("holdtask",taskRepo.getHoldUserByUserId(user.getUserId()));
-		return"UserMyTask";
+		model.addAttribute("revoketask", taskRepo.getRevokeUserByUserId(user.getUserId()));
+		model.addAttribute("holdtask", taskRepo.getHoldUserByUserId(user.getUserId()));
+		
+		if(user.getRoleId() == 2) {
+
+			return "ManagerMyTask";
+
+		}else {
+			
+		}
+		return "UserMyTask";
 	}
-	
-	@GetMapping("/managermytask")
-	public String managerMyTask(@RequestParam("moduleId") Integer moduleId,Model model , HttpSession session) {
-		UserEntity user = (UserEntity) session.getAttribute("user");
-		ModuleEntity modules = moduleRepo.findById(moduleId).get();
-		model.addAttribute("m", modules);
-		ProjectEntity projects = projectRepo.findById(modules.getProjectId()).get();
-		model.addAttribute("p", projects);
-		model.addAttribute("task", taskRepo.getUserByUserId(user.getUserId()));
-		model.addAttribute("revoketask",taskRepo.getRevokeUserByUserId(user.getUserId()));
-		model.addAttribute("holdtask",taskRepo.getHoldUserByUserId(user.getUserId()));
-		return"ManagerMyTask";
-	}
-	
+
 	@GetMapping("/edittask")
 	public String editTask(@RequestParam("taskId") Integer taskId, Model model) {
-	 	TaskEntity task = taskRepo.findById(taskId).get();
-	 	model.addAttribute("task",task);
-	    model.addAttribute("projectStatuslist", projectStatusRepo.findAll());
-		
-		return"EditTask";
+		TaskEntity task = taskRepo.findById(taskId).get();
+		model.addAttribute("task", task);
+		model.addAttribute("projectStatuslist", projectStatusRepo.findAll());
+
+		return "EditTask";
 	}
 
 }
