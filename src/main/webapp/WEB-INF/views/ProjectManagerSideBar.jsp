@@ -16,7 +16,7 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="managerprofile" class="d-block">${user.firstName}
+				<a href="profile" class="d-block">${user.firstName}
 					${user.lastName} </a>
 			</div>
 		</div>

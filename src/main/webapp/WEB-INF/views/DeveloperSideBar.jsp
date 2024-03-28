@@ -34,16 +34,43 @@
 						</p>
 				</a></li>
 				<li class="nav-header">EXAMPLES</li>
+				<li class="nav-item has-treeview"><a href="#" class="nav-link">
+						<i class="fas fa-edit"></i>
+						<p>
+							Create <i class="right fas fa-angle-left"></i>
+						</p>
+				</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item"><a href="dailyeffortslog"
+							class="nav-link"> <i class="fas fa-edit"></i>
+								<p>Daily Log</p>
+						</a></li>
 
-				<li class="nav-item"><a href="usermyproject" class="nav-link"> <i
-						class="fas fa-list"></i>
-						<p>Projects</p>
-				</a></li>
+					</ul></li>
 
-				<li class="nav-item"><a href="usermytask" class="nav-link"> <i
-						class="fas fa-list"></i>
-						<p>Task</p>
-				</a></li>
+				<li class="nav-item has-treeview"><a href="#" class="nav-link">
+						<i class="fas fa-list"></i>
+						<p>
+							List <i class="right fas fa-angle-left"></i>
+						</p>
+				</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item"><a href="usermyproject" class="nav-link">
+								<i class="fas fa-list"></i>
+								<p>Projects</p>
+						</a></li>
+
+						<li class="nav-item"><a href="mytask" class="nav-link"> <i
+								class="fas fa-list"></i>
+								<p>Task</p>
+						</a></li>
+
+						<li class="nav-item"><a href="listdailyefforts" class="nav-link"> <i
+								class="fas fa-list"></i>
+								<p>My Daily Update list</p>
+						</a></li>
+
+					</ul></li>
 
 				<li class="nav-item"><a href="logout" class="nav-link"> <i
 						class="nav-icon fas fa-power-off"></i>

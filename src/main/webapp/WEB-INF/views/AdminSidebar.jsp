@@ -16,7 +16,7 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="adminprofile" class="d-block">Gamit Vijay</a>
+				<a href="profile" class="d-block">Gamit Vijay</a>
 			</div>
 		</div>
 

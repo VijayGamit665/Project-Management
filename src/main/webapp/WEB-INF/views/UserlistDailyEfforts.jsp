@@ -32,7 +32,7 @@
 		<!-- Navbar -->
 
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
 
 		<!-- /.sidebar -->
 
@@ -48,7 +48,7 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Project</li>
+								<li class="breadcrumb-item active">DataTables</li>
 							</ol>
 						</div>
 					</div>
@@ -62,69 +62,41 @@
 						<!-- /.card -->
 						<div class="card">
 							<div class="card-header">
-								<h3 class="card-title">Project List</h3>
+								<h3 class="card-title">My Daily Updates</h3>
 							</div>
 							<!-- /.card-header -->
 							<div class="card-body">
 								<table id="example1" class="table table-bordered table-striped">
 									<thead>
 										<tr>
-											<th>Title</th>
-											<th>P-StatusId</th>
-											<th>EstimatedHours</th>
-											<th>TotalUtilizedHours</th>
-											<th>P-StartDate</th>
-											<th>P-CompletionDate</th>
-											<th>Action</th>
-
-
+											<th>Task</th>
+											<th>Dates</th>
+											<th>Estimated_hours</th>
+											<th>Status</th>
+											<th>Description</th>
+											<th>Comments</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach items="${p}" var="project">
+										<c:forEach items="${logs}" var="log">
 											<tr>
-												<td>${project.title}</td>
-												<td><c:if test="${project.projectStatusId==1}">
-													notStarted
-											</c:if> <c:if test="${project.projectStatusId==2}">
-													inProgress
-											</c:if> <c:if test="${project.projectStatusId==3}">
-													lead
-											</c:if> <c:if test="${project.projectStatusId==4}">
-													Hold
-											</c:if> <c:if test="${project.projectStatusId==5}">
-													Completed
-											</c:if></td>
-												<td>${project.estimatedHours}</td>
-												<td>${project.totalUtilizedHours}</td>
-												<td>${project.projectStartDate}</td>
-												<td>${project.projectCompletionDate}</td>
-												<td><a class="btn btn-info btn-sm"
-													href="viewproject?projectId=${project.projectId}">View</a>
-													| <a class="btn btn-info btn-sm"
-													href="editproject?projectId=${project.projectId}">Edit</a>
-													| <a class="btn btn-info btn-sm"
-													href="deleteproject?projectId=${project.projectId}">Delete</a>
-													| <a class="btn btn-info btn-sm"
-													href="listProjectUser?projectId=${project.projectId}">User</a>
-													| <a class="btn btn-info btn-sm"
-													href="listmodule?projectId=${project.projectId}">Module</a>
-												</td>
-
+												<td>${log.taskId}</td>
+												<td>${log.dailyDate}</td>
+												<td>${log.estimatedHours}</td>
+												<td>${log.statusId}</td>
+												<td>${log.description}</td>
+												<td>${log.comments}</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 									<tfoot>
 										<tr>
-											<th>Title</th>
-											<th>P-StatusId</th>
-											<th>EstimatedHours</th>
-											<th>TotalUtilizedHours</th>
-											<th>P-StartDate</th>
-											<th>P-CompletionDate</th>
-											<th>Action</th>
-
-
+											<th>Task</th>
+											<th>Dates</th>
+											<th>Estimated_hours</th>
+											<th>Status</th>
+											<th>Description</th>
+											<th>Status</th>
 										</tr>
 									</tfoot>
 								</table>

@@ -157,50 +157,18 @@
 										<li class="nav-item"><a class="nav-link" href="#timeline"
 											data-toggle="tab">Timeline</a></li>
 										<li class="nav-item"><a class="nav-link" href="#settings"
-											data-toggle="tab">Settings</a></li>
+											data-toggle="tab">Edit Project</a></li>
 									</ul>
 								</div>
 								<!-- /.card-header -->
 								<div class="card-body">
 									<div class="tab-content">
 										<div class="active tab-pane" id="activity">
-											<!-- Post -->
-											<!-- /.post -->
-											Activity
-											<!-- Post -->
-
-											<!-- /.post -->
-
-											<!-- Post -->
-											<div class="post">
-
-												<!-- /.user-block -->
-
-												<!-- /.row -->
-
-											</div>
-											<!-- /.post -->
+											<div class="post"></div>
 										</div>
-										<!-- /.tab-pane -->
 										<div class="tab-pane" id="timeline">
-											<!-- The timeline -->
-											<div class="timeline timeline-inverse">
-												<!-- timeline time label -->
-												<!-- /.timeline-label -->
-												<!-- timeline item -->
-												<!-- END timeline item -->
-												<!-- timeline item -->
-												<!-- END timeline item -->
-												<!-- timeline item -->
-												<!-- END timeline item -->
-												<!-- timeline time label -->
-												<!-- /.timeline-label -->
-												<!-- timeline item -->
-												<!-- END timeline item -->
-											</div>
+											<div class="timeline timeline-inverse"></div>
 										</div>
-										<!-- /.tab-pane -->
-
 										<div class="tab-pane" id="settings">
 											<form class="form-horizontal">
 												<div class="form-group row">
