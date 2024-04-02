@@ -149,13 +149,17 @@
 													name="userId" class="form-control">
 													<option value="-1">------Select Status-------</option>
 													<c:forEach items="${users}" var="user">
-														<option value="${user.userId}">${user.firstName} ${user.lastName} ${user.email} </option>
+														<option value="${user.userId}">${user.firstName}
+															${user.lastName} ${user.email}</option>
 													</c:forEach>
 												</select>
 											</div>
 										</div>
 										<div class="col-lg-6">
-											<div class="form-group"></div>
+											<div class="form-group">
+												
+
+											</div>
 										</div>
 									</div>
 

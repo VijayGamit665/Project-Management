@@ -67,14 +67,14 @@ public class ProjectUserController {
 
 		if (user != null) {
 			if (user.getRoleId() == 2) {
-				return "redirect:/managernewprojectuser";
+				return "redirect:/newProjectUser";
 			} else {
 				return "redirect:/newProjectUser";
 			}
 
 		} else {
 
-			return "login";
+			return "Login";
 		}
 
 	}

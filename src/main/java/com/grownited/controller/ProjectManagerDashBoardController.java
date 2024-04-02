@@ -71,8 +71,8 @@ public class ProjectManagerDashBoardController {
 	public String userPipelineProject (HttpSession session, Model model , ProjectEntity project) {
 		UserEntity user = (UserEntity) session.getAttribute("user");
 		
-		List<ProjectEntity> userongoingproject = projectRepo.getUserpipelineprojectByprojectstatusId(user.getUserId());
-		model.addAttribute("userongoingproject",userongoingproject);
+		List<ProjectEntity> userpipelineproject = projectRepo.getUserpipelineprojectByprojectstatusId(user.getUserId());
+		model.addAttribute("userpipelineproject",userpipelineproject);
 		 return"ManagerPipelineProject";
 	}
 	
