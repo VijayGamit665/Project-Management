@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>New Task</title>
+<title>PMS | Charts</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -43,7 +42,7 @@
 
 
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
+		<jsp:include page="AdminSidebar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -58,123 +57,44 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active"><a
-									href="projectManagerDashBoard">Dashboard</a></li>
+								<li class="breadcrumb-item active">Dashboard</li>
 							</ol>
 						</div>
 						<!-- /.col -->
 					</div>
 					<!-- /.row -->
 				</div>
-				<!-- /.container-fluid -->
 
+				<!-- /.container-fluid -->
 			</div>
 			<!-- /.content-header -->
 
 			<!-- Main content -->
-
-			<form action="savedailyefforts" method="post"">
-				<section class="content">
+			<section class="content">
+				<div class="container-fluid">
 					<div class="row">
-						<div class="col-12 col-sm-12">
-							<div class="card card-primary">
-								<div class="card-header">
-									<h3 class="card-title">${user.firstName}${user.lastName}
-										DailyLog</h3>
-									<div class="card-tools">
-										<button type="button" class="btn btn-tool"
-											data-card-widget="collapse" data-toggle="tooltip"
-											title="Collapse">
-											<i class="fas fa-minus"></i>
-										</button>
-									</div>
-								</div>
+						<div class="col-md-12">
+							<div class="card">
 								<div class="card-body">
-									<div class="row">
-										<div class="col-lg-6">
-											<label for="inputStatus">Task</label> <select name="taskId"
-												class="form-control">
-												<option value="-1">------Select Your Task-------</option>
-												<c:forEach items="${mytask}" var="task">
-													<option value="${task.taskId}">${task.title}</option>
-												</c:forEach>
-											</select>
-										</div>
-										<div class="col-lg-6">
-											<label for="inputStatus">Status</label> <select
-												name="statusId" class="form-control">
-												<option value="-1">------Select Status-------</option>
-												<c:forEach items="${status}" var="statuss">
-													<option value="${statuss.projectStatusId}">${statuss.projectStatus}</option>
-												</c:forEach>
-											</select>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputProjectLeader">Today Date</label> <input
-													type="date" id="inputProjectLeader" class="form-control"
-													name="dailyDate">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputClientCompany">Total Utilized Hours</label> <input
-													type="text" id="inputClientCompany" class="form-control"
-													name="totalUtilizedHours">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputProjectLeader">Description</label> <input
-													type="text" id="inputProjectLeader" class="form-control"
-													name="description">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputProjectLeader">Comments</label> <input
-													type="text" id="inputProjectLeader" class="form-control"
-													name="comments">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-										<input type="hidden" name="userId" value="${user.userId}" />
 
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												
-
-											</div>
-										</div>
+									<div>
+										<canvas id="myChart"></canvas>
 									</div>
 
-
-									<div class="row">
-										<div class="col-12">
-											<input type="submit" value="Add New Task"
-												class="btn btn-success float-left"> <a
-												href="newTask" class="btn btn-secondary float-right">Cancel</a>
-										</div>
-									</div>
 
 								</div>
-								<!-- /.card-body -->
+
 							</div>
-							<!-- /.card -->
+
 						</div>
+
 					</div>
-				</section>
-			</form>
-			<!-- /Main content -->
+
+				</div>
+			</section>
+
+
+			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
 
@@ -224,5 +144,29 @@
 	<script src="dist/js/pages/dashboard.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="dist/js/demo.js"></script>
+	<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: [${projectName}],
+      datasets: [{
+        label: '# Hours',
+        data: [${estimatedHr}],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+ 
+	
 </body>
 </html>

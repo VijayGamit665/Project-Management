@@ -35,6 +35,9 @@ public class TaskUserController {
 	@GetMapping("/newTaskUser")
 	public String newTaskUser(Model model, HttpSession session) {
 		UserEntity user = (UserEntity) session.getAttribute("user");
+		
+		model.addAttribute("mytask", taskRepo.getUserByUserId(user.getUserId()));
+		
 		List<TaskEntity> tasklist = taskRepo.findAll();
 		List<ProjectStatusEntity> statuslist = projectStatusRepo.findAll();
 		model.addAttribute("tasklist", tasklist);

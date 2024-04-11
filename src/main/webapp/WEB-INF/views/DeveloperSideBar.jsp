@@ -16,7 +16,7 @@
 					alt="User Image">
 			</div>
 			<div class="info">
-				<a href="profile" class="d-block">Gamit Vijay</a>
+				<a href="profile" class="d-block">${user.firstName} ${user.lastName}</a>
 			</div>
 		</div>
 
@@ -60,7 +60,7 @@
 								<p>Projects</p>
 						</a></li>
 
-						<li class="nav-item"><a href="mytask" class="nav-link"> <i
+						<li class="nav-item"><a href="directmytask?userId=${user.userId}" class="nav-link"> <i
 								class="fas fa-list"></i>
 								<p>Task</p>
 						</a></li>

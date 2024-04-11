@@ -71,7 +71,7 @@
 										<tr>
 											<th>Task</th>
 											<th>Dates</th>
-											<th>Estimated_hours</th>
+											<th>Total Utilized Hours</th>
 											<th>Status</th>
 											<th>Description</th>
 											<th>Comments</th>
@@ -82,7 +82,7 @@
 											<tr>
 												<td>${log.taskId}</td>
 												<td>${log.dailyDate}</td>
-												<td>${log.estimatedHours}</td>
+												<td>${log.totalUtilizedHours}</td>
 												<td>${log.statusId}</td>
 												<td>${log.description}</td>
 												<td>${log.comments}</td>
@@ -93,7 +93,7 @@
 										<tr>
 											<th>Task</th>
 											<th>Dates</th>
-											<th>Estimated_hours</th>
+											<th>Total Utilized Hours</th>
 											<th>Status</th>
 											<th>Description</th>
 											<th>Status</th>

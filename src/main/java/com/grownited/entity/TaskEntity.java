@@ -17,11 +17,10 @@ public class TaskEntity {
 	private Integer projectId;
 	private Integer statusId;
 	private String estimatedHours;
-	private String totalUtilizedHours;
+	private Integer totalUtilizedHours;
 	private String docURL;
 	private String description;
 	private String title;
-	
 	public Integer getTaskId() {
 		return taskId;
 	}
@@ -52,10 +51,10 @@ public class TaskEntity {
 	public void setEstimatedHours(String estimatedHours) {
 		this.estimatedHours = estimatedHours;
 	}
-	public String getTotalUtilizedHours() {
+	public Integer getTotalUtilizedHours() {
 		return totalUtilizedHours;
 	}
-	public void setTotalUtilizedHours(String totalUtilizedHours) {
+	public void setTotalUtilizedHours(Integer totalUtilizedHours) {
 		this.totalUtilizedHours = totalUtilizedHours;
 	}
 	public String getDocURL() {
@@ -78,5 +77,4 @@ public class TaskEntity {
 	}
 	
 	
-
 }

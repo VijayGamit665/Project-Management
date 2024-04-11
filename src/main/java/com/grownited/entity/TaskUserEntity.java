@@ -18,6 +18,7 @@ public class TaskUserEntity {
 	private Integer assignStatus;
 	private Integer projectStatusId;
 	private Integer utitlizedHours;
+	private Integer moduleId;
 	
 	public Integer getTaskUserId() {
 		return taskUserId;
@@ -55,8 +56,11 @@ public class TaskUserEntity {
 	public void setUtitlizedHours(Integer utitlizedHours) {
 		this.utitlizedHours = utitlizedHours;
 	}
+	public Integer getModuleId() {
+		return moduleId;
+	}
+	public void setModuleId(Integer moduleId) {
+		this.moduleId = moduleId;
+	}
 	
-	
-	
-
 }

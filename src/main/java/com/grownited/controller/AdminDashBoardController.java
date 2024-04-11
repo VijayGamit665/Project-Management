@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class AdminDashBoardController {
 
+
 	@Autowired
 	ProjectRepository projectRepo;
 
@@ -65,6 +66,22 @@ public class AdminDashBoardController {
 	model.addAttribute("pipelineproject",pipelineproject);
 	return"AdminPipelineProject";
 	
+	}
+	
+	
+	@GetMapping("/charts")
+	public String charts(Model model) {
+		
+		 List<ProjectEntity> projects = projectRepo.findAll();
+		 String projectName = "";
+		 String estimatedHr = "";
+		 for(ProjectEntity p:projects) {
+			 projectName = projectName +"'"+ p.getTitle()+"',";
+			 estimatedHr = estimatedHr + p.getEstimatedHours()+",";
+		 }
+		 model.addAttribute("projectName",projectName);
+		 model.addAttribute("estimatedHr",estimatedHr);
+		return"Charts";
 	}
 	
 

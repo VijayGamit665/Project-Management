@@ -106,7 +106,7 @@
 												<label for="inputStatus">TaskId</label> <select
 													name="taskId" class="form-control">
 													<option value="-1">------Select TaskId-------</option>
-													<c:forEach items="${tasklist}" var="task">
+													<c:forEach items="${mytask}" var="task">
 														<option value="${task.taskId}">${task.title}</option>
 													</c:forEach>
 												</select><br>

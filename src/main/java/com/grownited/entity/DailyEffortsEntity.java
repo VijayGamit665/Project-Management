@@ -16,11 +16,10 @@ public class DailyEffortsEntity {
 	private Integer taskId;
 	private Integer statusId;
 	private String dailyDate;
-	private Integer estimatedHours;
+	private Integer totalUtilizedHours;
 	private String description;
 	private String comments;
 	private Integer userId;
-
 	
 	public Integer getDailyLogId() {
 		return dailyLogId;
@@ -46,11 +45,11 @@ public class DailyEffortsEntity {
 	public void setDailyDate(String dailyDate) {
 		this.dailyDate = dailyDate;
 	}
-	public Integer getEstimatedHours() {
-		return estimatedHours;
+	public Integer getTotalUtilizedHours() {
+		return totalUtilizedHours;
 	}
-	public void setEstimatedHours(Integer estimatedHours) {
-		this.estimatedHours = estimatedHours;
+	public void setTotalUtilizedHours(Integer totalUtilizedHours) {
+		this.totalUtilizedHours = totalUtilizedHours;
 	}
 	public String getDescription() {
 		return description;
@@ -70,5 +69,7 @@ public class DailyEffortsEntity {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
+
 	
+		
 }

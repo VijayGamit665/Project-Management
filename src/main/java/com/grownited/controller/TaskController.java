@@ -99,7 +99,7 @@ public class TaskController {
 		ProjectEntity projects = projectRepo.findById(modules.getProjectId()).get();
 		model.addAttribute("p", projects);
 		model.addAttribute("task", taskRepo.getUserByUserId(user.getUserId()));
-		model.addAttribute("revoketask", taskRepo.getRevokeUserByUserId(user.getUserId()));
+		model.addAttribute("revoketask",taskRepo.getRevokeUserByUserId(user.getUserId()));
 		model.addAttribute("holdtask", taskRepo.getHoldUserByUserId(user.getUserId()));
 		
 		if(user.getRoleId() == 2) {
@@ -121,4 +121,17 @@ public class TaskController {
 		return "EditTask";
 	}
 
+	@GetMapping("/directmytask")
+	public String directMyTask(@RequestParam("userId") Integer userId,Model model) {
+
+		List<TaskEntity> task = taskRepo.getUserByUserId(userId);
+		List<TaskEntity> revoketask = taskRepo.getRevokeUserByUserId(userId);
+		List<TaskEntity> holdtask = taskRepo.getHoldUserByUserId(userId);
+		model.addAttribute("task",task);
+		model.addAttribute("revoketask",revoketask);
+		model.addAttribute("holdtask",holdtask);
+		
+		return"UserMyTask";
+	}
+	
 }
