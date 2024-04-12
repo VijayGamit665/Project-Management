@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.entity.DailyEffortsEntity;
+import com.grownited.entity.ModuleEntity;
 import com.grownited.entity.TaskEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.DailyEffortsRepository;
@@ -70,7 +71,6 @@ public class DailyEffortsController {
 	public String listDailyEfforts(Model model) {
 		List<DailyEffortsEntity> logs = dailyeffortsRepo.findAll();
 		model.addAttribute("logs", logs);
-		System.out.println(logs.size());
 		return "UserlistDailyEfforts";
 	}
 
@@ -90,10 +90,32 @@ public class DailyEffortsController {
 				task.setStatusId(latestLog.getStatusId());
 				task.setTotalUtilizedHours(newTotalUtilizedHours);
 				taskRepo.save(task);
+				updateModuleStatus(task.getModuleId());
 
 			}
 		}
 
+	}
+
+	private void updateModuleStatus(Integer moduleId) {
+
+		List<TaskEntity> tasks = taskRepo.getNotCompeletedTask(moduleId);
+		ModuleEntity module = moduleRepo.findById(moduleId).orElse(null);
+		Integer totalUtilizedHours = taskRepo.getTotalUtilizedHoursSumByModuleId(moduleId);
+		ModuleEntity modules = moduleRepo.findById(moduleId).get();
+		Integer currentTotalUtilizedHours = modules.getTotalUtilizedHours();
+		Integer newTotalUtilizedHours = currentTotalUtilizedHours + totalUtilizedHours;
+		Integer statusId = 5;
+		if (tasks.size() == 0) {
+			module.setStatusId(statusId);
+			module.setTotalUtilizedHours(newTotalUtilizedHours);
+			moduleRepo.save(module);
+		} else {
+
+			module.setTotalUtilizedHours(newTotalUtilizedHours);
+			moduleRepo.save(module);
+
+		}
 	}
 
 }
