@@ -63,8 +63,8 @@
 						<div class="card">
 							<div class="card-header">
 								<h3 class="card-title">
-								<a href="newModule?projectId=${project.projectId}">Add New
-									Module</a>
+									<a href="newModule?projectId=${project.projectId}">Add New
+										Module</a>
 								</h3>
 							</div>
 							<!-- /.card-header -->
@@ -101,6 +101,8 @@
 												<td>${module.estimatedHours}</td>
 												<td>${module.totalUtilizedHours}</td>
 												<td><a class="btn btn-info btn-sm"
+													href="viewmodule?moduleId=${module.moduleId}">View</a> | <a
+													class="btn btn-info btn-sm"
 													href="editmodule?moduleId=${module.moduleId}">Edit</a> | <a
 													class="btn btn-info btn-sm"
 													href="deletemodule?moduleId=${module.moduleId}">delete</a>

@@ -21,7 +21,7 @@ public interface TaskRepository extends JpaRepository<TaskEntity, Integer> {
 	List<TaskEntity> getHoldUserByUserId(Integer userId);
 
 	@Query(value = "select * from task where status_id <> 5 and module_id =:moduleId", nativeQuery = true)
-	List<TaskEntity> getNotCompeletedTask(Integer moduleId);
+	List<TaskEntity> getNotCompletedTask(Integer moduleId);
 
 	@Query(value = "select SUM(total_utilized_hours) FROM task WHERE module_id = :moduleId", nativeQuery = true)
 	Integer getTotalUtilizedHoursSumByModuleId(Integer moduleId);

@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Edit Task</title>
+<title>Module View</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -41,125 +41,121 @@
 	<div class="wrapper">
 
 
-
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="DeveloperSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
+
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
 			<div class="content-header">
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Dashboard</h1>
+							<h1 class="m-0 text-dark">Module Details</h1>
 						</div>
 						<!-- /.col -->
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active"><a
-									href="projectManagerDashBoard">Dashboard</a></li>
+								<li class="breadcrumb-item active">Back to module list</li>
 							</ol>
 						</div>
 						<!-- /.col -->
 					</div>
-					<!-- /.row -->
 				</div>
 				<!-- /.container-fluid -->
-
 			</div>
+
 			<!-- /.content-header -->
+			<!-- -Tables--- -->
+			<!-- -/Tables--- -->
+			<!-- -New format Tables--- -->
+			<section class="content">
 
-			<!-- Main content -->
+				<!-- Default box -->
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title">${module.moduleName}Detail</h3>
 
-			<form action="saveTask?moduleId=${task.moduleId}" method="post"">
-				<section class="content">
-					<div class="row">
-						<div class="col-12 col-sm-12">
-							<div class="card card-primary">
-								<div class="card-header">
-									<h3 class="card-title">Edit Task Details</h3>
-									<div class="card-tools">
-										<button type="button" class="btn btn-tool"
-											data-card-widget="collapse" data-toggle="tooltip"
-											title="Collapse">
-											<i class="fas fa-minus"></i>
-										</button>
-									</div>
-								</div>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputProjectLeader">Title</label> <input
-													type="text" id="inputProjectLeader" class="form-control"
-													name="title" value="${task.title}">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputClientCompany">EstimatedHours</label> <input
-													type="text" id="inputClientCompany" class="form-control"
-													name="estimatedHours" value="${task.estimatedHours}">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputProjectLeader">TotalUtilizedHours</label> <input
-													type="text" id="inputProjectLeader" class="form-control"
-													name="totalUtilizedHours" value="${task.totalUtilizedHours}">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputProjectLeader">DocURL</label> <input
-													type="url" id="inputProjectLeader" class="form-control"
-													name="docURL" value="${task.docURL}">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputProjectLeader">Description</label> <input
-													type="text" id="inputProjectLeader" class="form-control"
-													name="description" value="${task.description}">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputStatus">Status</label> <select
-													name="statusId" class="form-control">
-													<option value="-1">------Select Status-------</option>
-													<c:forEach items="${projectStatuslist}" var="taskstatus">
-														<option value="${taskstatus.projectStatusId}" ${taskstatus.projectStatusId == task.statusId?"selected":""} >${taskstatus.projectStatus}</option>
-													</c:forEach>
-												</select>
-											</div>
-										</div>
-									</div>
-									<input type="hidden" name="taskId" value="${param.taskId}" />
-									<div class="row">
-										<div class="col-12">
-											<input type="submit" value="Add New Task"
-												class="btn btn-success float-left"> <a
-												href="listTask?moduleId=${task.moduleId}" class="btn btn-secondary float-right">Cancel</a>
-										</div>
-									</div>
-
-								</div>
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
+						<div class="card-tools">
+							<button type="button" class="btn btn-tool"
+								data-card-widget="collapse" data-toggle="tooltip"
+								title="Collapse">
+								<i class="fas fa-minus"></i>
+							</button>
+							<button type="button" class="btn btn-tool"
+								data-card-widget="remove" data-toggle="tooltip" title="Remove">
+								<i class="fas fa-times"></i>
+							</button>
 						</div>
 					</div>
-				</section>
-			</form>
-			<!-- /Main content -->
+					<div class="card-body">
+						<div class="row">
+							<div class="col-12">
+								<div class="row">
+									<div class="col-12 col-sm-4">
+										<div class="info-box bg-light">
+											<div class="info-box-content">
+												<span class="info-box-text text-center text-muted">Estimated
+													Hours</span> <span
+													class="info-box-number text-center text-muted mb-0">${module.estimatedHours}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-4">
+										<div class="info-box bg-light">
+											<div class="info-box-content">
+												<span class="info-box-text text-center text-muted">Total
+													Utilized Hours</span> <span
+													class="info-box-number text-center text-muted mb-0">${module.totalUtilizedHours}</span>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-4">
+										<div class="info-box bg-light">
+											<div class="info-box-content">
+												<span class="info-box-text text-center text-muted">Module
+													Status</span> <span
+													class="info-box-number text-center text-muted mb-0">${module.statusId}</span>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-10">
+								<h3 class="text-primary">
+									<i class="fas fa-paint"></i>Description
+								</h3>
+								<span class="info-box-text text-center text-muted">
+									<p class="text-muted">${module.description}</p>
+								</span>
+							</div>
+							<div class="col-12 col-sm-2">
+								<div class="text-left mt-5 mb-5">
+									<a href="listmodule?projectId=${module.projectId}"
+										class="btn btn-sm btn-primary">Module List</a> <br></br> <a
+										href="${module.docURL}" class="btn btn-sm btn-warning">Module
+										Documents</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!-- /.card-body -->
+				</div>
+				<!-- /.card -->
+
+			</section>
+
+			<!-- -/New format Tables--- -->
+
+			<!-- /.content -->
 		</div>
+
 		<!-- /.content-wrapper -->
 
 		<jsp:include page="AdminFooter.jsp"></jsp:include>

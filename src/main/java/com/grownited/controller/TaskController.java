@@ -57,8 +57,8 @@ public class TaskController {
 		model.addAttribute("statuss", statuss);
 
 		if (user.getRoleId() == 1) {
-			
-			return"DirectNewTask";
+
+			return "DirectNewTask";
 
 		} else {
 			return "ManagerDirectNewTask";
@@ -66,7 +66,6 @@ public class TaskController {
 		}
 	}
 
-	
 	@PostMapping("/saveTask")
 	public String saveTask(TaskEntity task) {
 		taskRepo.save(task);
@@ -99,39 +98,66 @@ public class TaskController {
 		ProjectEntity projects = projectRepo.findById(modules.getProjectId()).get();
 		model.addAttribute("p", projects);
 		model.addAttribute("task", taskRepo.getUserByUserId(user.getUserId()));
-		model.addAttribute("revoketask",taskRepo.getRevokeUserByUserId(user.getUserId()));
+		model.addAttribute("revoketask", taskRepo.getRevokeUserByUserId(user.getUserId()));
 		model.addAttribute("holdtask", taskRepo.getHoldUserByUserId(user.getUserId()));
-		
-		if(user.getRoleId() == 2) {
+
+		if (user.getRoleId() == 2) {
 
 			return "ManagerMyTask";
 
-		}else {
-			
+		} else {
+
 		}
 		return "UserMyTask";
 	}
 
 	@GetMapping("/edittask")
-	public String editTask(@RequestParam("taskId") Integer taskId, Model model) {
+	public String editTask(@RequestParam("taskId") Integer taskId, Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+
 		TaskEntity task = taskRepo.findById(taskId).get();
 		model.addAttribute("task", task);
 		model.addAttribute("projectStatuslist", projectStatusRepo.findAll());
 
-		return "EditTask";
+		if (user.getRoleId() == 1) {
+
+			return "EditTask";
+
+		} else {
+			return "ManagerEditTask";
+		}
+
 	}
 
 	@GetMapping("/directmytask")
-	public String directMyTask(@RequestParam("userId") Integer userId,Model model) {
+	public String directMyTask(@RequestParam("userId") Integer userId, Model model) {
 
 		List<TaskEntity> task = taskRepo.getUserByUserId(userId);
 		List<TaskEntity> revoketask = taskRepo.getRevokeUserByUserId(userId);
 		List<TaskEntity> holdtask = taskRepo.getHoldUserByUserId(userId);
-		model.addAttribute("task",task);
-		model.addAttribute("revoketask",revoketask);
-		model.addAttribute("holdtask",holdtask);
-		
-		return"UserMyTask";
+		model.addAttribute("task", task);
+		model.addAttribute("revoketask", revoketask);
+		model.addAttribute("holdtask", holdtask);
+
+		return "UserMyTask";
 	}
-	
+
+	@GetMapping("/viewtask")
+	public String viewTask(@RequestParam("taskId") Integer taskId, Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+
+		TaskEntity task = taskRepo.findById(taskId).get();
+		model.addAttribute("task", task);
+		if (user.getRoleId() == 1) {
+
+			return "ViewTask";
+
+		} else if (user.getRoleId() == 2) {
+			return "ManagerViewTask";
+		} else {
+			return "UserViewTask";
+		}
+
+	}
+
 }

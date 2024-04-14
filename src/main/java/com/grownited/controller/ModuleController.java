@@ -96,4 +96,25 @@ public class ModuleController {
 		model.addAttribute("projectStatuslist", projectStatusRepo.findAll());
 		return "EditModule";
 	}
+
+	@GetMapping("/viewmodule")
+	public String viewModule(@RequestParam("moduleId") Integer moduleId, Model model, HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+
+		ModuleEntity module = moduleRepo.findById(moduleId).get();
+		model.addAttribute("module", module);
+		if (user.getRoleId() == 1) {
+			return "ViewModule";
+		} else if (user.getRoleId() == 2) {
+
+			return "ManagerViewModule";
+
+		} else {
+
+			return "UserViewModule";
+
+		}
+
+	}
+
 }

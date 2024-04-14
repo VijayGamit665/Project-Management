@@ -70,7 +70,6 @@
 											<th>Module Name</th>
 											<th>Status</th>
 											<th>Description</th>
-											<th>DocURL</th>
 											<th>EstimatedHours</th>
 											<th>TotalUtilizedHours</th>
 											<th>Action</th>
@@ -94,12 +93,16 @@
 											</c:if></td>
 
 												<td>${module.description}</td>
-												<td>${module.docURL}</td>
 												<td>${module.estimatedHours}</td>
 												<td>${module.totalUtilizedHours}</td>
-												<td><a href="deletemodule?moduleId=${module.moduleId}">Delete</a>
-													| <a href="mytask?moduleId=${module.moduleId}">Task
-														List</a></td>
+												<td><a class="btn btn-info btn-sm"
+													href="viewmodule?moduleId=${module.moduleId}">View</a> | <a
+													class="btn btn-info btn-sm"
+													href="editmodule?moduleId=${module.moduleId}">Edit</a> | <a
+													class="btn btn-info btn-sm"
+													href="deletemodule?moduleId=${module.moduleId}">Delete</a>
+													| <a class="btn btn-info btn-sm"
+													href="mytask?moduleId=${module.moduleId}">Task List</a></td>
 
 											</tr>
 										</c:forEach>
@@ -109,7 +112,6 @@
 											<th>Module Name</th>
 											<th>Status</th>
 											<th>Description</th>
-											<th>DocURL</th>
 											<th>EstimatedHours</th>
 											<th>TotalUtilizedHours</th>
 											<th>Action</th>

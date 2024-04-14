@@ -96,7 +96,9 @@
 												<td>${module.description}</td>
 												<td>${module.estimatedHours}</td>
 												<td>${module.totalUtilizedHours}</td>
-												<td><a class="btn btn-primary btn-sm"
+												<td><a class="btn btn-info btn-sm"
+													href="viewmodule?moduleId=${module.moduleId}">View</a>| <a
+													class="btn btn-info btn-sm"
 													href="mytask?moduleId=${module.moduleId}">Task List</a></td>
 											</tr>
 										</c:forEach>

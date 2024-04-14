@@ -108,7 +108,12 @@
 														<td>${task.totalUtilizedHours}</td>
 														<td>${task.description}</td>
 														<td><a class="btn btn-info btn-sm"
+															href="viewtask?taskId=${task.taskId}">View</a>| <a
+															class="btn btn-info btn-sm"
+															href="edittask?taskId=${task.taskId}">Edit</a>| <a
+															class="btn btn-info btn-sm"
 															href="listTaskUser?taskId=${task.taskId}">Team</a></td>
+
 
 													</tr>
 												</c:forEach>
@@ -160,6 +165,10 @@
 														<td>${task.totalUtilizedHours}</td>
 														<td>${task.description}</td>
 														<td><a class="btn btn-info btn-sm"
+															href="viewtask?taskId=${task.taskId}">View</a>| <a
+															class="btn btn-info btn-sm"
+															href="edittask?taskId=${task.taskId}">Edit</a>| <a
+															class="btn btn-info btn-sm"
 															href="listTaskUser?taskId=${task.taskId}">Team</a></td>
 													</tr>
 												</c:forEach>
@@ -209,6 +218,10 @@
 														<td>${task.totalUtilizedHours}</td>
 														<td>${task.description}</td>
 														<td><a class="btn btn-info btn-sm"
+															href="viewtask?taskId=${task.taskId}">View</a>| <a
+															class="btn btn-info btn-sm"
+															href="edittask?taskId=${task.taskId}">Edit</a>| <a
+															class="btn btn-info btn-sm"
 															href="listTaskUser?taskId=${task.taskId}">Team</a></td>
 													</tr>
 												</c:forEach>

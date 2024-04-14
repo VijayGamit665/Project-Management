@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Edit Task</title>
+<title>Edit Project</title>
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Font Awesome -->
@@ -41,9 +41,9 @@
 	<div class="wrapper">
 
 
-
+		
 		<%@include file="AdminHeader.jsp"%>
-		<jsp:include page="AdminSidebar.jsp"></jsp:include>
+		<jsp:include page="ProjectManagerSideBar.jsp"></jsp:include>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -58,8 +58,7 @@
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active"><a
-									href="projectManagerDashBoard">Dashboard</a></li>
+								<li class="breadcrumb-item active"><a href="projectManagerDashBoard">Dashboard</a></li>
 							</ol>
 						</div>
 						<!-- /.col -->
@@ -73,13 +72,13 @@
 
 			<!-- Main content -->
 
-			<form action="saveTask?moduleId=${task.moduleId}" method="post"">
+			<form action="saveProject" method="post"">
 				<section class="content">
 					<div class="row">
 						<div class="col-12 col-sm-12">
 							<div class="card card-primary">
 								<div class="card-header">
-									<h3 class="card-title">Edit Task Details</h3>
+									<h3 class="card-title">Edit Project Details</h3>
 									<div class="card-tools">
 										<button type="button" class="btn btn-tool"
 											data-card-widget="collapse" data-toggle="tooltip"
@@ -92,61 +91,89 @@
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputProjectLeader">Title</label> <input
-													type="text" id="inputProjectLeader" class="form-control"
-													name="title" value="${task.title}">
+												<label for="inputDescription">Title</label> <input
+													type="text" class="form-control" name="title" value="${project.title}">
 											</div>
 										</div>
+
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputClientCompany">EstimatedHours</label> <input
-													type="text" id="inputClientCompany" class="form-control"
-													name="estimatedHours" value="${task.estimatedHours}">
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputProjectLeader">TotalUtilizedHours</label> <input
-													type="text" id="inputProjectLeader" class="form-control"
-													name="totalUtilizedHours" value="${task.totalUtilizedHours}">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputProjectLeader">DocURL</label> <input
-													type="url" id="inputProjectLeader" class="form-control"
-													name="docURL" value="${task.docURL}">
+												<label for="inputStatus">Description</label> <input
+													type="text" class="form-control" name="description" value="${project.description}">
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-6">
 											<div class="form-group">
-												<label for="inputProjectLeader">Description</label> <input
-													type="text" id="inputProjectLeader" class="form-control"
-													name="description" value="${task.description}">
-											</div>
-										</div>
-										<div class="col-lg-6">
-											<div class="form-group">
-												<label for="inputStatus">Status</label> <select
-													name="statusId" class="form-control">
-													<option value="-1">------Select Status-------</option>
-													<c:forEach items="${projectStatuslist}" var="taskstatus">
-														<option value="${taskstatus.projectStatusId}" ${taskstatus.projectStatusId == task.statusId?"selected":""} >${taskstatus.projectStatus}</option>
+												<label for="inputStatus">ProjectStatusId</label> <select
+													class="form-control custom-select" name="projectStatusId">
+													<option value="-1">------Select Project
+														StatusID-------</option>
+													<c:forEach items="${projectstatuslist}" var="status">
+														<option value="${status.projectStatusId}" ${status.projectStatusId == project.projectStatusId?"selected":""}>${status.projectStatus}</option>
 													</c:forEach>
 												</select>
 											</div>
 										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputClientCompany">DocURL</label> <input
+													type="url" id="inputClientCompany" class="form-control"
+													name="docURL" value="${project.docURL}">
+											</div>
+										</div>
 									</div>
-									<input type="hidden" name="taskId" value="${param.taskId}" />
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">EstimatedHours</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="estimatedHours" value="${project.estimatedHours}">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">TotalUtilizedHours</label> <input
+													type="text" id="inputProjectLeader" class="form-control"
+													name="totalUtilizedHours" value="${project.totalUtilizedHours}">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">ProjectStartDate</label> <input
+													type="date" id="inputProjectLeader" class="form-control"
+													name="projectStartDate" value="${project.projectStartDate}">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">ProjectCompletionDate</label>
+												<input type="date" id="inputProjectLeader"
+													class="form-control" name="projectCompletionDate" value="${project.projectCompletionDate}">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="inputProjectLeader">actualCompletionDate</label>
+												<input type="text" id="inputProjectLeader"
+													class="form-control" name="actualCompletionDate" value="${project.actualCompletionDate}">
+											</div>
+										</div>
+										<div class="col-lg-6"></div>
+									</div>
+
+									<input type="hidden" name="projectId" value="${project.projectId}"/>
 									<div class="row">
 										<div class="col-12">
-											<input type="submit" value="Add New Task"
+											<input type="submit" value="Update Project"
 												class="btn btn-success float-left"> <a
-												href="listTask?moduleId=${task.moduleId}" class="btn btn-secondary float-right">Cancel</a>
+												href="listProject" class="btn btn-secondary float-right">Cancel</a>
 										</div>
 									</div>
 

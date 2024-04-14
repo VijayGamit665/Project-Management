@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.entity.DailyEffortsEntity;
 import com.grownited.entity.ModuleEntity;
+import com.grownited.entity.ProjectEntity;
 import com.grownited.entity.TaskEntity;
 import com.grownited.entity.UserEntity;
 import com.grownited.repository.DailyEffortsRepository;
 import com.grownited.repository.ModuleRepository;
+import com.grownited.repository.ProjectRepository;
 import com.grownited.repository.ProjectStatusRepository;
 import com.grownited.repository.TaskRepository;
 import com.grownited.repository.UserRepository;
@@ -40,6 +42,9 @@ public class DailyEffortsController {
 
 	@Autowired
 	ModuleRepository moduleRepo;
+
+	@Autowired
+	ProjectRepository projectRepo;
 
 	LocalTime Time = LocalTime.now();
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
@@ -99,12 +104,13 @@ public class DailyEffortsController {
 
 	private void updateModuleStatus(Integer moduleId) {
 
-		List<TaskEntity> tasks = taskRepo.getNotCompeletedTask(moduleId);
+		List<TaskEntity> tasks = taskRepo.getNotCompletedTask(moduleId);
 		ModuleEntity module = moduleRepo.findById(moduleId).orElse(null);
 		Integer totalUtilizedHours = taskRepo.getTotalUtilizedHoursSumByModuleId(moduleId);
 		ModuleEntity modules = moduleRepo.findById(moduleId).get();
 		Integer currentTotalUtilizedHours = modules.getTotalUtilizedHours();
-		Integer newTotalUtilizedHours = currentTotalUtilizedHours + totalUtilizedHours;
+		Integer actualTotalUtilizedHours = totalUtilizedHours - currentTotalUtilizedHours;
+		Integer newTotalUtilizedHours = currentTotalUtilizedHours + actualTotalUtilizedHours;
 		Integer statusId = 5;
 		if (tasks.size() == 0) {
 			module.setStatusId(statusId);
@@ -116,6 +122,31 @@ public class DailyEffortsController {
 			moduleRepo.save(module);
 
 		}
+		updateProjectStatus(module.getProjectId());
+	}
+
+	private void updateProjectStatus(Integer projectId) {
+
+		List<ModuleEntity> module = moduleRepo.getNotCompletedModule(projectId);
+		ProjectEntity project = projectRepo.findById(projectId).orElse(null);
+		Integer totalUtilizedHours = moduleRepo.getTotalUtilizedHoursSumByProjectId(projectId);
+		ProjectEntity projects = projectRepo.findById(projectId).get();
+		Integer currentTotalUtilizedHours = projects.getTotalUtilizedHours();
+		Integer actualTotalUtilizedHours = totalUtilizedHours - currentTotalUtilizedHours;
+		Integer newTotalUtilizedHours = currentTotalUtilizedHours + actualTotalUtilizedHours;
+		Integer statusId = 5;
+		if (module.size() == 0) {
+			project.setProjectStatusId(statusId);
+			project.setTotalUtilizedHours(newTotalUtilizedHours);
+			projectRepo.save(project);
+
+		} else {
+
+			project.setTotalUtilizedHours(newTotalUtilizedHours);
+			projectRepo.save(project);
+
+		}
+
 	}
 
 }

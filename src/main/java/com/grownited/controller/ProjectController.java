@@ -67,19 +67,30 @@ public class ProjectController {
 	}
 
 	@GetMapping("/viewproject")
-	public String viewProject(@RequestParam("projectId") Integer projectId, Model model) {
+	public String viewProject(@RequestParam("projectId") Integer projectId, Model model,HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+
 		ProjectEntity projects = projectRepo.findById(projectId).get();
 		model.addAttribute("projects", projects);
-		return "ViewProject";
+		if (user.getRoleId() == 1) {
+			return "ViewProject";
+		} else {
+			return "ManagerViewProject";
+		}
 	}
 
 	@GetMapping("/editproject")
-	public String editproject(@RequestParam("projectId") Integer projectId, Model model) {
+	public String editproject(@RequestParam("projectId") Integer projectId, Model model,HttpSession session) {
+		UserEntity user = (UserEntity) session.getAttribute("user");
+
 		ProjectEntity projects = projectRepo.findById(projectId).get();
 		model.addAttribute("projectstatuslist", projectStatusRepo.findAll());
 		model.addAttribute("project", projects);
-
-		return "EditProject";
+		if (user.getRoleId() == 1) {
+			return "EditProject";
+		} else {
+			return "ManagerEditProject";
+		}
 	}
 
 }
