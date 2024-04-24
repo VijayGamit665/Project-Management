@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Admin Dash board</title>
-<!-- Tell the browser to be responsive to screen width -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Font Awesome -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
 <!-- Ionicons -->
 <link rel="stylesheet"
@@ -35,8 +33,12 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
 	rel="stylesheet">
+
+<!-- Load Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
 	<div class="wrapper">
 
 
@@ -82,7 +84,7 @@
 									<p>Total Projects</p>
 								</div>
 								<div class="icon">
-									<i class="ion ion-bag"></i>
+									<i class="fas fa-shopping-cart"></i>
 								</div>
 								<a href="listProject" class="small-box-footer">More info <i
 									class="fas fa-arrow-circle-right"></i></a>
@@ -93,17 +95,16 @@
 							<!-- small box -->
 							<div class="small-box bg-success">
 								<div class="inner">
-									<h3>
-										${getongoinproject}
-									</h3>
+									<h3>${getongoinproject}</h3>
 
 									<p>OnGoing</p>
 								</div>
 								<div class="icon">
 									<i class="ion ion-stats-bars"></i>
 								</div>
-								<a href="ongoingproject" class="small-box-footer">More info <i
-									class="fas fa-arrow-circle-right"></i></a>
+								<a href="ongoingproject" class="small-box-footer">More info
+									<i class="fas fa-arrow-circle-right"></i>
+								</a>
 							</div>
 						</div>
 						<!-- ./col -->
@@ -118,8 +119,9 @@
 								<div class="icon">
 									<i class="ion ion-person-add"></i>
 								</div>
-								<a href="pipelineprojects" class="small-box-footer">More info <i
-									class="fas fa-arrow-circle-right"></i></a>
+								<a href="pipelineprojects" class="small-box-footer">More
+									info <i class="fas fa-arrow-circle-right"></i>
+								</a>
 							</div>
 						</div>
 						<!-- ./col -->
@@ -143,6 +145,99 @@
 				</div>
 			</section>
 
+			<!-- BAR CHART -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="card card-success">
+								<div class="card-header">
+									<h3 class="card-title">Project</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-tool"
+											data-card-widget="remove">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
+								</div>
+								<div class="card-body">
+
+									<div>
+										<canvas id="myChart"
+											style="min-height: 250px; height: 250px; max-height: 500px; max-width: 100%;"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card card-success">
+								<div class="card-header">
+									<h3 class="card-title">Module</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-tool"
+											data-card-widget="remove">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
+								</div>
+								<div class="card-body">
+
+									<div>
+										<canvas id="mChart"
+											style="min-height: 250px; height: 250px; max-height: 500px; max-width: 100%;"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="card card-success">
+								<div class="card-header">
+									<h3 class="card-title">Task</h3>
+
+									<div class="card-tools">
+										<button type="button" class="btn btn-tool"
+											data-card-widget="collapse">
+											<i class="fas fa-minus"></i>
+										</button>
+										<button type="button" class="btn btn-tool"
+											data-card-widget="remove">
+											<i class="fas fa-times"></i>
+										</button>
+									</div>
+								</div>
+								<div class="card-body">
+
+									<div>
+										<canvas id="tChart"
+											style="min-height: 250px; height: 250px; max-height: 500px; max-width: 100%;"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+					</div>
+
+
+
+				</div>
+			</section>
+
+
+			<!-- /BAR CHART -->
 
 
 			<!-- /.content -->
@@ -157,7 +252,6 @@
 		</aside>
 		<!-- /.control-sidebar -->
 	</div>
-	<!-- ./wrapper -->
 
 	<!-- jQuery -->
 	<script src="plugins/jquery/jquery.min.js"></script>
@@ -195,5 +289,140 @@
 	<script src="dist/js/pages/dashboard.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="dist/js/demo.js"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			// Sample data (replace with your dynamic data)
+			const projectName = [ ${projectName} ];
+			const estimatedHr = [${estimatedHr}];
+			const totalUtilizedHours = [${totalUtilizedHours}];
+			const moduleName = [${moduleName}];
+			const mestimatedHr = [${mestimatedHr}];
+			const mtotalUtilizedHours = [${MtotalUtilizedHours}];
+			const taskName = [ ${taskName} ];
+			const testimatedHr = [${testimatedHr} ];
+			const ttotalUtilizedHours = [${ttotalUtilizedHours}];
+
+			// Project Chart
+			const ctx = document.getElementById('myChart').getContext('2d');
+			new Chart(ctx, {
+				type : 'bar',
+				data : {
+				      labels: [${projectName}],
+				      datasets: [{
+				        label: '# Estimated Hours',
+				        data: [${estimatedHr}],
+				        backgroundColor     : 'rgba(60,141,188,0.9)',
+				        borderColor         : 'rgba(60,141,188,0.8)',
+				        pointRadius          : false,
+				        pointColor          : '#3b8bba',
+				        pointStrokeColor    : 'rgba(60,141,188,1)',
+				        pointHighlightFill  : '#fff',
+				        pointHighlightStroke: 'rgba(60,141,188,1)',
+				        borderWidth: 1
+				      },
+				      {
+				    	  label : '# Total Utilized Hours',
+							data : [${totalUtilizedHours}],
+							backgroundColor     : 'rgba(210, 214, 222, 1)',
+					          borderColor         : 'rgba(210, 214, 222, 1)',
+					          pointRadius         : false,
+					          pointColor          : 'rgba(210, 214, 222, 1)',
+					          pointStrokeColor    : '#c1c7d1',
+					          pointHighlightFill  : '#fff',
+					          pointHighlightStroke: 'rgba(220,220,220,1)',
+							borderWidth : 1
+				      }]
+				    },
+				options : {
+					scales : {
+						y : {
+							beginAtZero : true	
+						}
+					}
+				}
+			});
+
+			// Module Chart
+			const ctxM = document.getElementById('mChart').getContext('2d');
+			new Chart(ctxM, {
+				type : 'bar',
+				data : {
+				      labels: [${moduleName}],
+				      datasets: [{
+				        label: '# Estimated Hours',
+				        data: [${mestimatedHr}],
+				        backgroundColor     : 'rgba(60,141,188,0.9)',
+				        borderColor         : 'rgba(60,141,188,0.8)',
+				        pointRadius          : false,
+				        pointColor          : '#3b8bba',
+				        pointStrokeColor    : 'rgba(60,141,188,1)',
+				        pointHighlightFill  : '#fff',
+				        pointHighlightStroke: 'rgba(60,141,188,1)',
+				        borderWidth: 1
+				      },
+				      {
+				    	  label : '# Total Utilized Hours',
+							data : [${mtotalUtilizedHours}],
+							backgroundColor     : 'rgba(210, 214, 222, 1)',
+					          borderColor         : 'rgba(210, 214, 222, 1)',
+					          pointRadius         : false,
+					          pointColor          : 'rgba(210, 214, 222, 1)',
+					          pointStrokeColor    : '#c1c7d1',
+					          pointHighlightFill  : '#fff',
+					          pointHighlightStroke: 'rgba(220,220,220,1)',
+							borderWidth : 1
+				      }]
+				    },
+				options : {
+					scales : {
+						y : {
+							beginAtZero : true
+						}
+					}
+				}
+			});
+
+			// Task Chart
+			const ctxT = document.getElementById('tChart').getContext('2d');
+			new Chart(ctxT, {
+				type : 'bar',
+				data : {
+				      labels: [${taskName}],
+				      datasets: [{
+				        label: '# Estimated Hours',
+				        data: [${testimatedHr}],
+				        backgroundColor     : 'rgba(60,141,188,0.9)',
+				        borderColor         : 'rgba(60,141,188,0.8)',
+				        pointRadius          : false,
+				        pointColor          : '#3b8bba',
+				        pointStrokeColor    : 'rgba(60,141,188,1)',
+				        pointHighlightFill  : '#fff',
+				        pointHighlightStroke: 'rgba(60,141,188,1)',
+				        borderWidth: 1
+				      },
+				      {
+				    	  label : '# Total Utilized Hours',
+							data : [${ttotalUtilizedHours}],
+							backgroundColor     : 'rgba(210, 214, 222, 1)',
+					          borderColor         : 'rgba(210, 214, 222, 1)',
+					          pointRadius         : false,
+					          pointColor          : 'rgba(210, 214, 222, 1)',
+					          pointStrokeColor    : '#c1c7d1',
+					          pointHighlightFill  : '#fff',
+					          pointHighlightStroke: 'rgba(220,220,220,1)',
+							borderWidth : 1
+				      }]
+				    },
+				options : {
+					scales : {
+						y : {
+							beginAtZero : true
+						}
+					}
+				}
+			});
+		});
+	</script>
 </body>
 </html>
