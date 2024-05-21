@@ -19,7 +19,6 @@ public interface ModuleRepository extends JpaRepository<ModuleEntity, Integer> {
 
 	@Query(value = "select SUM(total_utilized_hours) FROM module WHERE project_id = :projectId", nativeQuery = true)
 	Integer getTotalUtilizedHoursSumByProjectId(Integer projectId);
-
 	
 	
 }

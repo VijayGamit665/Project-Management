@@ -19,6 +19,9 @@ public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer>
 	@Query(value = "select p.* from project p, project_user pu where p.project_id = pu.project_id and pu.user_id = :userId AND assign_status=2", nativeQuery = true)
 	List<ProjectEntity> getRevokeUserByUserId(Integer userId);
 
+	@Query(value = "select p.* from project p, project_user pu where p.project_id = pu.project_id and pu.user_id = :userId", nativeQuery = true)
+	List<ProjectEntity> getchartsUserByUserId(Integer userId);
+
 	
 	@Query(value = "select count(*) from project p, project_user pu where p.project_id = pu.project_id and pu.user_id = :userId", nativeQuery = true)
 	Integer getUserProjectByUserId(Integer userId);
@@ -78,6 +81,7 @@ public interface ProjectRepository extends JpaRepository<ProjectEntity, Integer>
 
 	@Query(value = "select p. * from project p where month(p.project_completion_date) < :month", nativeQuery = true)
 	List<ProjectEntity> getdueCompletedprojectBymonth(Integer month);
+
 
 	
 	
